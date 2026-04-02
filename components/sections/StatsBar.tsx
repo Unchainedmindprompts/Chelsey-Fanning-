@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const STATS = [
-  { value: "5.0★", label: "Average Google Rating", detail: "47+ verified reviews" },
+  { value: "5.0★", label: "Average Google Rating", detail: "27 Google reviews" },
   { value: "7+",   label: "Years Serving North Idaho", detail: "Post Falls, CDA & beyond" },
   { value: "100+", label: "Transactions Closed", detail: "First-timers to luxury" },
 ];

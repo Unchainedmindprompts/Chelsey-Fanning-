@@ -78,7 +78,7 @@ export default function TestimonialsPage() {
                 Google Rating
               </p>
               <p className="text-xs" style={{ color: "var(--color-muted)" }}>
-                47+ verified reviews {/* TODO: real count */}
+                27 Google reviews
               </p>
             </div>
           </div>
