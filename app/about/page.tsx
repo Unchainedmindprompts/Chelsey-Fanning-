@@ -163,18 +163,9 @@ export default function AboutPage() {
         </div>
       </SectionWrapper>
 
-      {/* Second photo */}
+      {/* Second photo — TODO: add new photo of Chelsea here */}
       <SectionWrapper background="base">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-10">
-            <Image
-              src="/chelsea-hero.jpeg"
-              alt="Chelsea Fanning, REALTOR® — eXp Realty, Post Falls Idaho"
-              fill
-              sizes="(max-width: 768px) 100vw, 672px"
-              className="object-cover object-top"
-            />
-          </div>
           <p
             className="text-base leading-relaxed italic"
             style={{ color: "var(--color-muted)", fontFamily: "var(--font-cormorant)", fontSize: "1.1rem" }}
