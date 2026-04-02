@@ -14,12 +14,16 @@ export const metadata: Metadata = generatePageMetadata({
   keywords: ["Chelsey Fanning reviews", "North Idaho realtor reviews", "Post Falls real estate agent testimonials"],
 });
 
+// TODO: Replace YOUR_GBP_URL with Chelsey's real Google Business Profile reviews URL
+const GOOGLE_REVIEWS_URL = "https://www.google.com/maps/search/Chelsey+Fanning+EXP+Realty+Post+Falls+ID";
+
 const CATEGORIES = [
   { key: "first-time-buyer", label: "First-Time Buyers" },
   { key: "seller",           label: "Sellers" },
   { key: "luxury",           label: "Luxury" },
   { key: "relocation",       label: "Relocation" },
   { key: "move-up",          label: "Move-Up Buyers" },
+  { key: "general",          label: "More Happy Clients" },
 ] as const;
 
 export default function TestimonialsPage() {
@@ -105,6 +109,25 @@ export default function TestimonialsPage() {
           </SectionWrapper>
         );
       })}
+
+      {/* Google reviews link */}
+      <section className="py-16 text-center" style={{ backgroundColor: "var(--color-surface)" }}>
+        <p className="text-base mb-4" style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}>
+          All 27 reviews verified on Google
+        </p>
+        <a
+          href={GOOGLE_REVIEWS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all hover:opacity-90"
+          style={{ backgroundColor: "var(--color-primary)", color: "var(--color-white)", fontFamily: "var(--font-inter)" }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm-.146 18.717c-3.712 0-6.717-3.005-6.717-6.717S8.142 5.283 11.854 5.283c1.813 0 3.332.664 4.497 1.753l-1.824 1.753c-.499-.477-1.373-1.033-2.673-1.033-2.291 0-4.158 1.896-4.158 4.244 0 2.347 1.867 4.244 4.158 4.244 2.658 0 3.656-1.908 3.81-2.895H11.854v-2.316h6.355c.063.346.096.693.096 1.053 0 3.618-2.42 6.631-6.451 6.631z"/>
+          </svg>
+          View all reviews on Google
+        </a>
+      </section>
 
       <ContactCTA />
     </>
