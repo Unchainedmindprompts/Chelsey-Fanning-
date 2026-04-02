@@ -19,7 +19,7 @@ export const NAP = {
   phone: "(208) 755-6079",
   email: "cfanning.realtor@gmail.com",
   address: {
-    streetAddress: "Post Falls, ID",  // TODO: exact address if public
+    streetAddress: "510 S Clearwater Loop, Suite 100",
     addressLocality: "Post Falls",
     addressRegion: "ID",
     postalCode: "83854",
