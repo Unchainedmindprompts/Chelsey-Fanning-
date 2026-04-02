@@ -16,8 +16,8 @@ export const NAP = {
   name: "Chelsea Fanning",
   title: "REALTOR®",
   brokerage: "eXp Realty",
-  phone: "(208) 555-0199",           // TODO: confirm with client
-  email: "chelsea@chelseyfanning.com", // TODO: confirm with client
+  phone: "(208) 755-6079",
+  email: "cfanning.realtor@gmail.com",
   address: {
     streetAddress: "Post Falls, ID",  // TODO: exact address if public
     addressLocality: "Post Falls",
