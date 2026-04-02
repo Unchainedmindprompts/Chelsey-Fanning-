@@ -1,10 +1,10 @@
 {
   "$schema": "https://agent2json.com/schema/v1",
   "version": "1.0",
-  "name": "Chelsea Fanning",
+  "name": "Chelsey Fanning",
   "type": "business",
   "category": "RealEstateAgent",
-  "description": "Chelsea Fanning is a licensed REALTOR® with eXp Realty in Post Falls, Idaho. She specializes in residential real estate for buyers and sellers across North Idaho — from first-time buyers to luxury properties.",
+  "description": "Chelsey Fanning is a licensed REALTOR® with eXp Realty in Post Falls, Idaho. She specializes in residential real estate for buyers and sellers across North Idaho — from first-time buyers to luxury properties.",
   "url": "https://chelseyfanning.com",
   "logo": "https://chelseyfanning.com/og-default.jpg",
   "contact": {
@@ -84,6 +84,6 @@
   },
   "compliance": {
     "equalHousing": true,
-    "disclosure": "Chelsea Fanning is a licensed REALTOR® with eXp Realty in the state of Idaho. All information deemed reliable but not guaranteed."
+    "disclosure": "Chelsey Fanning is a licensed REALTOR® with eXp Realty in the state of Idaho. All information deemed reliable but not guaranteed."
   }
 }

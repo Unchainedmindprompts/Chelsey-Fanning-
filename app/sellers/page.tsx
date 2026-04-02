@@ -9,7 +9,7 @@ import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 export const metadata: Metadata = generatePageMetadata({
   title: "Selling Your Home in Post Falls & North Idaho",
   description:
-    "Ready to sell? Chelsea Fanning helps homeowners in Post Falls, Coeur d'Alene, and North Idaho sell for top dollar with honest advice, sharp marketing, and real results.",
+    "Ready to sell? Chelsey Fanning helps homeowners in Post Falls, Coeur d'Alene, and North Idaho sell for top dollar with honest advice, sharp marketing, and real results.",
   path: "/sellers",
   keywords: ["sell home Post Falls Idaho", "listing agent North Idaho", "selling house Coeur d'Alene"],
 });

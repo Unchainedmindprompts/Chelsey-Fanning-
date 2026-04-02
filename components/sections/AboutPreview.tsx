@@ -20,7 +20,7 @@ export default function AboutPreview() {
           <div className="relative aspect-[3/4] max-w-md mx-auto lg:mx-0 rounded-3xl overflow-hidden shadow-xl">
             <Image
               src="/chelsea-about.jpeg"
-              alt="Chelsea Fanning, REALTOR® — Post Falls, Idaho"
+              alt="Chelsey Fanning, REALTOR® — Post Falls, Idaho"
               fill
               sizes="(max-width: 1024px) 80vw, 40vw"
               className="object-cover object-center"
@@ -50,7 +50,7 @@ export default function AboutPreview() {
             className="text-sm font-semibold tracking-widest uppercase mb-4"
             style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
           >
-            Meet Chelsea
+            Meet Chelsey
           </p>
           <h2 className="text-h2 mb-6" style={{ color: "var(--color-charcoal)" }}>
             A North Idaho Agent Who Actually Cares

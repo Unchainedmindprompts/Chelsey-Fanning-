@@ -30,7 +30,7 @@ export default function NotFound() {
             Back to Home
           </Button>
           <Button href="/contact" variant="outline" size="md">
-            Contact Chelsea
+            Contact Chelsey
           </Button>
         </div>
         <div className="mt-12">

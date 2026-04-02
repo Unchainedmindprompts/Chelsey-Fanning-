@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const BASE_URL = "https://chelseyfanning.com";
-const SITE_NAME = "Chelsea Fanning · Realtor · Post Falls, ID";
+const SITE_NAME = "Chelsey Fanning · Realtor · Post Falls, ID";
 const DEFAULT_OG_IMAGE = "/og-default.jpg";
 
 interface PageMetaInput {
@@ -24,7 +24,7 @@ export function generatePageMetadata({
     title,
     description,
     keywords: [
-      "Chelsea Fanning",
+      "Chelsey Fanning",
       "Realtor Post Falls Idaho",
       "North Idaho real estate",
       "eXp Realty Idaho",

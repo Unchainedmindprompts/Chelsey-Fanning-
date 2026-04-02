@@ -9,16 +9,16 @@ import ContactCTA from "@/components/sections/ContactCTA";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 
 export const metadata: Metadata = {
-  title: "Chelsea Fanning | Realtor in Post Falls, Idaho | eXp Realty",
+  title: "Chelsey Fanning | Realtor in Post Falls, Idaho | eXp Realty",
   description:
-    "Chelsea Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and all of North Idaho. 5-star rated. 100+ transactions.",
+    "Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and all of North Idaho. 5-star rated. 100+ transactions.",
   alternates: {
     canonical: "https://chelseyfanning.com",
   },
   openGraph: {
-    title: "Chelsea Fanning | Realtor in Post Falls, Idaho",
+    title: "Chelsey Fanning | Realtor in Post Falls, Idaho",
     description:
-      "From your first home to your forever home — Chelsea Fanning brings expertise, honesty, and genuine care to every transaction in North Idaho.",
+      "From your first home to your forever home — Chelsey Fanning brings expertise, honesty, and genuine care to every transaction in North Idaho.",
     url: "https://chelseyfanning.com",
     type: "website",
   },

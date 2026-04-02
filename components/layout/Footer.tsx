@@ -51,7 +51,7 @@ export default function Footer() {
               className="text-2xl font-semibold mb-1"
               style={{ fontFamily: "var(--font-cormorant)", color: "var(--color-charcoal)" }}
             >
-              Chelsea Fanning
+              Chelsey Fanning
             </p>
             <p
               className="text-xs font-medium tracking-widest uppercase mb-4"
@@ -147,7 +147,7 @@ export default function Footer() {
             </div>
             <p className="text-xs mt-4 leading-relaxed" style={{ color: "var(--color-muted)" }}>
               {/* TODO: eXp Realty branding compliance review */}
-              Chelsea Fanning is a licensed REALTOR® with eXp Realty in the state of Idaho. All information deemed reliable but not guaranteed. This is not a solicitation if you are already under contract.
+              Chelsey Fanning is a licensed REALTOR® with eXp Realty in the state of Idaho. All information deemed reliable but not guaranteed. This is not a solicitation if you are already under contract.
             </p>
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function Footer() {
           className="mt-12 pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 text-xs"
           style={{ borderColor: "rgba(196,185,172,0.4)", color: "var(--color-muted)" }}
         >
-          <p>© 2026 Chelsea Fanning · REALTOR® · eXp Realty · Post Falls, Idaho</p>
+          <p>© 2026 Chelsey Fanning · REALTOR® · eXp Realty · Post Falls, Idaho</p>
           <p>
             Site by{" "}
             <a

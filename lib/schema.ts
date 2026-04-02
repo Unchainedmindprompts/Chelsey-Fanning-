@@ -13,7 +13,7 @@ export const CHELSEA_SAME_AS = [
 
 // ─── NAP constants ────────────────────────────────────────────────────────────
 export const NAP = {
-  name: "Chelsea Fanning",
+  name: "Chelsey Fanning",
   title: "REALTOR®",
   brokerage: "eXp Realty",
   phone: "(208) 755-6079",
@@ -49,7 +49,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
     "@type": ["LocalBusiness", "RealEstateAgent"],
     name: NAP.name,
     description:
-      "Chelsea Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, and all of North Idaho.",
+      "Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, and all of North Idaho.",
     url: NAP.url,
     telephone: NAP.phone,
     email: NAP.email,

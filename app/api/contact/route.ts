@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     // TODO: Uncomment and configure when Resend API key is ready
     /*
     await resend.emails.send({
-      from: "Chelsea Fanning Website <noreply@chelseyfanning.com>",
+      from: "Chelsey Fanning Website <noreply@chelseyfanning.com>",
       to: ["chelsea@chelseyfanning.com"], // TODO: confirm client email
       subject: `New contact from ${name} — ${intent || "general inquiry"}`,
       text: `

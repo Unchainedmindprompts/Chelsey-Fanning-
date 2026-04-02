@@ -9,7 +9,7 @@ import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 export const metadata: Metadata = generatePageMetadata({
   title: "Home Buyers in Post Falls & North Idaho",
   description:
-    "Thinking about buying a home in Post Falls, Coeur d'Alene, or North Idaho? Chelsea Fanning walks every buyer through the process — first-timers especially welcome.",
+    "Thinking about buying a home in Post Falls, Coeur d'Alene, or North Idaho? Chelsey Fanning walks every buyer through the process — first-timers especially welcome.",
   path: "/buyers",
   keywords: ["buying a home Post Falls Idaho", "first time home buyer North Idaho", "home buyer agent Coeur d'Alene"],
 });
@@ -59,7 +59,7 @@ const BUYER_FAQS = [
       "Technically no, but practically yes. In North Idaho's market, homes can receive offers quickly. Having pre-approval in hand means you can make an offer the day you find the right home. It also helps us focus your search on what's genuinely within your budget — no surprises.",
   },
   {
-    question: "What does it cost to work with Chelsea as a buyer?",
+    question: "What does it cost to work with Chelsey as a buyer?",
     answer:
       "In most transactions, the buyer's agent fee is paid by the seller, not by you. I'll always be transparent about how compensation works in your specific situation — but in most cases, my representation costs you nothing out of pocket.",
   },

@@ -9,9 +9,9 @@ import { TESTIMONIALS } from "@/content/testimonials";
 export const metadata: Metadata = generatePageMetadata({
   title: "Client Testimonials & Reviews",
   description:
-    "Read what Chelsea Fanning's real estate clients say — verified Google reviews from buyers, sellers, and families across Post Falls, Coeur d'Alene, and North Idaho.",
+    "Read what Chelsey Fanning's real estate clients say — verified Google reviews from buyers, sellers, and families across Post Falls, Coeur d'Alene, and North Idaho.",
   path: "/testimonials",
-  keywords: ["Chelsea Fanning reviews", "North Idaho realtor reviews", "Post Falls real estate agent testimonials"],
+  keywords: ["Chelsey Fanning reviews", "North Idaho realtor reviews", "Post Falls real estate agent testimonials"],
 });
 
 const CATEGORIES = [

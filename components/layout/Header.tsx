@@ -50,7 +50,7 @@ export default function Header() {
               className="text-2xl font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-cormorant)", color: "var(--color-charcoal)" }}
             >
-              Chelsea Fanning
+              Chelsey Fanning
             </span>
             <span
               className="text-[10px] font-medium tracking-[0.2em] uppercase"

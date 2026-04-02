@@ -8,7 +8,7 @@ import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 export const metadata: Metadata = generatePageMetadata({
   title: "North Idaho Real Estate Blog",
   description:
-    "Insights, market updates, and advice for buyers and sellers in Post Falls, Coeur d'Alene, and all of North Idaho — from REALTOR® Chelsea Fanning.",
+    "Insights, market updates, and advice for buyers and sellers in Post Falls, Coeur d'Alene, and all of North Idaho — from REALTOR® Chelsey Fanning.",
   path: "/blog",
   keywords: ["North Idaho real estate blog", "Post Falls housing market", "first time buyer tips Idaho"],
 });

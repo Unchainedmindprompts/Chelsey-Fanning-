@@ -62,22 +62,22 @@ const cormorant = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Chelsea Fanning | Realtor in Post Falls, Idaho | eXp Realty",
-    template: "%s | Chelsea Fanning · Realtor · Post Falls, ID",
+    default: "Chelsey Fanning | Realtor in Post Falls, Idaho | eXp Realty",
+    template: "%s | Chelsey Fanning · Realtor · Post Falls, ID",
   },
   description:
-    "Chelsea Fanning is a trusted REALTOR® based in Post Falls, Idaho, serving buyers and sellers across North Idaho — Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and Spokane Valley. eXp Realty.",
+    "Chelsey Fanning is a trusted REALTOR® based in Post Falls, Idaho, serving buyers and sellers across North Idaho — Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and Spokane Valley. eXp Realty.",
   metadataBase: new URL("https://chelseyfanning.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Chelsea Fanning · Realtor · Post Falls, ID",
+    siteName: "Chelsey Fanning · Realtor · Post Falls, ID",
     images: [
       {
         url: "/og-default.jpg",
         width: 1200,
         height: 630,
-        alt: "Chelsea Fanning – Realtor in Post Falls, Idaho",
+        alt: "Chelsey Fanning – Realtor in Post Falls, Idaho",
       },
     ],
   },

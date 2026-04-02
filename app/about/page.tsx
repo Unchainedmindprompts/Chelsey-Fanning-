@@ -7,11 +7,11 @@ import PersonSchema from "@/components/schema/PersonSchema";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "About Chelsea Fanning",
+  title: "About Chelsey Fanning",
   description:
-    "Meet Chelsea Fanning — a REALTOR® with eXp Realty who calls Post Falls, Idaho home. Learn about her approach, her values, and why first-time buyers are her favorite clients.",
+    "Meet Chelsey Fanning — a REALTOR® with eXp Realty who calls Post Falls, Idaho home. Learn about her approach, her values, and why first-time buyers are her favorite clients.",
   path: "/about",
-  keywords: ["Chelsea Fanning realtor bio", "Post Falls Idaho real estate agent", "eXp Realty Post Falls"],
+  keywords: ["Chelsey Fanning realtor bio", "Post Falls Idaho real estate agent", "eXp Realty Post Falls"],
 });
 
 const VALUES = [
@@ -47,7 +47,7 @@ export default function AboutPage() {
               <div className="relative aspect-[3/4] max-w-md mx-auto lg:mx-0 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="/chelsea-about.jpeg"
-                  alt="Chelsea Fanning, REALTOR® — Post Falls, Idaho"
+                  alt="Chelsey Fanning, REALTOR® — Post Falls, Idaho"
                   fill
                   priority
                   sizes="(max-width: 1024px) 80vw, 40vw"
@@ -65,7 +65,7 @@ export default function AboutPage() {
                 My Story
               </p>
               <h1 className="text-h1 mb-6" style={{ color: "var(--color-charcoal)" }}>
-                I&apos;m Chelsea. I Help People Find Home.
+                I&apos;m Chelsey. I Help People Find Home.
               </h1>
               <div
                 className="space-y-5 text-base leading-relaxed"
@@ -163,7 +163,7 @@ export default function AboutPage() {
         </div>
       </SectionWrapper>
 
-      {/* Second photo — TODO: add new photo of Chelsea here */}
+      {/* Second photo — TODO: add new photo of Chelsey here */}
       <SectionWrapper background="base">
         <div className="max-w-2xl mx-auto text-center">
           <p
@@ -177,7 +177,7 @@ export default function AboutPage() {
             className="mt-3 text-sm font-semibold"
             style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
           >
-            — Chelsea Fanning
+            — Chelsey Fanning
           </p>
         </div>
       </SectionWrapper>

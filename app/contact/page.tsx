@@ -5,11 +5,11 @@ import { NAP } from "@/lib/schema";
 import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Contact Chelsea Fanning",
+  title: "Contact Chelsey Fanning",
   description:
-    "Get in touch with Chelsea Fanning, REALTOR® — Post Falls, Idaho. Call, email, or send a message. Whether you're buying or selling, the conversation starts here.",
+    "Get in touch with Chelsey Fanning, REALTOR® — Post Falls, Idaho. Call, email, or send a message. Whether you're buying or selling, the conversation starts here.",
   path: "/contact",
-  keywords: ["contact Chelsea Fanning", "real estate agent Post Falls Idaho", "North Idaho realtor contact"],
+  keywords: ["contact Chelsey Fanning", "real estate agent Post Falls Idaho", "North Idaho realtor contact"],
 });
 
 export default function ContactPage() {

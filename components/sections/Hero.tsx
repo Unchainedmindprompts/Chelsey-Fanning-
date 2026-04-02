@@ -23,7 +23,7 @@ export default function Hero() {
             <div className="relative aspect-[3/4] max-w-sm mx-auto lg:max-w-none rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="/chelsea-hero.jpeg"
-                alt="Chelsea Fanning, REALTOR® in Post Falls, Idaho"
+                alt="Chelsey Fanning, REALTOR® in Post Falls, Idaho"
                 fill
                 priority
                 sizes="(max-width: 1024px) 90vw, 45vw"
@@ -39,7 +39,7 @@ export default function Hero() {
                   className="text-sm font-semibold"
                   style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
                 >
-                  Chelsea Fanning
+                  Chelsey Fanning
                 </p>
                 <p className="text-xs" style={{ color: "var(--color-muted)" }}>
                   REALTOR® · eXp Realty · Post Falls, ID
@@ -69,7 +69,7 @@ export default function Hero() {
               className="text-lg leading-relaxed mb-10 max-w-lg"
               style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
             >
-              From your first home to your forever home — Chelsea Fanning brings expertise,
+              From your first home to your forever home — Chelsey Fanning brings expertise,
               honesty, and genuine care to every transaction in Post Falls, Coeur d&apos;Alene,
               and beyond.
             </p>

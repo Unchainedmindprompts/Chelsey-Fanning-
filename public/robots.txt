@@ -1,4 +1,4 @@
-# robots.txt — Chelsea Fanning · REALTOR® · Post Falls, Idaho
+# robots.txt — Chelsey Fanning · REALTOR® · Post Falls, Idaho
 # All AI crawlers and search engines are welcome.
 
 User-agent: *
