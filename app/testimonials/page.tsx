@@ -14,8 +14,7 @@ export const metadata: Metadata = generatePageMetadata({
   keywords: ["Chelsey Fanning reviews", "North Idaho realtor reviews", "Post Falls real estate agent testimonials"],
 });
 
-// TODO: Replace YOUR_GBP_URL with Chelsey's real Google Business Profile reviews URL
-const GOOGLE_REVIEWS_URL = "https://www.google.com/maps/search/Chelsey+Fanning+EXP+Realty+Post+Falls+ID";
+const GOOGLE_REVIEWS_URL = "https://share.google/u2Lgk0szuKiVmZzp3";
 
 const CATEGORIES = [
   { key: "first-time-buyer", label: "First-Time Buyers" },
