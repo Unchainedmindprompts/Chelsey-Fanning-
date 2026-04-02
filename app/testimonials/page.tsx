@@ -4,7 +4,7 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import ContactCTA from "@/components/sections/ContactCTA";
 import ReviewSchema from "@/components/schema/ReviewSchema";
-import { TESTIMONIALS } from "@/content/testimonials";
+import { TESTIMONIALS, AGGREGATE_RATING } from "@/content/testimonials";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Client Testimonials & Reviews",
@@ -17,18 +17,44 @@ export const metadata: Metadata = generatePageMetadata({
 const GOOGLE_REVIEWS_URL = "https://share.google/u2Lgk0szuKiVmZzp3";
 
 const CATEGORIES = [
-  { key: "first-time-buyer", label: "First-Time Buyers" },
-  { key: "seller",           label: "Sellers" },
-  { key: "luxury",           label: "Luxury" },
-  { key: "relocation",       label: "Relocation" },
-  { key: "move-up",          label: "Move-Up Buyers" },
-  { key: "general",          label: "More Happy Clients" },
+  {
+    key: "first-time-buyer",
+    heading: "For the ones who said \u201cI don\u2019t even know where to start.\u201d",
+    background: "base" as const,
+  },
+  {
+    key: "luxury",
+    heading: "For buyers and sellers who expect the best.",
+    background: "surface" as const,
+  },
+  {
+    key: "relocation",
+    heading: "For the ones who moved to North Idaho from somewhere else.",
+    background: "base" as const,
+  },
+  {
+    key: "seller",
+    heading: "For the ones ready to sell.",
+    background: "surface" as const,
+  },
+  {
+    key: "repeat-client",
+    heading: "For the clients who came back — and the ones who never left.",
+    background: "base" as const,
+  },
+  {
+    key: "general",
+    heading: "More Happy Clients",
+    background: "surface" as const,
+  },
 ] as const;
+
+const renderable = TESTIMONIALS.filter((t) => t.fullText.length > 0);
 
 export default function TestimonialsPage() {
   return (
     <>
-      <ReviewSchema testimonials={TESTIMONIALS} />
+      <ReviewSchema />
 
       {/* Page hero */}
       <section
@@ -66,7 +92,7 @@ export default function TestimonialsPage() {
                 className="text-4xl font-bold"
                 style={{ color: "var(--color-primary)", fontFamily: "var(--font-cormorant)" }}
               >
-                5.0
+                {AGGREGATE_RATING.ratingValue}
               </p>
               <div className="flex gap-0.5 mt-1">
                 {[1,2,3,4,5].map((i) => (
@@ -81,7 +107,7 @@ export default function TestimonialsPage() {
                 Google Rating
               </p>
               <p className="text-xs" style={{ color: "var(--color-muted)" }}>
-                27 Google reviews
+                {AGGREGATE_RATING.reviewCount} Google reviews
               </p>
             </div>
           </div>
@@ -89,17 +115,17 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Reviews by category */}
-      {CATEGORIES.map(({ key, label }) => {
-        const categoryReviews = TESTIMONIALS.filter((t) => t.category === key);
+      {CATEGORIES.map(({ key, heading, background }) => {
+        const categoryReviews = renderable.filter((t) => t.category === key);
         if (categoryReviews.length === 0) return null;
         return (
-          <SectionWrapper
-            key={key}
-            background={key === "seller" || key === "relocation" ? "surface" : "base"}
-          >
-            <h2 className="text-h3 mb-10" style={{ color: "var(--color-charcoal)" }}>
-              {label}
+          <SectionWrapper key={key} background={background}>
+            <h2 className="text-h3 mb-2" style={{ color: "var(--color-charcoal)" }}>
+              {heading}
             </h2>
+            <p className="text-sm mb-10" style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}>
+              {categoryReviews.length} {categoryReviews.length === 1 ? "review" : "reviews"}
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {categoryReviews.map((testimonial) => (
                 <TestimonialCard key={testimonial.id} testimonial={testimonial} />
@@ -112,7 +138,7 @@ export default function TestimonialsPage() {
       {/* Google reviews link */}
       <section className="py-16 text-center" style={{ backgroundColor: "var(--color-surface)" }}>
         <p className="text-base mb-4" style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}>
-          All 27 reviews verified on Google
+          All {AGGREGATE_RATING.reviewCount} reviews verified on Google
         </p>
         <a
           href={GOOGLE_REVIEWS_URL}

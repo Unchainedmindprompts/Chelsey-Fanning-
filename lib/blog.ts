@@ -12,6 +12,7 @@ export interface BlogPost {
   tags: string[];
   author: string;
   imageUrl?: string;
+  reviewSource?: string;
   readingTime: number;
   content: string;
 }
@@ -44,6 +45,7 @@ export function getAllPosts(): BlogPost[] {
         tags: data.tags ?? [],
         author: data.author ?? "Chelsey Fanning",
         imageUrl: data.imageUrl,
+        reviewSource: data.reviewSource,
         readingTime: estimateReadingTime(content),
         content,
       } satisfies BlogPost;
@@ -68,6 +70,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     tags: data.tags ?? [],
     author: data.author ?? "Chelsey Fanning",
     imageUrl: data.imageUrl,
+    reviewSource: data.reviewSource,
     readingTime: estimateReadingTime(content),
     content,
   };

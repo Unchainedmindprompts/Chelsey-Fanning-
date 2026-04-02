@@ -7,7 +7,7 @@ import TestimonialCard from "@/components/ui/TestimonialCard";
 import { TESTIMONIALS } from "@/content/testimonials";
 
 export default function FeaturedTestimonials() {
-  const featured = TESTIMONIALS.filter((t) => t.featured);
+  const featured = TESTIMONIALS.filter((t) => t.featured && t.fullText.length > 0).slice(0, 3);
 
   return (
     <SectionWrapper background="surface" id="testimonials-preview">

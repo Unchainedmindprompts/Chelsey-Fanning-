@@ -1,3 +1,5 @@
+import { AGGREGATE_RATING } from "@/content/testimonials";
+
 // ─── Shared sameAs profiles ───────────────────────────────────────────────────
 export const CHELSEA_SAME_AS = [
   "https://www.google.com/maps?cid=YOUR_GBP_CID",        // TODO: fill at launch
@@ -71,10 +73,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
     priceRange: "$$",
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: "27",
-      bestRating: "5",
-      worstRating: "1",
+      ...AGGREGATE_RATING,
     },
     ...overrides,
   };

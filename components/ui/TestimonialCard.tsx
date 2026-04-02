@@ -7,9 +7,6 @@ interface TestimonialCardProps {
   testimonial: Testimonial;
 }
 
-// Reviews shorter than this don't need a toggle
-const TRUNCATE_THRESHOLD = 180;
-
 function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-0.5 mb-4" aria-label={`${rating} out of 5 stars`}>
@@ -31,7 +28,10 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
   const [expanded, setExpanded] = useState(false);
-  const needsTruncation = testimonial.body.length > TRUNCATE_THRESHOLD;
+  const hasFullText = testimonial.fullText.length > 0;
+  const needsToggle = hasFullText && testimonial.fullText !== testimonial.shortQuote;
+
+  const displayText = expanded ? testimonial.fullText : (testimonial.shortQuote || testimonial.fullText);
 
   const formattedDate = new Date(testimonial.date).toLocaleDateString("en-US", {
     year: "numeric",
@@ -43,6 +43,19 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
       className="rounded-2xl p-8 shadow-sm flex flex-col"
       style={{ backgroundColor: "var(--color-white)", border: "1px solid rgba(196,185,172,0.3)" }}
     >
+      {testimonial.badgeLabel && (
+        <p
+          className="text-xs font-semibold tracking-wide uppercase mb-3 px-2 py-1 rounded-full self-start"
+          style={{
+            color: "var(--color-primary)",
+            backgroundColor: "rgba(var(--color-primary-rgb, 139,109,79), 0.08)",
+            fontFamily: "var(--font-inter)",
+          }}
+        >
+          {testimonial.badgeLabel}
+        </p>
+      )}
+
       <StarRating rating={testimonial.rating} />
 
       <blockquote className="flex-1">
@@ -50,14 +63,10 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
           className="text-base leading-relaxed italic"
           style={{ color: "var(--color-text)" }}
         >
-          &ldquo;
-          {needsTruncation && !expanded
-            ? testimonial.body.slice(0, TRUNCATE_THRESHOLD).trimEnd() + "…"
-            : testimonial.body}
-          &rdquo;
+          &ldquo;{displayText}&rdquo;
         </p>
 
-        {needsTruncation && (
+        {needsToggle && (
           <button
             onClick={() => setExpanded((v) => !v)}
             className="mt-3 text-sm font-semibold transition-opacity hover:opacity-70 focus-visible:outline-none"
@@ -74,18 +83,11 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
           className="font-semibold text-sm"
           style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
         >
-          {testimonial.author}
+          {testimonial.name}
         </p>
-        {testimonial.location && (
-          <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
-            {testimonial.location} · {formattedDate}
-          </p>
-        )}
-        {!testimonial.location && (
-          <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
-            {formattedDate}
-          </p>
-        )}
+        <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
+          {formattedDate}
+        </p>
       </footer>
     </article>
   );
