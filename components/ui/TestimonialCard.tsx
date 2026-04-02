@@ -1,8 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import type { Testimonial } from "@/content/testimonials";
 
 interface TestimonialCardProps {
   testimonial: Testimonial;
 }
+
+// Reviews shorter than this don't need a toggle
+const TRUNCATE_THRESHOLD = 180;
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -24,6 +30,9 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
+  const [expanded, setExpanded] = useState(false);
+  const needsTruncation = testimonial.body.length > TRUNCATE_THRESHOLD;
+
   const formattedDate = new Date(testimonial.date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -31,19 +40,36 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
 
   return (
     <article
-      className="rounded-2xl p-8 shadow-sm flex flex-col h-full"
+      className="rounded-2xl p-8 shadow-sm flex flex-col"
       style={{ backgroundColor: "var(--color-white)", border: "1px solid rgba(196,185,172,0.3)" }}
     >
       <StarRating rating={testimonial.rating} />
+
       <blockquote className="flex-1">
         <p
-          className="text-base leading-relaxed mb-6 italic"
+          className="text-base leading-relaxed italic"
           style={{ color: "var(--color-text)" }}
         >
-          &ldquo;{testimonial.body}&rdquo;
+          &ldquo;
+          {needsTruncation && !expanded
+            ? testimonial.body.slice(0, TRUNCATE_THRESHOLD).trimEnd() + "…"
+            : testimonial.body}
+          &rdquo;
         </p>
+
+        {needsTruncation && (
+          <button
+            onClick={() => setExpanded((v) => !v)}
+            className="mt-3 text-sm font-semibold transition-opacity hover:opacity-70 focus-visible:outline-none"
+            style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+            aria-expanded={expanded}
+          >
+            {expanded ? "Show less ↑" : "Read more ↓"}
+          </button>
+        )}
       </blockquote>
-      <footer className="mt-auto">
+
+      <footer className="mt-5 pt-5 border-t" style={{ borderColor: "rgba(196,185,172,0.3)" }}>
         <p
           className="font-semibold text-sm"
           style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
@@ -53,6 +79,11 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
         {testimonial.location && (
           <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
             {testimonial.location} · {formattedDate}
+          </p>
+        )}
+        {!testimonial.location && (
+          <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
+            {formattedDate}
           </p>
         )}
       </footer>
