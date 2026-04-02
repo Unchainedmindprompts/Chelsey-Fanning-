@@ -17,21 +17,13 @@ export default function AboutPreview() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="relative aspect-square max-w-md mx-auto lg:mx-0 rounded-3xl overflow-hidden shadow-xl">
-            {/* TODO: Replace with Chelsea's straight-on blue dress headshot */}
-            <div
-              className="w-full h-full"
-              style={{ backgroundColor: "var(--color-surface)" }}
-            />
+          <div className="relative aspect-[3/4] max-w-md mx-auto lg:mx-0 rounded-3xl overflow-hidden shadow-xl">
             <Image
-              src="/chelsea-about.jpg"
-              alt="Chelsea Fanning, REALTOR® — about photo"
+              src="/chelsea-about.jpeg"
+              alt="Chelsea Fanning, REALTOR® — Post Falls, Idaho"
               fill
               sizes="(max-width: 1024px) 80vw, 40vw"
               className="object-cover object-center"
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).style.display = "none";
-              }}
             />
           </div>
           {/* Floating tag */}

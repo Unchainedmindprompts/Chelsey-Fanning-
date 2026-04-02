@@ -45,18 +45,13 @@ export default function AboutPage() {
             {/* Photo */}
             <div className="order-last lg:order-first relative">
               <div className="relative aspect-[3/4] max-w-md mx-auto lg:mx-0 rounded-3xl overflow-hidden shadow-2xl">
-                {/* TODO: Replace with Chelsea's straight-on blue dress headshot */}
-                <div
-                  className="w-full h-full"
-                  style={{ backgroundColor: "var(--color-surface)" }}
-                />
                 <Image
-                  src="/chelsea-about.jpg"
+                  src="/chelsea-about.jpeg"
                   alt="Chelsea Fanning, REALTOR® — Post Falls, Idaho"
                   fill
                   priority
                   sizes="(max-width: 1024px) 80vw, 40vw"
-                  className="object-cover object-top"
+                  className="object-cover object-center"
                 />
               </div>
             </div>
@@ -172,21 +167,12 @@ export default function AboutPage() {
       <SectionWrapper background="base">
         <div className="max-w-2xl mx-auto text-center">
           <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-10">
-            {/* TODO: Use Chelsea's second headshot or lifestyle photo here */}
-            <div
-              className="w-full h-full flex items-center justify-center"
-              style={{ backgroundColor: "var(--color-surface)" }}
-            >
-              <p className="text-sm" style={{ color: "var(--color-muted)" }}>
-                [Secondary photo — TODO]
-              </p>
-            </div>
             <Image
-              src="/chelsea-secondary.jpg"
-              alt="Chelsea Fanning in North Idaho"
+              src="/chelsea-hero.jpeg"
+              alt="Chelsea Fanning, REALTOR® — eXp Realty, Post Falls Idaho"
               fill
-              sizes="100vw"
-              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 672px"
+              className="object-cover object-top"
             />
           </div>
           <p

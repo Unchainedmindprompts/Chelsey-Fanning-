@@ -21,30 +21,14 @@ export default function Hero() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <div className="relative aspect-[3/4] max-w-sm mx-auto lg:max-w-none rounded-3xl overflow-hidden shadow-2xl">
-              {/* TODO: Replace with Chelsea's actual hero photo — blue dress, angled against concrete wall */}
-              <div
-                className="w-full h-full flex items-end justify-center"
-                style={{
-                  background: "linear-gradient(to bottom right, var(--color-concrete), var(--color-surface))",
-                }}
-              >
-                <Image
-                  src="/chelsea-hero.jpg"
-                  alt="Chelsea Fanning, REALTOR® in Post Falls, Idaho"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 90vw, 45vw"
-                  className="object-cover object-top"
-                  // TODO: swap placeholder when real photo is provided
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = "none";
-                  }}
-                />
-                {/* Placeholder fallback visible if no image */}
-                <p className="pb-8 text-center text-sm z-10 relative" style={{ color: "var(--color-muted)" }}>
-                  [Hero photo — TODO]
-                </p>
-              </div>
+              <Image
+                src="/chelsea-hero.jpeg"
+                alt="Chelsea Fanning, REALTOR® in Post Falls, Idaho"
+                fill
+                priority
+                sizes="(max-width: 1024px) 90vw, 45vw"
+                className="object-cover object-top"
+              />
 
               {/* Accent badge */}
               <div
