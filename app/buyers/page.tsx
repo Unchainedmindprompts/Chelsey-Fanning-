@@ -61,7 +61,7 @@ const BUYER_FAQS = [
   {
     question: "What does it cost to work with Chelsey as a buyer?",
     answer:
-      "In most transactions, the buyer's agent fee is paid by the seller, not by you. I'll always be transparent about how compensation works in your specific situation — but in most cases, my representation costs you nothing out of pocket.",
+      "Under the NAR settlement rules that took effect in 2024, buyer agent compensation is now negotiated directly between you and your agent — it's no longer automatically offered through the MLS. Before we tour any homes together, we'll sign a Buyer Representation Agreement that spells out exactly how I'm compensated and for how much. In many transactions, sellers still offer concessions that can cover buyer agent fees, but that's negotiated case by case. I'll be completely upfront about all of this before we take a single step — no surprises, ever.",
   },
   {
     question: "How long does buying a home in North Idaho typically take?",
