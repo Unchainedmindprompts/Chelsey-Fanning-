@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* ─── Brand Design Tokens ─────────────────────────────────────────── */
+:root {
+  --color-primary:       #2E86AB;
+  --color-primary-dark:  #1A5E7A;
+  --color-base:          #FAF7F2;
+  --color-surface:       #F0EBE3;
+  --color-concrete:      #C4B9AC;
+  --color-charcoal:      #2C2C2C;
+  --color-text:          #3A3530;
+  --color-muted:         #7A7068;
+  --color-white:         #FFFFFF;
+}
+
+@theme inline {
+  --color-primary:       var(--color-primary);
+  --color-primary-dark:  var(--color-primary-dark);
+  --color-base:          var(--color-base);
+  --color-surface:       var(--color-surface);
+  --color-concrete:      var(--color-concrete);
+  --color-charcoal:      var(--color-charcoal);
+  --color-text:          var(--color-text);
+  --color-muted:         var(--color-muted);
+  --color-white:         var(--color-white);
+  --font-heading:        var(--font-cormorant);
+  --font-body:           var(--font-inter);
+}
+
+/* ─── Base Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  line-height: 1.2;
+  color: var(--color-charcoal);
+}
+
+/* ─── Fluid Type Scale ────────────────────────────────────────────── */
+.text-display {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.text-h1 {
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  font-weight: 600;
+}
+
+.text-h2 {
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-weight: 500;
+}
+
+.text-h3 {
+  font-size: clamp(1.375rem, 2.5vw, 2rem);
+  font-weight: 500;
+}
+
+.text-h4 {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 500;
+}
+
+/* ─── Utility: Section vertical spacing ──────────────────────────── */
+.section-padding {
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
