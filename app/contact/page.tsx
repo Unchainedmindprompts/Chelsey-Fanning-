@@ -105,7 +105,10 @@ export default function ContactPage() {
                       Location
                     </p>
                     <p className="text-base" style={{ color: "var(--color-text)" }}>
-                      Post Falls, Idaho 83854
+                      {NAP.address.streetAddress}
+                    </p>
+                    <p className="text-base" style={{ color: "var(--color-text)" }}>
+                      {NAP.address.addressLocality}, {NAP.address.addressRegion} {NAP.address.postalCode}
                     </p>
                     <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
                       Serving all of North Idaho

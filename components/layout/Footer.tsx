@@ -60,6 +60,7 @@ export default function Footer() {
               REALTOR® · eXp Realty · Post Falls, Idaho
             </p>
             <address className="not-italic text-sm leading-relaxed mb-4" style={{ color: "var(--color-muted)" }}>
+              <p>{NAP.address.streetAddress}</p>
               <p>{NAP.address.addressLocality}, {NAP.address.addressRegion} {NAP.address.postalCode}</p>
               <p>
                 <a
