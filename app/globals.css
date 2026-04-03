@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* ─── Brand Design Tokens ─────────────────────────────────────────── */
 :root {
@@ -76,6 +77,85 @@ h1, h2, h3, h4, h5, h6 {
 .text-h4 {
   font-size: clamp(1.125rem, 2vw, 1.5rem);
   font-weight: 500;
+}
+
+/* ─── Prose / Blog Article Styles ────────────────────────────────── */
+.prose {
+  --tw-prose-body:        var(--color-text);
+  --tw-prose-headings:    var(--color-charcoal);
+  --tw-prose-links:       var(--color-primary);
+  --tw-prose-bold:        var(--color-charcoal);
+  --tw-prose-counters:    var(--color-muted);
+  --tw-prose-bullets:     var(--color-muted);
+  --tw-prose-hr:          var(--color-concrete);
+  --tw-prose-th-borders:  var(--color-concrete);
+  --tw-prose-td-borders:  var(--color-concrete);
+  --tw-prose-quotes:      var(--color-text);
+  --tw-prose-quote-borders: var(--color-primary);
+  --tw-prose-code:        var(--color-charcoal);
+  --tw-prose-pre-bg:      var(--color-surface);
+}
+
+/* Use brand font stack inside prose */
+.prose :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Tighter scale using brand sizes */
+.prose h2 {
+  font-size: clamp(1.5rem, 2.8vw, 2.125rem);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h3 {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Table: visible borders and readable cells */
+.prose table {
+  width: 100%;
+  font-size: 0.9rem;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.prose thead th {
+  background-color: var(--color-surface);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-concrete);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.prose tbody td {
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--color-concrete);
+  vertical-align: top;
+}
+
+.prose tbody tr:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+/* Horizontal rule */
+.prose hr {
+  border-color: var(--color-concrete);
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Numbered list: clear visual separation */
+.prose ol li,
+.prose ul li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
 }
 
 /* ─── Utility: Section vertical spacing ──────────────────────────── */

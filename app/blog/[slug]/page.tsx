@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
 import ArticleSchema from "@/components/schema/ArticleSchema";
@@ -139,15 +140,12 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Article body */}
         <div
           className="max-w-3xl mx-auto px-6 lg:px-8 pb-24 prose prose-lg"
-          style={{
-            "--tw-prose-body": "var(--color-text)",
-            "--tw-prose-headings": "var(--color-charcoal)",
-            "--tw-prose-links": "var(--color-primary)",
-            "--tw-prose-bold": "var(--color-charcoal)",
-            fontFamily: "var(--font-inter)",
-          } as React.CSSProperties}
+          style={{ fontFamily: "var(--font-inter)" }}
         >
-          <MDXRemote source={post.content} />
+          <MDXRemote
+            source={post.content}
+            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+          />
         </div>
 
         {/* Post footer */}
