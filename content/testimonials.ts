@@ -126,7 +126,7 @@ export const TESTIMONIALS: Testimonial[] = [
     fullText:
       "Chelsey was fantastic in our home purchase, managing a cross-country purchase for us seamlessly. Very professional, courteous and communicative. She also helped find service providers for various house-related things, as we had no idea who to call in the area. She was a pleasure to work with.",
     featured: false,
-    blogSlug: "relocating-to-north-idaho-how-to-buy-from-across-the-country",
+    blogSlug: "relocating-north-idaho-how-to-buy-home-from-across-country",
   },
   {
     id: "elizabeth-bowling",
