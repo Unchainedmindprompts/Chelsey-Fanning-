@@ -187,7 +187,7 @@ export const TESTIMONIALS: Testimonial[] = [
     fullText:
       "I have known and worked with Chelsey for almost 10 years and in that time she helped my husband and I with the sale of our home, worked diligently to assist in the possible purchase of other homes and properties for our family and has also facilitated the sale of my mother's home. Having worked in real estate myself for many years, I know the people and I know how difficult it can be to make it in this very competitive business - you have work hard to stand out, be dedicated, and truly care about what you do. Former Realtors are not always the easiest clients to have but I can assure you, we know the business and we know who to trust, so rest assured when I say that Chelsey Fanning knows what she's doing and will work hard for you and your family too.",
     featured: true,
-    blogSlug: "what-a-former-realtor-looks-for-when-choosing-an-agent",
+    blogSlug: "what-former-realtor-looks-for-choosing-real-estate-agent",
   },
   {
     id: "kimberly-miller",
