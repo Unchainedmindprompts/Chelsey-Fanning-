@@ -49,7 +49,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "Chelsea delivered an exceptional experience on this luxury home purchase in Coeur d'Alene, Idaho. As a lender specializing in jumbo and high-end transactions, I can confidently say her level of communication and professionalism is elite. She was outstanding not only in working with our lending team, but also in guiding her client through every step of the process. In luxury real estate, details matter—and Chelsea stayed proactive, organized, and ahead of every milestone, allowing us to structure and close this jumbo loan smoothly and ahead of schedule. What stood out most was the experience she created. Her client walked away with everything they envisioned in their home purchase, which is exactly what you want in a high-end transaction.",
     featured: true,
     badgeLabel: "From a lending professional",
-    blogSlug: "what-a-jumbo-loan-lender-looks-for-in-a-luxury-agent",
+    blogSlug: "what-jumbo-loan-lender-looks-for-luxury-real-estate-agent",
   },
   {
     id: "tabbetha-sonn",

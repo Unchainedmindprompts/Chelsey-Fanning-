@@ -30,6 +30,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+// FAQ schema helper — rendered only when the post supplies `faqs` front matter
+function FAQSchema({ faqs }: { faqs: Array<{ question: string; answer: string }> }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 // Breadcrumb schema helper
 function BreadcrumbSchema({ post }: { post: { slug: string; title: string } }) {
   const schema = {
@@ -71,6 +90,7 @@ export default async function BlogPostPage({ params }: Props) {
         imageUrl={post.imageUrl}
       />
       <BreadcrumbSchema post={post} />
+      {post.faqs && post.faqs.length > 0 && <FAQSchema faqs={post.faqs} />}
 
       <article style={{ backgroundColor: "var(--color-base)" }}>
         {/* Article header */}
