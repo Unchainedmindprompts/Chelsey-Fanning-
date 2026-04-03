@@ -62,7 +62,7 @@ export const TESTIMONIALS: Testimonial[] = [
     fullText:
       "Chelsey has been absolutely incredible. We found the home ourselves, but she's the one who made everything possible. She went above and beyond in every way, truly treating our situation like her own family would be living here. I had a million questions, a ton of stress, and I definitely over-communicated… she never once seemed bothered. She explained everything, checked in constantly, and kept us grounded through one of the biggest decisions of our lives. She even helped us get connected with an amazing lender, which made everything smoother. And honestly? She doesn't feel like \"just\" a realtor anymore… she feels like a friend. If you want someone who genuinely cares, works hard, and supports you every step of the way, Chelsey is the one. We're so grateful for her.",
     featured: true,
-    blogSlug: "what-it-feels-like-to-work-with-the-right-realtor",
+    blogSlug: "what-it-actually-feels-like-to-work-with-the-right-realtor",
   },
   {
     id: "jennifer-lund",

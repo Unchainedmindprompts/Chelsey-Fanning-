@@ -13,6 +13,8 @@ export interface BlogPost {
   author: string;
   imageUrl?: string;
   reviewSource?: string;
+  featured?: boolean;
+  displayOrder?: number;
   faqs?: Array<{ question: string; answer: string }>;
   readingTime: number;
   content: string;
@@ -47,6 +49,8 @@ export function getAllPosts(): BlogPost[] {
         author: data.author ?? "Chelsey Fanning",
         imageUrl: data.imageUrl,
         reviewSource: data.reviewSource,
+        featured: data.featured,
+        displayOrder: data.displayOrder,
         faqs: data.faqs,
         readingTime: estimateReadingTime(content),
         content,
@@ -73,6 +77,8 @@ export function getPostBySlug(slug: string): BlogPost | null {
     author: data.author ?? "Chelsey Fanning",
     imageUrl: data.imageUrl,
     reviewSource: data.reviewSource,
+    featured: data.featured,
+    displayOrder: data.displayOrder,
     faqs: data.faqs,
     readingTime: estimateReadingTime(content),
     content,
