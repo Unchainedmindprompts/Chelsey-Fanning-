@@ -35,7 +35,7 @@ export const TESTIMONIALS: Testimonial[] = [
     fullText:
       "As first-time homebuyers, we were honestly a little overwhelmed going into the process—but working with Chelsey made all the difference. She took the time to explain every step in a way that felt clear and manageable, and she was always there to answer our questions (no matter how small). She truly advocated for us and made sure we felt confident in every decision. Beyond that, she went above and beyond to make the experience not just smooth, but actually enjoyable. We're so grateful to have had her by our side and cannot recommend her enough!",
     featured: true,
-    blogSlug: "first-time-homebuyers-guide-post-falls-idaho",
+    blogSlug: "complete-first-time-homebuyer-guide-post-falls-idaho",
   },
   {
     id: "tyler-shearer",
@@ -75,7 +75,7 @@ export const TESTIMONIALS: Testimonial[] = [
     fullText:
       "Chelsea was truly exceptional from start to finish. We couldn't have asked for a better guide through the home buying process. She was knowledgeable, responsive, and incredibly patient, taking the time to explain every step and make sure we felt confident in our decisions. When we ran into a few difficult and stressful situations along the way, Chelsea handled them with professionalism, and care, always advocating for our best interests. Her attention to detail and commitment to us as clients never wavered, and it made all the difference. We are so grateful for her support and expertise and would wholeheartedly recommend Chelsea to anyone looking for a realtor they can truly trust.",
     featured: false,
-    blogSlug: "first-time-homebuyers-guide-post-falls-idaho",
+    blogSlug: "complete-first-time-homebuyer-guide-post-falls-idaho",
   },
   {
     id: "katie-lamothe",
@@ -88,7 +88,7 @@ export const TESTIMONIALS: Testimonial[] = [
     fullText:
       "Chelsey was and is the absolute best realtor in town!! She is kind and caring and helped me and my husband with buying our first house! I was soooo nervous about everything but she calmed me down and answered every single question we had and more! It was a flawless process with her and I can not wait to use her in the future! She's the best!!!",
     featured: false,
-    blogSlug: "first-time-homebuyers-guide-post-falls-idaho",
+    blogSlug: "complete-first-time-homebuyer-guide-post-falls-idaho",
   },
   {
     id: "jessie-mitchell",
