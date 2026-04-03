@@ -7,6 +7,8 @@ import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
 import ArticleSchema from "@/components/schema/ArticleSchema";
 import { NAP } from "@/lib/schema";
+import { TESTIMONIALS } from "@/content/testimonials";
+import ReviewCallout from "@/components/blog/ReviewCallout";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -137,16 +139,36 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </header>
 
-        {/* Article body */}
-        <div
-          className="max-w-3xl mx-auto px-6 lg:px-8 pb-24 prose prose-lg"
-          style={{ fontFamily: "var(--font-inter)" }}
-        >
-          <MDXRemote
-            source={post.content}
-            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
-          />
-        </div>
+        {/* Article body — split at FAQ heading to inject ReviewCallout */}
+        {(() => {
+          const FAQ_HEADING = "## Frequently Asked Questions";
+          const splitIdx = post.content.indexOf(FAQ_HEADING);
+          const bodyContent = splitIdx !== -1 ? post.content.slice(0, splitIdx) : post.content;
+          const faqContent = splitIdx !== -1 ? post.content.slice(splitIdx) : null;
+
+          const calloutTestimonial = post.reviewSource
+            ? TESTIMONIALS.find((t) => t.id === post.reviewSource) ?? null
+            : null;
+
+          const mdxOptions = { mdxOptions: { remarkPlugins: [remarkGfm] } };
+
+          return (
+            <div
+              className="max-w-3xl mx-auto px-6 lg:px-8 pb-24 prose prose-lg"
+              style={{ fontFamily: "var(--font-inter)" }}
+            >
+              <MDXRemote source={bodyContent} options={mdxOptions} />
+
+              {calloutTestimonial && (
+                <ReviewCallout testimonial={calloutTestimonial} />
+              )}
+
+              {faqContent && (
+                <MDXRemote source={faqContent} options={mdxOptions} />
+              )}
+            </div>
+          );
+        })()}
 
         {/* Post footer */}
         <div

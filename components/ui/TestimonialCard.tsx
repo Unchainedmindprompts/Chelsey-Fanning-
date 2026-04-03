@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { Testimonial } from "@/content/testimonials";
 
 interface TestimonialCardProps {
@@ -88,6 +89,15 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
         <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
           {formattedDate}
         </p>
+        {testimonial.blogSlug && (
+          <Link
+            href={`/blog/${testimonial.blogSlug}`}
+            className="inline-block mt-3 text-xs font-semibold hover:underline"
+            style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+          >
+            Read the full story →
+          </Link>
+        )}
       </footer>
     </article>
   );
