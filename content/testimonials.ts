@@ -273,7 +273,7 @@ export const TESTIMONIALS: Testimonial[] = [
     fullText:
       "Chelsey made my home buying experience such a breeze. She goes above and beyond for her clients. She even had a welcome home gift basket for me when I signed on my home. She is wonderful and I highly recommend her!",
     featured: false,
-    blogSlug: "the-little-things-that-make-a-big-difference-in-real-estate",
+    blogSlug: "little-things-that-make-big-difference-real-estate",
   },
   {
     id: "emily-anderson",
