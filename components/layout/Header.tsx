@@ -45,18 +45,15 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Typographic logo */}
-          <Link href="/" className="flex flex-col leading-tight" onClick={() => setMenuOpen(false)}>
+          <Link href="/" onClick={() => setMenuOpen(false)}>
             <span
-              className="text-2xl font-semibold tracking-tight"
-              style={{ fontFamily: "var(--font-roboto)", color: "var(--color-charcoal)" }}
+              className="text-lg font-medium tracking-[0.2em] uppercase"
+              style={{
+                fontFamily: "var(--font-roboto)",
+                color: scrolled ? "var(--color-charcoal)" : "#ffffff",
+              }}
             >
               Chelsey Fanning
-            </span>
-            <span
-              className="text-[10px] font-medium tracking-[0.2em] uppercase"
-              style={{ fontFamily: "var(--font-roboto)", color: "var(--color-muted)" }}
-            >
-              REALTOR · POST FALLS, ID
             </span>
           </Link>
 
@@ -90,21 +87,21 @@ export default function Header() {
             <span
               className="block h-0.5 w-6 transition-all duration-300"
               style={{
-                backgroundColor: "var(--color-charcoal)",
+                backgroundColor: scrolled || menuOpen ? "var(--color-charcoal)" : "#ffffff",
                 transform: menuOpen ? "rotate(45deg) translateY(8px)" : "none",
               }}
             />
             <span
               className="block h-0.5 w-6 transition-all duration-300"
               style={{
-                backgroundColor: "var(--color-charcoal)",
+                backgroundColor: scrolled || menuOpen ? "var(--color-charcoal)" : "#ffffff",
                 opacity: menuOpen ? 0 : 1,
               }}
             />
             <span
               className="block h-0.5 w-6 transition-all duration-300"
               style={{
-                backgroundColor: "var(--color-charcoal)",
+                backgroundColor: scrolled || menuOpen ? "var(--color-charcoal)" : "#ffffff",
                 transform: menuOpen ? "rotate(-45deg) translateY(-8px)" : "none",
               }}
             />
