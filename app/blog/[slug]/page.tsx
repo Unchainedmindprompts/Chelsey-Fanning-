@@ -101,7 +101,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="max-w-3xl mx-auto px-6 lg:px-8">
             {/* Breadcrumb */}
             <nav className="mb-8 text-sm" aria-label="Breadcrumb">
-              <ol className="flex items-center gap-2" style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}>
+              <ol className="flex items-center gap-2" style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}>
                 <li><Link href="/" className="hover:underline" style={{ color: "var(--color-primary)" }}>Home</Link></li>
                 <li aria-hidden>/</li>
                 <li><Link href="/blog" className="hover:underline" style={{ color: "var(--color-primary)" }}>Blog</Link></li>
@@ -116,7 +116,7 @@ export default async function BlogPostPage({ params }: Props) {
               style={{
                 backgroundColor: "rgba(46,134,171,0.1)",
                 color: "var(--color-primary)",
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-roboto)",
               }}
             >
               {post.category}
@@ -128,7 +128,7 @@ export default async function BlogPostPage({ params }: Props) {
 
             <div
               className="flex items-center gap-6 text-sm"
-              style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}
+              style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
             >
               <span>By {post.author}</span>
               <span>·</span>
@@ -155,7 +155,7 @@ export default async function BlogPostPage({ params }: Props) {
           return (
             <div
               className="max-w-3xl mx-auto px-6 lg:px-8 pb-24 prose prose-lg"
-              style={{ fontFamily: "var(--font-inter)" }}
+              style={{ fontFamily: "var(--font-roboto)" }}
             >
               <MDXRemote source={bodyContent} options={mdxOptions} />
 
@@ -186,11 +186,11 @@ export default async function BlogPostPage({ params }: Props) {
               <div className="flex-1">
                 <p
                   className="text-xl font-semibold mb-2"
-                  style={{ fontFamily: "var(--font-cormorant)" }}
+                  style={{ fontFamily: "var(--font-roboto)" }}
                 >
                   Questions about buying or selling in North Idaho?
                 </p>
-                <p className="text-sm opacity-90" style={{ fontFamily: "var(--font-inter)" }}>
+                <p className="text-sm opacity-90" style={{ fontFamily: "var(--font-roboto)" }}>
                   I&apos;m always happy to talk — no pressure, no scripts.
                 </p>
               </div>
@@ -200,7 +200,7 @@ export default async function BlogPostPage({ params }: Props) {
                 style={{
                   backgroundColor: "var(--color-white)",
                   color: "var(--color-primary)",
-                  fontFamily: "var(--font-inter)",
+                  fontFamily: "var(--font-roboto)",
                 }}
               >
                 Let&apos;s Talk
@@ -211,7 +211,7 @@ export default async function BlogPostPage({ params }: Props) {
               <Link
                 href="/blog"
                 className="text-sm font-medium hover:underline"
-                style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+                style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
               >
                 ← Back to all posts
               </Link>

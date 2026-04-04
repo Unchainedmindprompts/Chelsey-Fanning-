@@ -99,7 +99,7 @@ export default function BuyersPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <p
             className="text-sm font-semibold tracking-widest uppercase mb-4"
-            style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
           >
             Buyer Resources
           </p>
@@ -108,7 +108,7 @@ export default function BuyersPage() {
           </h1>
           <p
             className="text-lg leading-relaxed max-w-2xl mx-auto mb-8"
-            style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
           >
             Whether it&apos;s your first home or your fifth, buying in North Idaho is one of the
             best decisions you can make. Here&apos;s how the process works — and how I&apos;ll help
@@ -137,7 +137,7 @@ export default function BuyersPage() {
             >
               <div
                 className="flex-shrink-0 text-3xl font-bold"
-                style={{ fontFamily: "var(--font-cormorant)", color: "var(--color-primary)", opacity: 0.6 }}
+                style={{ fontFamily: "var(--font-roboto)", color: "var(--color-primary)", opacity: 0.6 }}
               >
                 {step.step}
               </div>
@@ -147,7 +147,7 @@ export default function BuyersPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+                  style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
                 >
                   {step.body}
                 </p>
@@ -175,7 +175,7 @@ export default function BuyersPage() {
               >
                 <summary
                   className="flex justify-between items-center p-6 cursor-pointer font-semibold text-base list-none"
-                  style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
+                  style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
                 >
                   {faq.question}
                   <span className="text-xl ml-4 transition-transform group-open:rotate-45" style={{ color: "var(--color-primary)" }}>
@@ -185,7 +185,7 @@ export default function BuyersPage() {
                 <div className="px-6 pb-6">
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+                    style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
                   >
                     {faq.answer}
                   </p>

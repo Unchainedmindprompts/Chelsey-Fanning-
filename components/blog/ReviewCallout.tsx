@@ -38,7 +38,7 @@ export default function ReviewCallout({ testimonial }: ReviewCalloutProps) {
         <p
           className="text-xl leading-relaxed italic"
           style={{
-            fontFamily: "var(--font-cormorant)",
+            fontFamily: "var(--font-roboto)",
             color: "var(--color-charcoal)",
             fontSize: "clamp(1.15rem, 2vw, 1.35rem)",
           }}
@@ -49,7 +49,7 @@ export default function ReviewCallout({ testimonial }: ReviewCalloutProps) {
 
       <div
         className="flex items-center gap-3"
-        style={{ fontFamily: "var(--font-inter)" }}
+        style={{ fontFamily: "var(--font-roboto)" }}
       >
         <div>
           <p

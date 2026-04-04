@@ -3,8 +3,8 @@
 
 /* ─── Brand Design Tokens ─────────────────────────────────────────── */
 :root {
-  --color-primary:       #2E86AB;
-  --color-primary-dark:  #1A5E7A;
+  --color-primary:       #5C6FA4;
+  --color-primary-dark:  #4A5C8F;
   --color-base:          #FAF7F2;
   --color-surface:       #F0EBE3;
   --color-concrete:      #C4B9AC;
@@ -24,8 +24,8 @@
   --color-text:          var(--color-text);
   --color-muted:         var(--color-muted);
   --color-white:         var(--color-white);
-  --font-heading:        var(--font-cormorant);
-  --font-body:           var(--font-inter);
+  --font-heading:        var(--font-roboto);
+  --font-body:           var(--font-roboto);
 }
 
 /* ─── Base Reset ──────────────────────────────────────────────────── */
@@ -42,12 +42,12 @@ html {
 body {
   background-color: var(--color-base);
   color: var(--color-text);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-roboto), system-ui, sans-serif;
   line-height: 1.65;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: var(--font-roboto), system-ui, sans-serif;
   line-height: 1.2;
   color: var(--color-charcoal);
 }
@@ -98,8 +98,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Use brand font stack inside prose */
 .prose :is(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-weight: 600;
+  font-family: var(--font-roboto), system-ui, sans-serif;
+  font-weight: 700;
   letter-spacing: -0.01em;
 }
 
@@ -131,7 +131,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: left;
   padding: 0.75rem 1rem;
   border: 1px solid var(--color-concrete);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-roboto), system-ui, sans-serif;
 }
 
 .prose tbody td {

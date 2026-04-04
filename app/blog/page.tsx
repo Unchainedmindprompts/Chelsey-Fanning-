@@ -36,7 +36,7 @@ export default function BlogPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <p
             className="text-sm font-semibold tracking-widest uppercase mb-4"
-            style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
           >
             Local Knowledge
           </p>
@@ -45,7 +45,7 @@ export default function BlogPage() {
           </h1>
           <p
             className="text-lg leading-relaxed max-w-2xl mx-auto"
-            style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
           >
             Honest takes on the North Idaho market, practical advice for buyers and sellers,
             and genuine local perspective — no fluff, no clickbait.
@@ -57,7 +57,7 @@ export default function BlogPage() {
       <SectionWrapper background="surface">
         {posts.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-base" style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}>
+            <p className="text-base" style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}>
               Posts coming soon. Check back shortly.
             </p>
           </div>
@@ -106,7 +106,7 @@ export default function BlogPage() {
                       style={{
                         backgroundColor: `${categoryColor}18`,
                         color: categoryColor,
-                        fontFamily: "var(--font-inter)",
+                        fontFamily: "var(--font-roboto)",
                       }}
                     >
                       {post.category}
@@ -123,7 +123,7 @@ export default function BlogPage() {
 
                     <p
                       className="text-sm leading-relaxed mb-4 line-clamp-3"
-                      style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}
+                      style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
                     >
                       {post.description}
                     </p>

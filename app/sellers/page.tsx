@@ -89,7 +89,7 @@ export default function SellersPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <p
             className="text-sm font-semibold tracking-widest uppercase mb-4"
-            style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
           >
             Seller Resources
           </p>
@@ -98,7 +98,7 @@ export default function SellersPage() {
           </h1>
           <p
             className="text-lg leading-relaxed max-w-2xl mx-auto mb-8"
-            style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
           >
             Selling your home is a significant decision — financially and emotionally. My job is
             to make sure you get the best outcome possible, with honest advice and a proven
@@ -128,7 +128,7 @@ export default function SellersPage() {
           </h2>
           <p
             className="text-base leading-relaxed"
-            style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
           >
             Selling isn&apos;t just putting a sign in the yard and waiting. Here&apos;s the process
             I follow for every listing.
@@ -146,7 +146,7 @@ export default function SellersPage() {
             >
               <div
                 className="flex-shrink-0 text-3xl font-bold"
-                style={{ fontFamily: "var(--font-cormorant)", color: "var(--color-primary)", opacity: 0.6 }}
+                style={{ fontFamily: "var(--font-roboto)", color: "var(--color-primary)", opacity: 0.6 }}
               >
                 {item.step}
               </div>
@@ -156,7 +156,7 @@ export default function SellersPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+                  style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
                 >
                   {item.body}
                 </p>
@@ -184,7 +184,7 @@ export default function SellersPage() {
               >
                 <summary
                   className="flex justify-between items-center p-6 cursor-pointer font-semibold text-base list-none"
-                  style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
+                  style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
                 >
                   {faq.question}
                   <span className="text-xl ml-4 transition-transform group-open:rotate-45" style={{ color: "var(--color-primary)" }}>
@@ -194,7 +194,7 @@ export default function SellersPage() {
                 <div className="px-6 pb-6">
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+                    style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
                   >
                     {faq.answer}
                   </p>

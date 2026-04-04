@@ -50,7 +50,7 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
           style={{
             color: "var(--color-primary)",
             backgroundColor: "rgba(var(--color-primary-rgb, 139,109,79), 0.08)",
-            fontFamily: "var(--font-inter)",
+            fontFamily: "var(--font-roboto)",
           }}
         >
           {testimonial.badgeLabel}
@@ -71,7 +71,7 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
           <button
             onClick={() => setExpanded((v) => !v)}
             className="mt-3 text-sm font-semibold transition-opacity hover:opacity-70 focus-visible:outline-none"
-            style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
             aria-expanded={expanded}
           >
             {expanded ? "Show less ↑" : "Read more ↓"}
@@ -82,7 +82,7 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
       <footer className="mt-5 pt-5 border-t" style={{ borderColor: "rgba(196,185,172,0.3)" }}>
         <p
           className="font-semibold text-sm"
-          style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
+          style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
         >
           {testimonial.name}
         </p>
@@ -93,7 +93,7 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
           <Link
             href={`/blog/${testimonial.blogSlug}`}
             className="inline-block mt-3 text-xs font-semibold hover:underline"
-            style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
           >
             Read the full story →
           </Link>

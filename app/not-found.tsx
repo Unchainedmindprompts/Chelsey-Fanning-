@@ -10,7 +10,7 @@ export default function NotFound() {
       <div className="max-w-lg text-center">
         <p
           className="text-8xl font-bold mb-6"
-          style={{ fontFamily: "var(--font-cormorant)", color: "var(--color-concrete)" }}
+          style={{ fontFamily: "var(--font-roboto)", color: "var(--color-concrete)" }}
           aria-hidden="true"
         >
           404
@@ -20,7 +20,7 @@ export default function NotFound() {
         </h1>
         <p
           className="text-base leading-relaxed mb-10"
-          style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}
+          style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
         >
           Looks like you took a wrong turn in North Idaho. Don&apos;t worry — the good
           stuff is easy to find from here.

@@ -37,7 +37,7 @@ export default function Hero() {
               >
                 <p
                   className="text-sm font-semibold"
-                  style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
+                  style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
                 >
                   Chelsey Fanning
                 </p>
@@ -57,7 +57,7 @@ export default function Hero() {
           >
             <p
               className="text-sm font-semibold tracking-widest uppercase mb-6"
-              style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+              style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
             >
               Post Falls · Coeur d&apos;Alene · North Idaho
             </p>
@@ -67,7 +67,7 @@ export default function Hero() {
             </h1>
             <p
               className="text-lg leading-relaxed mb-10 max-w-lg"
-              style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+              style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
             >
               From your first home to your forever home — Chelsey Fanning brings expertise,
               honesty, and genuine care to every transaction in Post Falls, Coeur d&apos;Alene,
@@ -92,7 +92,7 @@ export default function Hero() {
                 <div key={stat.label}>
                   <p
                     className="text-2xl font-bold"
-                    style={{ fontFamily: "var(--font-cormorant)", color: "var(--color-primary)" }}
+                    style={{ fontFamily: "var(--font-roboto)", color: "var(--color-primary)" }}
                   >
                     {stat.num}
                   </p>

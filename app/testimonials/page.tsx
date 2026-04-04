@@ -64,7 +64,7 @@ export default function TestimonialsPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <p
             className="text-sm font-semibold tracking-widest uppercase mb-4"
-            style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
           >
             Client Reviews
           </p>
@@ -73,7 +73,7 @@ export default function TestimonialsPage() {
           </h1>
           <p
             className="text-lg leading-relaxed max-w-2xl mx-auto"
-            style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
           >
             These are real clients who trusted me with one of the biggest decisions of their lives.
             Their words — not mine — are the best measure of what it&apos;s like to work with me.
@@ -90,7 +90,7 @@ export default function TestimonialsPage() {
             <div>
               <p
                 className="text-4xl font-bold"
-                style={{ color: "var(--color-primary)", fontFamily: "var(--font-cormorant)" }}
+                style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
               >
                 {AGGREGATE_RATING.ratingValue}
               </p>
@@ -103,7 +103,7 @@ export default function TestimonialsPage() {
               </div>
             </div>
             <div className="text-left">
-              <p className="text-sm font-semibold" style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}>
+              <p className="text-sm font-semibold" style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}>
                 Google Rating
               </p>
               <p className="text-xs" style={{ color: "var(--color-muted)" }}>
@@ -123,7 +123,7 @@ export default function TestimonialsPage() {
             <h2 className="text-h3 mb-2" style={{ color: "var(--color-charcoal)" }}>
               {heading}
             </h2>
-            <p className="text-sm mb-10" style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}>
+            <p className="text-sm mb-10" style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}>
               {categoryReviews.length} {categoryReviews.length === 1 ? "review" : "reviews"}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -137,7 +137,7 @@ export default function TestimonialsPage() {
 
       {/* Google reviews link */}
       <section className="py-16 text-center" style={{ backgroundColor: "var(--color-surface)" }}>
-        <p className="text-base mb-4" style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}>
+        <p className="text-base mb-4" style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}>
           All {AGGREGATE_RATING.reviewCount} reviews verified on Google
         </p>
         <a
@@ -145,7 +145,7 @@ export default function TestimonialsPage() {
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all hover:opacity-90"
-          style={{ backgroundColor: "var(--color-primary)", color: "var(--color-white)", fontFamily: "var(--font-inter)" }}
+          style={{ backgroundColor: "var(--color-primary)", color: "var(--color-white)", fontFamily: "var(--font-roboto)" }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm-.146 18.717c-3.712 0-6.717-3.005-6.717-6.717S8.142 5.283 11.854 5.283c1.813 0 3.332.664 4.497 1.753l-1.824 1.753c-.499-.477-1.373-1.033-2.673-1.033-2.291 0-4.158 1.896-4.158 4.244 0 2.347 1.867 4.244 4.158 4.244 2.658 0 3.656-1.908 3.81-2.895H11.854v-2.316h6.355c.063.346.096.693.096 1.053 0 3.618-2.42 6.631-6.451 6.631z"/>

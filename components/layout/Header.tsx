@@ -48,13 +48,13 @@ export default function Header() {
           <Link href="/" className="flex flex-col leading-tight" onClick={() => setMenuOpen(false)}>
             <span
               className="text-2xl font-semibold tracking-tight"
-              style={{ fontFamily: "var(--font-cormorant)", color: "var(--color-charcoal)" }}
+              style={{ fontFamily: "var(--font-roboto)", color: "var(--color-charcoal)" }}
             >
               Chelsey Fanning
             </span>
             <span
               className="text-[10px] font-medium tracking-[0.2em] uppercase"
-              style={{ fontFamily: "var(--font-inter)", color: "var(--color-muted)" }}
+              style={{ fontFamily: "var(--font-roboto)", color: "var(--color-muted)" }}
             >
               REALTOR · POST FALLS, ID
             </span>
@@ -67,7 +67,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium transition-colors duration-200 hover:opacity-70"
-                style={{ fontFamily: "var(--font-inter)", color: "var(--color-text)" }}
+                style={{ fontFamily: "var(--font-roboto)", color: "var(--color-text)" }}
               >
                 {link.label}
               </Link>
@@ -75,7 +75,7 @@ export default function Header() {
             <Link
               href="/contact"
               className="ml-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 active:scale-95"
-              style={{ backgroundColor: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+              style={{ backgroundColor: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
             >
               Let&apos;s Talk
             </Link>
@@ -129,7 +129,7 @@ export default function Header() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className="text-h3 font-medium transition-opacity duration-200 hover:opacity-60"
-              style={{ fontFamily: "var(--font-cormorant)", color: "var(--color-charcoal)" }}
+              style={{ fontFamily: "var(--font-roboto)", color: "var(--color-charcoal)" }}
             >
               {link.label}
             </Link>
@@ -138,7 +138,7 @@ export default function Header() {
             href="/contact"
             onClick={() => setMenuOpen(false)}
             className="mt-4 px-8 py-3 rounded-full text-base font-semibold text-white transition-all duration-200 hover:opacity-90"
-            style={{ backgroundColor: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+            style={{ backgroundColor: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
           >
             Let&apos;s Talk
           </Link>

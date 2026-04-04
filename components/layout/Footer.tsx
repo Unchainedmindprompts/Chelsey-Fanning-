@@ -49,7 +49,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <p
               className="text-2xl font-semibold mb-1"
-              style={{ fontFamily: "var(--font-cormorant)", color: "var(--color-charcoal)" }}
+              style={{ fontFamily: "var(--font-roboto)", color: "var(--color-charcoal)" }}
             >
               Chelsey Fanning
             </p>
@@ -115,7 +115,7 @@ export default function Footer() {
           <div>
             <h3
               className="text-sm font-semibold uppercase tracking-widest mb-5"
-              style={{ fontFamily: "var(--font-inter)", color: "var(--color-charcoal)" }}
+              style={{ fontFamily: "var(--font-roboto)", color: "var(--color-charcoal)" }}
             >
               Quick Links
             </h3>
@@ -138,7 +138,7 @@ export default function Footer() {
           <div>
             <h3
               className="text-sm font-semibold uppercase tracking-widest mb-5"
-              style={{ fontFamily: "var(--font-inter)", color: "var(--color-charcoal)" }}
+              style={{ fontFamily: "var(--font-roboto)", color: "var(--color-charcoal)" }}
             >
               Compliance
             </h3>
