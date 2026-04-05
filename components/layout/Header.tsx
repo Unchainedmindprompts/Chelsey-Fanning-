@@ -53,7 +53,7 @@ export default function Header() {
               className="text-lg font-medium tracking-[0.2em] uppercase"
               style={{
                 fontFamily: "var(--font-roboto)",
-                color: (!scrolled && isHome) ? "#ffffff" : "var(--color-charcoal)",
+                color: "var(--color-charcoal)",
               }}
             >
               Chelsey Fanning
@@ -90,21 +90,21 @@ export default function Header() {
             <span
               className="block h-0.5 w-6 transition-all duration-300"
               style={{
-                backgroundColor: (!scrolled && isHome && !menuOpen) ? "#ffffff" : "var(--color-charcoal)",
+                backgroundColor: "var(--color-charcoal)",
                 transform: menuOpen ? "rotate(45deg) translateY(8px)" : "none",
               }}
             />
             <span
               className="block h-0.5 w-6 transition-all duration-300"
               style={{
-                backgroundColor: (!scrolled && isHome && !menuOpen) ? "#ffffff" : "var(--color-charcoal)",
+                backgroundColor: "var(--color-charcoal)",
                 opacity: menuOpen ? 0 : 1,
               }}
             />
             <span
               className="block h-0.5 w-6 transition-all duration-300"
               style={{
-                backgroundColor: (!scrolled && isHome && !menuOpen) ? "#ffffff" : "var(--color-charcoal)",
+                backgroundColor: "var(--color-charcoal)",
                 transform: menuOpen ? "rotate(-45deg) translateY(-8px)" : "none",
               }}
             />
