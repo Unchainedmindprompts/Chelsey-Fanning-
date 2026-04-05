@@ -8,6 +8,11 @@ import Footer from "@/components/layout/Footer";
 const roboto = localFont({
   src: [
     {
+      path: "../node_modules/@fontsource/roboto/files/roboto-latin-300-normal.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
       path: "../node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff2",
       weight: "400",
       style: "normal",
