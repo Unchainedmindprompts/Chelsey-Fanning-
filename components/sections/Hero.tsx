@@ -82,26 +82,6 @@ export default function Hero() {
               </Button>
             </div>
 
-            {/* Trust signals inline */}
-            <div className="flex flex-wrap gap-8 mt-12 pt-10 border-t" style={{ borderColor: "rgba(196,185,172,0.4)" }}>
-              {[
-                { num: "5★", label: "Google Rating" },
-                { num: "7+", label: "Years in North Idaho" },
-                { num: "100+", label: "Families Helped" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p
-                    className="text-2xl font-bold"
-                    style={{ fontFamily: "var(--font-roboto)", color: "var(--color-primary)" }}
-                  >
-                    {stat.num}
-                  </p>
-                  <p className="text-xs uppercase tracking-wide" style={{ color: "var(--color-muted)" }}>
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </div>
