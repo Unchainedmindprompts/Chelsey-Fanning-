@@ -29,22 +29,19 @@ export default function Hero() {
                 sizes="(max-width: 1024px) 90vw, 45vw"
                 className="object-cover object-top"
               />
+            </div>
 
-              {/* Accent badge */}
-              <div
-                className="absolute bottom-6 left-6 right-6 rounded-2xl p-4 shadow-lg"
-                style={{ backgroundColor: "rgba(250,247,242,0.92)", backdropFilter: "blur(12px)" }}
+            {/* Name badge below image */}
+            <div className="mt-4 text-center">
+              <p
+                className="text-sm font-semibold"
+                style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
               >
-                <p
-                  className="text-sm font-semibold"
-                  style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
-                >
-                  Chelsey Fanning
-                </p>
-                <p className="text-xs" style={{ color: "var(--color-muted)" }}>
-                  REALTOR® · eXp Realty · Post Falls, ID
-                </p>
-              </div>
+                Chelsey Fanning
+              </p>
+              <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
+                REALTOR® · eXp Realty · Post Falls, ID
+              </p>
             </div>
           </motion.div>
 
