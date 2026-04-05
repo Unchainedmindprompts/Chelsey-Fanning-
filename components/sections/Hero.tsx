@@ -22,7 +22,7 @@ export default function Hero() {
           >
             <div className="relative aspect-[3/4] max-w-sm mx-auto lg:max-w-none rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/chelsea-hero.jpeg"
+                src="/chelsey-hero-periwinkle.jpeg"
                 alt="Chelsey Fanning, REALTOR® in Post Falls, Idaho"
                 fill
                 priority
