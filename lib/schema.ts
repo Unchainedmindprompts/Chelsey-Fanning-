@@ -69,7 +69,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
       name: city,
     })),
     sameAs: CHELSEA_SAME_AS,
-    image: `${NAP.url}/chelsea-hero.jpg`,        // TODO: real image path
+    image: `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
     priceRange: "$$",
     aggregateRating: {
       "@type": "AggregateRating",
