@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     template: "%s | Chelsey Fanning · Realtor · Post Falls, ID",
   },
   description:
-    "Chelsey Fanning is a trusted REALTOR® based in Post Falls, Idaho, serving buyers and sellers across North Idaho — Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and Spokane Valley. eXp Realty.",
+    "Chelsey Fanning is a trusted REALTOR® based in Post Falls, Idaho, serving buyers and sellers across North Idaho — Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake. eXp Realty.",
   metadataBase: new URL("https://chelseyfanning.com"),
   openGraph: {
     type: "website",

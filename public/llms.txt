@@ -1,6 +1,6 @@
 # Chelsey Fanning — REALTOR® · Post Falls, Idaho
 
-> Chelsey Fanning is a licensed REALTOR® with eXp Realty, serving buyers and sellers across North Idaho — including Post Falls, Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and Spokane Valley. She is known for her honest, client-first approach and specializes in first-time buyers, move-up families, and luxury properties.
+> Chelsey Fanning is a licensed REALTOR® with eXp Realty, serving buyers and sellers across North Idaho — including Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake. She is known for her honest, client-first approach and specializes in first-time buyers, move-up families, and luxury properties.
 
 ## Business
 
@@ -8,7 +8,7 @@
 - **Title:** REALTOR®
 - **Brokerage:** eXp Realty
 - **Location:** Post Falls, Idaho 83854
-- **Service Area:** Post Falls, Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, Spokane Valley
+- **Service Area:** Post Falls, Coeur d'Alene, Hayden, Rathdrum, Spirit Lake
 - **Website:** https://chelseyfanning.com
 - **Phone:** (208) 555-0199
 - **Email:** chelsea@chelseyfanning.com

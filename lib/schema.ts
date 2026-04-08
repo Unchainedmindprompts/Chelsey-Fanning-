@@ -39,7 +39,6 @@ export const SERVICE_AREAS = [
   "Hayden",
   "Rathdrum",
   "Spirit Lake",
-  "Spokane Valley",
 ];
 
 // ─── LocalBusiness + RealEstateAgent schema ───────────────────────────────────

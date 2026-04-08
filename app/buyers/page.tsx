@@ -81,7 +81,7 @@ const BUYER_FAQS = [
   {
     question: "Can you help me buy in cities outside Post Falls?",
     answer:
-      "Absolutely. I serve all of North Idaho — Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and the greater Spokane Valley area. Wherever home is for you, I can help you get there.",
+      "Absolutely. I serve all of North Idaho — Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and surrounding areas. Wherever home is for you in Idaho, I can help you get there.",
   },
 ];
 

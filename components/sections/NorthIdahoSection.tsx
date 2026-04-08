@@ -9,7 +9,6 @@ const CITIES = [
   "Hayden",
   "Rathdrum",
   "Spirit Lake",
-  "Spokane Valley",
 ];
 
 export default function NorthIdahoSection() {
