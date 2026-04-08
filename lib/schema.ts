@@ -2,9 +2,13 @@ import { AGGREGATE_RATING } from "@/content/testimonials";
 
 // ─── Shared sameAs profiles ───────────────────────────────────────────────────
 export const CHELSEA_SAME_AS = [
-  "https://www.yelp.com/biz/chelsea-fanning-post-falls",
-  "https://www.instagram.com/life_with_chels",
+  "https://www.google.com/maps/place/Chelsey+Fanning+%7C+EXP+Realty/@47.7017621,-117.0105906,17z/data=!3m2!4b1!5s0x5361dd207347a5a9:0x87198999aad55a76!4m6!3m5!1s0x4a524c972f2da505:0xa86d95d4b35ac75c!8m2!3d47.7017621!4d-117.0105906!16s%2Fg%2F11szjk3vmc",
+  "https://www.bing.com/maps?ss=ypid.YN4C9F60D2EBC9BE8F",
+  "https://www.yelp.com/biz/chelsey-fanning-exp-realty-post-falls",
+  "https://www.bbb.org/us/id/post-falls/profile/real-estate-agent/chelsey-fanning-realtor-1296-1000195312",
+  "https://www.zillow.com/profile/ChelseyFanning",
   "https://www.facebook.com/cfanningrealtor",
+  "https://www.instagram.com/life_with_chels",
 ];
 
 // ─── NAP constants ────────────────────────────────────────────────────────────
