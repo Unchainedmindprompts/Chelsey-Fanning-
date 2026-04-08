@@ -31,7 +31,7 @@ export default function FeaturedTestimonials() {
         <Link
           href="/testimonials"
           className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:underline"
-          style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
+          style={{ color: "var(--color-primary-dark)", fontFamily: "var(--font-roboto)" }}
         >
           Read all reviews →
         </Link>
