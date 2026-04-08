@@ -83,7 +83,7 @@ export default function Footer() {
             {/* Social icons */}
             <div className="flex gap-4">
               <a
-                href="https://www.instagram.com/YOUR_HANDLE"
+                href="https://www.instagram.com/life_with_chels"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -95,7 +95,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.facebook.com/YOUR_HANDLE"
+                href="https://www.facebook.com/cfanningrealtor"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"

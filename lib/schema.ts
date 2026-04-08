@@ -2,15 +2,9 @@ import { AGGREGATE_RATING } from "@/content/testimonials";
 
 // ─── Shared sameAs profiles ───────────────────────────────────────────────────
 export const CHELSEA_SAME_AS = [
-  "https://www.google.com/maps?cid=YOUR_GBP_CID",        // TODO: fill at launch
-  "https://www.bingplaces.com/YOUR_LISTING",              // TODO: fill at launch
-  "https://businessconnect.apple.com/YOUR_LISTING",       // TODO: fill at launch
   "https://www.yelp.com/biz/chelsea-fanning-post-falls",
-  "https://www.bbb.org/YOUR_LISTING",                     // TODO: fill at launch
-  "https://www.yellowpages.com/YOUR_LISTING",             // TODO: fill at launch
-  "https://www.instagram.com/YOUR_HANDLE",                // TODO: fill at launch
-  "https://www.facebook.com/YOUR_HANDLE",                 // TODO: fill at launch
-  "https://exprealty.com/agents/YOUR_PROFILE",            // TODO: fill at launch
+  "https://www.instagram.com/life_with_chels",
+  "https://www.facebook.com/cfanningrealtor",
 ];
 
 // ─── NAP constants ────────────────────────────────────────────────────────────
