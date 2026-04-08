@@ -16,8 +16,8 @@ export default function Hero() {
           {/* Photo — right on desktop, top on mobile */}
           <motion.div
             className="order-first lg:order-last relative"
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ scale: 0.97 }}
+            animate={{ scale: 1 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <div className="relative aspect-[3/4] max-w-sm mx-auto lg:max-w-none rounded-3xl overflow-hidden shadow-2xl">
@@ -26,6 +26,7 @@ export default function Hero() {
                 alt="Chelsey Fanning, REALTOR® in Post Falls, Idaho"
                 fill
                 priority
+                fetchPriority="high"
                 sizes="(max-width: 1024px) 90vw, 45vw"
                 className="object-cover object-top"
               />
