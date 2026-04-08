@@ -31,7 +31,7 @@ export const NAP = {
     latitude: 47.7182,
     longitude: -116.9443,
   },
-  url: "https://www.chelseyfanning.com",
+  url: "https://chelseyfanning.com",
 };
 
 // ─── Service area cities ──────────────────────────────────────────────────────

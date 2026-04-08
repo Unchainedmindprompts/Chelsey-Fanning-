@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const BASE_URL = "https://www.chelseyfanning.com";
+const BASE_URL = "https://chelseyfanning.com";
 const SITE_NAME = "Chelsey Fanning · Realtor · Post Falls, ID";
 const DEFAULT_OG_IMAGE = "/chelsey-hero-periwinkle.jpeg";
 
