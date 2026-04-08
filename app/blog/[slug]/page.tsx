@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.description,
     path: `/blog/${slug}`,
-    ogImageUrl: post.imageUrl ?? "/og-default.jpg",
+    ogImageUrl: post.imageUrl ?? "/chelsey-hero-periwinkle.jpeg",
     keywords: post.tags,
   });
 }
