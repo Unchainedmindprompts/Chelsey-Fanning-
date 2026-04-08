@@ -108,14 +108,6 @@ export default function SellersPage() {
             <Button href="/contact" variant="primary" size="lg">
               Get My Home&apos;s Value
             </Button>
-            <Button
-              href="https://exprealty.com/agents/YOUR_PROFILE" // TODO: real eXp profile
-              variant="outline"
-              size="lg"
-              external
-            >
-              View My Listings →
-            </Button>
           </div>
         </div>
       </section>
