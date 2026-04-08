@@ -31,7 +31,7 @@ export const NAP = {
     latitude: 47.7182,
     longitude: -116.9443,
   },
-  url: "https://chelseyfanning.com",
+  url: "https://www.chelseyfanning.com",
 };
 
 // ─── Service area cities ──────────────────────────────────────────────────────
@@ -154,7 +154,7 @@ export function buildArticleSchema(article: {
       name: NAP.name,
       url: NAP.url,
     },
-    image: article.imageUrl ?? `${NAP.url}/og-default.jpg`,
+    image: article.imageUrl ?? `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${NAP.url}/blog/${article.slug}`,
