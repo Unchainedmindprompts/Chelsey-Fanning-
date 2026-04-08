@@ -154,7 +154,9 @@ export function buildArticleSchema(article: {
       name: NAP.name,
       url: NAP.url,
     },
-    image: article.imageUrl ?? `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
+    image: article.imageUrl
+      ? article.imageUrl.startsWith("http") ? article.imageUrl : `${NAP.url}${article.imageUrl}`
+      : `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${NAP.url}/blog/${article.slug}`,
