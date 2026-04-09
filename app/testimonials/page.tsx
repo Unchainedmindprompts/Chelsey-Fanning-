@@ -119,13 +119,13 @@ export default function TestimonialsPage() {
             </div>
 
             {/* Hero image — desktop only, smaller than homepage */}
-            <div className="hidden lg:flex justify-center">
-              <div className="relative w-[260px] aspect-[3/4] rounded-3xl overflow-hidden shadow-xl">
+            <div className="hidden lg:block">
+              <div className="relative aspect-[3/4] max-w-sm mx-auto lg:max-w-none rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="/chelsey-hero-periwinkle.jpeg"
                   alt="Chelsey Fanning, REALTOR® in Post Falls, Idaho"
                   fill
-                  sizes="260px"
+                  sizes="45vw"
                   className="object-cover object-top"
                 />
               </div>
