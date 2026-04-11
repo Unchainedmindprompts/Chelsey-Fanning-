@@ -45,6 +45,7 @@ export const SERVICE_AREAS = [
 export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}) {
   return {
     "@context": "https://schema.org",
+    "@id": `${NAP.url}/#business`,
     "@type": ["LocalBusiness", "RealEstateAgent"],
     name: NAP.name,
     description:
@@ -80,6 +81,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
 export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
   return {
     "@context": "https://schema.org",
+    "@id": `${NAP.url}/#agent`,
     "@type": ["Person", "RealEstateAgent"],
     name: NAP.name,
     jobTitle: NAP.title,
@@ -96,7 +98,7 @@ export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
       ...NAP.address,
     },
     sameAs: CHELSEA_SAME_AS,
-    image: `${NAP.url}/chelsea-about.jpg`,       // TODO: real image path
+    image: `${NAP.url}/chelsea-about.jpeg`,
     knowsAbout: [
       "Real estate buying",
       "Real estate selling",
@@ -142,14 +144,10 @@ export function buildArticleSchema(article: {
     datePublished: article.datePublished,
     dateModified: article.dateModified ?? article.datePublished,
     author: {
-      "@type": "Person",
-      name: NAP.name,
-      url: `${NAP.url}/about`,
+      "@id": `${NAP.url}/#agent`,
     },
     publisher: {
-      "@type": "Organization",
-      name: NAP.name,
-      url: NAP.url,
+      "@id": `${NAP.url}/#business`,
     },
     image: article.imageUrl
       ? article.imageUrl.startsWith("http") ? article.imageUrl : `${NAP.url}${article.imageUrl}`
@@ -170,6 +168,7 @@ export function buildAggregateRatingSchema(reviews: {
 }[]) {
   return {
     "@context": "https://schema.org",
+    "@id": `${NAP.url}/#business`,
     "@type": "RealEstateAgent",
     name: NAP.name,
     url: NAP.url,
@@ -210,9 +209,7 @@ export function buildServiceSchema(service: {
     description: service.description,
     url: service.url,
     provider: {
-      "@type": "RealEstateAgent",
-      name: NAP.name,
-      url: NAP.url,
+      "@id": `${NAP.url}/#business`,
     },
     areaServed: SERVICE_AREAS.map((city) => ({ "@type": "City", name: city })),
   };
