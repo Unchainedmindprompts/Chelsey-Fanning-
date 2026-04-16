@@ -330,7 +330,7 @@ export const TESTIMONIALS: Testimonial[] = [
     category: "general",
     rating: 5,
     date: "2025-11-06",
-    shortQuote: "Chelsey is one of the best in the business!!",
+    shortQuote: "Chelsey is the definition of professional, detail-oriented, and on the ball.",
     fullText:
       "I had the pleasure of working with Chelsey Fanning on a recent transaction, and she was absolutely phenomenal to collaborate with. Chelsey is the definition of professional, detail-oriented, and on the ball. She stays ahead of every deadline and ensures all the moving parts of a deal come together seamlessly. Her communication is beyond exceptional!! She is always quick to respond, clear, and proactive. It made the entire process smooth and stress-free for everyone involved. Chelsey's organization and follow-through reflect true professionalism and care for her clients. If you're looking to work with an agent in North Idaho who is sharp, responsive, and genuinely invested in delivering an outstanding experience, Chelsey is one of the best in the business!!",
     featured: false,
