@@ -82,7 +82,7 @@ export default function BlogPage() {
                 >
                   {/* Post image placeholder */}
                   <div
-                    className="aspect-square flex items-center justify-center"
+                    className="aspect-video flex items-center justify-center"
                     style={{ backgroundColor: "var(--color-surface)" }}
                   >
                     {post.imageUrl ? (
