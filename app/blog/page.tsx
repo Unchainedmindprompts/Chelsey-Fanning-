@@ -90,7 +90,7 @@ export default function BlogPage() {
                       <img
                         src={post.imageUrl}
                         alt={post.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-top"
                       />
                     ) : (
                       <span className="text-xs" style={{ color: "var(--color-muted)" }}>
