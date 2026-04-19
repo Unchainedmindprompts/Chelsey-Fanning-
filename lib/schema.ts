@@ -41,6 +41,43 @@ export const SERVICE_AREAS = [
   "Spirit Lake",
 ];
 
+// ─── Shared Person node — embedded in LocalBusiness and used standalone on /about ──
+const AGENT_PERSON_NODE = {
+  "@type": ["Person", "RealEstateAgent"],
+  "@id": `${NAP.url}/#agent`,
+  name: NAP.name,
+  jobTitle: NAP.title,
+  hasCredential: "Idaho Real Estate License LC54829",
+  description:
+    "Chelsey Fanning is a licensed REALTOR® (Idaho License LC54829) with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake in North Idaho. With 7+ years of experience and over 100 transactions closed, she specializes in first-time home buyers, move-up families, and luxury properties. Her approach is built on three values: making real estate simple, keeping the process helpful, and ensuring every transaction is an enjoyable experience for her clients.",
+  url: `${NAP.url}/about`,
+  image: `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
+  telephone: NAP.phone,
+  email: NAP.email,
+  sameAs: CHELSEA_SAME_AS,
+  worksFor: { "@id": `${NAP.url}/#business` },
+  knowsAbout: [
+    "Residential real estate",
+    "First-time homebuyers",
+    "Luxury real estate",
+    "Relocation",
+    "Buyer representation",
+    "Seller representation",
+    "North Idaho real estate market",
+    "Post Falls real estate",
+    "Coeur d'Alene real estate",
+    "Competitive offer strategy",
+    "Real estate negotiation",
+  ],
+  areaServed: [
+    "Post Falls Idaho",
+    "Coeur d'Alene Idaho",
+    "Hayden Idaho",
+    "Rathdrum Idaho",
+    "Spirit Lake Idaho",
+  ],
+};
+
 // ─── LocalBusiness + RealEstateAgent schema ───────────────────────────────────
 export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}) {
   return {
@@ -73,6 +110,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
       "@type": "AggregateRating",
       ...AGGREGATE_RATING,
     },
+    employee: [AGENT_PERSON_NODE],
     ...overrides,
   };
 }
@@ -81,31 +119,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
 export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
   return {
     "@context": "https://schema.org",
-    "@id": `${NAP.url}/#agent`,
-    "@type": ["Person", "RealEstateAgent"],
-    name: NAP.name,
-    jobTitle: NAP.title,
-    worksFor: {
-      "@type": "Organization",
-      name: NAP.brokerage,
-      url: "https://exprealty.com",
-    },
-    url: NAP.url,
-    telephone: NAP.phone,
-    email: NAP.email,
-    address: {
-      "@type": "PostalAddress",
-      ...NAP.address,
-    },
-    sameAs: CHELSEA_SAME_AS,
-    image: `${NAP.url}/chelsea-about.jpeg`,
-    knowsAbout: [
-      "Real estate buying",
-      "Real estate selling",
-      "First-time home buyers",
-      "Luxury real estate",
-      "North Idaho real estate market",
-    ],
+    ...AGENT_PERSON_NODE,
     ...overrides,
   };
 }
