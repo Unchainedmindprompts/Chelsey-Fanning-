@@ -151,7 +151,7 @@ export function buildArticleSchema(article: {
 }) {
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: article.title,
     description: article.description,
     url: `${NAP.url}/blog/${article.slug}`,
