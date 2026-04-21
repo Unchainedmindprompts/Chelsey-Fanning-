@@ -55,7 +55,12 @@ const AGENT_PERSON_NODE = {
   telephone: NAP.phone,
   email: NAP.email,
   sameAs: CHELSEA_SAME_AS,
-  worksFor: { "@id": `${NAP.url}/#business` },
+  worksFor: {
+    "@type": "Organization",
+    "@id": "https://www.exprealty.com/#organization",
+    name: "eXp Realty",
+    url: "https://www.exprealty.com",
+  },
   knowsAbout: [
     "Residential real estate",
     "First-time homebuyers",
@@ -110,7 +115,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
       "@type": "AggregateRating",
       ...AGGREGATE_RATING,
     },
-    employee: [AGENT_PERSON_NODE],
+    founder: AGENT_PERSON_NODE,
     ...overrides,
   };
 }
@@ -125,10 +130,11 @@ export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
 }
 
 // ─── FAQ schema ───────────────────────────────────────────────────────────────
-export function buildFAQSchema(faqs: { question: string; answer: string }[]) {
+export function buildFAQSchema(faqs: { question: string; answer: string }[], id?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    ...(id ? { "@id": id } : {}),
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
@@ -137,6 +143,20 @@ export function buildFAQSchema(faqs: { question: string; answer: string }[]) {
         text: faq.answer,
       },
     })),
+  };
+}
+
+// ─── WebSite schema ───────────────────────────────────────────────────────────
+export function buildWebSiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${NAP.url}/#website`,
+    name: "Chelsey Fanning | REALTOR® | North Idaho",
+    url: NAP.url,
+    publisher: {
+      "@id": `${NAP.url}/#agent`,
+    },
   };
 }
 

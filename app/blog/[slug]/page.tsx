@@ -34,10 +34,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // FAQ schema helper — rendered only when the post supplies `faqs` front matter
-function FAQSchema({ faqs }: { faqs: Array<{ question: string; answer: string }> }) {
+function FAQSchema({ faqs, slug }: { faqs: Array<{ question: string; answer: string }>; slug: string }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": `${NAP.url}/blog/${slug}#faq`,
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.question,
@@ -93,7 +94,7 @@ export default async function BlogPostPage({ params }: Props) {
         imageUrl={post.imageUrl}
       />
       <BreadcrumbSchema post={post} />
-      {post.faqs && post.faqs.length > 0 && <FAQSchema faqs={post.faqs} />}
+      {post.faqs && post.faqs.length > 0 && <FAQSchema faqs={post.faqs} slug={post.slug} />}
 
       <article style={{ backgroundColor: "var(--color-base)" }}>
         {/* Article header */}

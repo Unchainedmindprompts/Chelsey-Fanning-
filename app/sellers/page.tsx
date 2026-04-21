@@ -78,7 +78,7 @@ const SELLER_FAQS = [
 export default function SellersPage() {
   return (
     <>
-      <FAQSchema faqs={SELLER_FAQS} />
+      <FAQSchema faqs={SELLER_FAQS} id="https://chelseyfanning.com/sellers#faq" />
       <LocalBusinessSchema />
 
       {/* Page hero */}

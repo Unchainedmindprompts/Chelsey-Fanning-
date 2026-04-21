@@ -88,7 +88,7 @@ const BUYER_FAQS = [
 export default function BuyersPage() {
   return (
     <>
-      <FAQSchema faqs={BUYER_FAQS} />
+      <FAQSchema faqs={BUYER_FAQS} id="https://chelseyfanning.com/buyers#faq" />
       <LocalBusinessSchema />
 
       {/* Page hero */}
