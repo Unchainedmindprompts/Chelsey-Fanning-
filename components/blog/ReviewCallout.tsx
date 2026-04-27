@@ -1,8 +1,4 @@
-import type { Testimonial } from "@/content/testimonials";
-
-interface ReviewCalloutProps {
-  testimonial: Testimonial;
-}
+import type { ReviewSource } from "@/lib/blog";
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -23,7 +19,7 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
-export default function ReviewCallout({ testimonial }: ReviewCalloutProps) {
+export default function ReviewCallout({ review }: { review: ReviewSource }) {
   return (
     <aside
       className="not-prose my-12 rounded-2xl p-8"
@@ -32,7 +28,7 @@ export default function ReviewCallout({ testimonial }: ReviewCalloutProps) {
         border: "1px solid rgba(196,185,172,0.35)",
       }}
     >
-      <Stars rating={testimonial.rating} />
+      <Stars rating={review.rating} />
 
       <blockquote className="mt-4 mb-5">
         <p
@@ -43,7 +39,7 @@ export default function ReviewCallout({ testimonial }: ReviewCalloutProps) {
             fontSize: "clamp(1.15rem, 2vw, 1.35rem)",
           }}
         >
-          &ldquo;{testimonial.shortQuote || testimonial.fullText}&rdquo;
+          &ldquo;{review.shortQuote || review.reviewBody}&rdquo;
         </p>
       </blockquote>
 
@@ -56,7 +52,7 @@ export default function ReviewCallout({ testimonial }: ReviewCalloutProps) {
             className="text-sm font-semibold"
             style={{ color: "var(--color-charcoal)" }}
           >
-            {testimonial.name}
+            {review.reviewerName}
           </p>
           <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
             Verified Google Review

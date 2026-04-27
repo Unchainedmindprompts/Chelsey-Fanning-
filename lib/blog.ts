@@ -2,6 +2,16 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+export interface ReviewSource {
+  reviewerId: string;
+  reviewerName: string;
+  reviewDate: string;
+  reviewBody: string;
+  shortQuote?: string;
+  reviewUrl?: string;
+  rating: number;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -12,7 +22,7 @@ export interface BlogPost {
   tags: string[];
   author: string;
   imageUrl?: string;
-  reviewSource?: string;
+  reviewSource?: ReviewSource;
   featured?: boolean;
   displayOrder?: number;
   faqs?: Array<{ question: string; answer: string }>;

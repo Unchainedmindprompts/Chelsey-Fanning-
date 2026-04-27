@@ -4,10 +4,10 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import type { ReviewSource } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
 import ArticleSchema from "@/components/schema/ArticleSchema";
 import { NAP } from "@/lib/schema";
-import { TESTIMONIALS } from "@/content/testimonials";
 import ReviewCallout from "@/components/blog/ReviewCallout";
 
 interface Props {
@@ -45,6 +45,40 @@ function FAQSchema({ faqs, slug }: { faqs: Array<{ question: string; answer: str
       acceptedAnswer: { "@type": "Answer", text: f.answer },
     })),
   };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+// Review schema — renders only when reviewSource frontmatter is present
+function ReviewSchema({ review, slug }: { review: ReviewSource; slug: string }) {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "@id": `${NAP.url}/reviews/${review.reviewerId}`,
+    author: {
+      "@type": "Person",
+      name: review.reviewerName,
+    },
+    datePublished: review.reviewDate,
+    reviewBody: review.reviewBody,
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: String(review.rating),
+      bestRating: "5",
+      worstRating: "1",
+    },
+    itemReviewed: {
+      "@id": `${NAP.url}/#business`,
+    },
+    subjectOf: {
+      "@id": `${NAP.url}/blog/${slug}`,
+    },
+  };
+  if (review.reviewUrl) schema.url = review.reviewUrl;
   return (
     <script
       type="application/ld+json"
@@ -95,6 +129,7 @@ export default async function BlogPostPage({ params }: Props) {
       />
       <BreadcrumbSchema post={post} />
       {post.faqs && post.faqs.length > 0 && <FAQSchema faqs={post.faqs} slug={post.slug} />}
+      {post.reviewSource && <ReviewSchema review={post.reviewSource} slug={post.slug} />}
 
       <article style={{ backgroundColor: "var(--color-base)" }}>
         {/* Article header */}
@@ -147,10 +182,6 @@ export default async function BlogPostPage({ params }: Props) {
           const bodyContent = splitIdx !== -1 ? post.content.slice(0, splitIdx) : post.content;
           const faqContent = splitIdx !== -1 ? post.content.slice(splitIdx) : null;
 
-          const calloutTestimonial = post.reviewSource
-            ? TESTIMONIALS.find((t) => t.id === post.reviewSource) ?? null
-            : null;
-
           const mdxOptions = { mdxOptions: { remarkPlugins: [remarkGfm] } };
 
           return (
@@ -160,8 +191,8 @@ export default async function BlogPostPage({ params }: Props) {
             >
               <MDXRemote source={bodyContent} options={mdxOptions} />
 
-              {calloutTestimonial && (
-                <ReviewCallout testimonial={calloutTestimonial} />
+              {post.reviewSource && (
+                <ReviewCallout review={post.reviewSource} />
               )}
 
               {faqContent && (
