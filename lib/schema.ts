@@ -9,6 +9,9 @@ export const CHELSEA_SAME_AS = [
   "https://www.zillow.com/profile/ChelseyFanning",
   "https://www.facebook.com/cfanningrealtor",
   "https://www.instagram.com/life_with_chels",
+  "https://www.exprealty.com/agents-search/Chelsey-Fanning_bcde9e92-9fd2-11f0-b1d9-b78ca4428fb6",
+  "https://www.homes.com/real-estate-agents/chelsey-fanning/q63yz7z/",
+  "https://www.realtor.com/realestateagents/5bc7b0ea76e8ec0011336928",
 ];
 
 // ─── NAP constants ────────────────────────────────────────────────────────────
