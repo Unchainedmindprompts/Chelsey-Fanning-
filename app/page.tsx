@@ -7,6 +7,7 @@ import AboutPreview from "@/components/sections/AboutPreview";
 import NorthIdahoSection from "@/components/sections/NorthIdahoSection";
 import ContactCTA from "@/components/sections/ContactCTA";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
+import WebSiteSchema from "@/components/schema/WebSiteSchema";
 
 export const metadata: Metadata = {
   title: "Chelsey Fanning | Realtor in Post Falls, Idaho | eXp Realty",
@@ -21,6 +22,21 @@ export const metadata: Metadata = {
       "From your first home to your forever home — Chelsey Fanning brings expertise, honesty, and genuine care to every transaction in North Idaho.",
     url: "https://chelseyfanning.com",
     type: "website",
+    images: [
+      {
+        url: "https://chelseyfanning.com/chelsey-hero-periwinkle.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Chelsey Fanning | Realtor in Post Falls, Idaho",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chelsey Fanning | Realtor in Post Falls, Idaho",
+    description:
+      "From your first home to your forever home — Chelsey Fanning brings expertise, honesty, and genuine care to every transaction in North Idaho.",
+    images: ["https://chelseyfanning.com/chelsey-hero-periwinkle.jpeg"],
   },
 };
 
@@ -28,6 +44,7 @@ export default function HomePage() {
   return (
     <>
       <LocalBusinessSchema />
+      <WebSiteSchema />
       <Hero />
       <StatsBar />
       <WhoIWorkWith />

@@ -4,9 +4,11 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import type { ReviewSource } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
 import ArticleSchema from "@/components/schema/ArticleSchema";
 import { NAP } from "@/lib/schema";
+import ReviewCallout from "@/components/blog/ReviewCallout";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -26,22 +28,59 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.description,
     path: `/blog/${slug}`,
-    ogImageUrl: post.imageUrl ?? "/og-default.jpg",
+    ogImageUrl: post.imageUrl ?? "/chelsey-hero-periwinkle.jpeg",
     keywords: post.tags,
   });
 }
 
 // FAQ schema helper — rendered only when the post supplies `faqs` front matter
-function FAQSchema({ faqs }: { faqs: Array<{ question: string; answer: string }> }) {
+function FAQSchema({ faqs, slug }: { faqs: Array<{ question: string; answer: string }>; slug: string }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": `${NAP.url}/blog/${slug}#faq`,
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.question,
       acceptedAnswer: { "@type": "Answer", text: f.answer },
     })),
   };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+// Review schema — renders only when reviewSource frontmatter is present
+function ReviewSchema({ review, slug }: { review: ReviewSource; slug: string }) {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "@id": `${NAP.url}/reviews/${review.reviewerId}`,
+    author: {
+      "@type": "Person",
+      name: review.reviewerName,
+    },
+    datePublished: review.reviewDate,
+    reviewBody: review.reviewBody,
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: String(review.rating),
+      bestRating: "5",
+      worstRating: "1",
+    },
+    itemReviewed: {
+      "@type": ["LocalBusiness", "RealEstateAgent"],
+      "@id": `${NAP.url}/#business`,
+      name: "Chelsey Fanning",
+    },
+    subjectOf: {
+      "@id": `${NAP.url}/blog/${slug}`,
+    },
+  };
+  if (review.reviewUrl) schema.url = review.reviewUrl;
   return (
     <script
       type="application/ld+json"
@@ -91,7 +130,8 @@ export default async function BlogPostPage({ params }: Props) {
         imageUrl={post.imageUrl}
       />
       <BreadcrumbSchema post={post} />
-      {post.faqs && post.faqs.length > 0 && <FAQSchema faqs={post.faqs} />}
+      {post.faqs && post.faqs.length > 0 && <FAQSchema faqs={post.faqs} slug={post.slug} />}
+      {post.reviewSource && <ReviewSchema review={post.reviewSource} slug={post.slug} />}
 
       <article style={{ backgroundColor: "var(--color-base)" }}>
         {/* Article header */}
@@ -99,7 +139,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="max-w-3xl mx-auto px-6 lg:px-8">
             {/* Breadcrumb */}
             <nav className="mb-8 text-sm" aria-label="Breadcrumb">
-              <ol className="flex items-center gap-2" style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}>
+              <ol className="flex items-center gap-2" style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}>
                 <li><Link href="/" className="hover:underline" style={{ color: "var(--color-primary)" }}>Home</Link></li>
                 <li aria-hidden>/</li>
                 <li><Link href="/blog" className="hover:underline" style={{ color: "var(--color-primary)" }}>Blog</Link></li>
@@ -114,7 +154,7 @@ export default async function BlogPostPage({ params }: Props) {
               style={{
                 backgroundColor: "rgba(46,134,171,0.1)",
                 color: "var(--color-primary)",
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-roboto)",
               }}
             >
               {post.category}
@@ -126,7 +166,7 @@ export default async function BlogPostPage({ params }: Props) {
 
             <div
               className="flex items-center gap-6 text-sm"
-              style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}
+              style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
             >
               <span>By {post.author}</span>
               <span>·</span>
@@ -137,16 +177,32 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </header>
 
-        {/* Article body */}
-        <div
-          className="max-w-3xl mx-auto px-6 lg:px-8 pb-24 prose prose-lg"
-          style={{ fontFamily: "var(--font-inter)" }}
-        >
-          <MDXRemote
-            source={post.content}
-            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
-          />
-        </div>
+        {/* Article body — split at FAQ heading to inject ReviewCallout */}
+        {(() => {
+          const FAQ_HEADING = "## Frequently Asked Questions";
+          const splitIdx = post.content.indexOf(FAQ_HEADING);
+          const bodyContent = splitIdx !== -1 ? post.content.slice(0, splitIdx) : post.content;
+          const faqContent = splitIdx !== -1 ? post.content.slice(splitIdx) : null;
+
+          const mdxOptions = { mdxOptions: { remarkPlugins: [remarkGfm] } };
+
+          return (
+            <div
+              className="max-w-3xl mx-auto px-6 lg:px-8 pb-24 prose prose-lg"
+              style={{ fontFamily: "var(--font-roboto)" }}
+            >
+              <MDXRemote source={bodyContent} options={mdxOptions} />
+
+              {post.reviewSource && (
+                <ReviewCallout review={post.reviewSource} />
+              )}
+
+              {faqContent && (
+                <MDXRemote source={faqContent} options={mdxOptions} />
+              )}
+            </div>
+          );
+        })()}
 
         {/* Post footer */}
         <div
@@ -164,11 +220,11 @@ export default async function BlogPostPage({ params }: Props) {
               <div className="flex-1">
                 <p
                   className="text-xl font-semibold mb-2"
-                  style={{ fontFamily: "var(--font-cormorant)" }}
+                  style={{ fontFamily: "var(--font-roboto)" }}
                 >
                   Questions about buying or selling in North Idaho?
                 </p>
-                <p className="text-sm opacity-90" style={{ fontFamily: "var(--font-inter)" }}>
+                <p className="text-sm opacity-90" style={{ fontFamily: "var(--font-roboto)" }}>
                   I&apos;m always happy to talk — no pressure, no scripts.
                 </p>
               </div>
@@ -178,7 +234,7 @@ export default async function BlogPostPage({ params }: Props) {
                 style={{
                   backgroundColor: "var(--color-white)",
                   color: "var(--color-primary)",
-                  fontFamily: "var(--font-inter)",
+                  fontFamily: "var(--font-roboto)",
                 }}
               >
                 Let&apos;s Talk
@@ -189,7 +245,7 @@ export default async function BlogPostPage({ params }: Props) {
               <Link
                 href="/blog"
                 className="text-sm font-medium hover:underline"
-                style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+                style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
               >
                 ← Back to all posts
               </Link>

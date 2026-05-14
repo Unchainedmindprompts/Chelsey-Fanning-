@@ -37,7 +37,7 @@ export default function WhoIWorkWith() {
         </motion.h2>
         <motion.p
           className="text-base max-w-xl mx-auto"
-          style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}
+          style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -71,7 +71,7 @@ export default function WhoIWorkWith() {
             </h3>
             <p
               className="text-sm leading-relaxed"
-              style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+              style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
             >
               {client.body}
             </p>

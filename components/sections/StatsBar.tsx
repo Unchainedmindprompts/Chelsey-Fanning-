@@ -25,13 +25,13 @@ export default function StatsBar() {
             >
               <p
                 className="text-h2 font-semibold mb-1"
-                style={{ color: "var(--color-primary)", fontFamily: "var(--font-cormorant)" }}
+                style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
               >
                 {stat.value}
               </p>
               <p
                 className="text-sm font-semibold mb-1"
-                style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
+                style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
               >
                 {stat.label}
               </p>

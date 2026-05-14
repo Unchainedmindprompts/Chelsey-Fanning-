@@ -57,7 +57,7 @@ export default function ContactForm() {
     borderColor: "rgba(196,185,172,0.5)",
     backgroundColor: "var(--color-white)",
     color: "var(--color-text)",
-    fontFamily: "var(--font-inter)",
+    fontFamily: "var(--font-roboto)",
   };
 
   if (status === "success") {
@@ -80,7 +80,7 @@ export default function ContactForm() {
         <h2 className="text-h3 mb-3" style={{ color: "var(--color-charcoal)" }}>
           Message Sent!
         </h2>
-        <p className="text-base" style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}>
+        <p className="text-base" style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}>
           Thanks for reaching out. I&apos;ll be in touch within a few hours — usually sooner.
         </p>
       </div>
@@ -100,7 +100,7 @@ export default function ContactForm() {
       </h2>
       <p
         className="text-sm mb-8"
-        style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}
+        style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
       >
         I respond same-day. No spam, ever.
       </p>
@@ -111,7 +111,7 @@ export default function ContactForm() {
             <label
               htmlFor="name"
               className="block text-xs font-semibold uppercase tracking-wide mb-2"
-              style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
+              style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
             >
               Full Name *
             </label>
@@ -131,7 +131,7 @@ export default function ContactForm() {
             <label
               htmlFor="phone"
               className="block text-xs font-semibold uppercase tracking-wide mb-2"
-              style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
+              style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
             >
               Phone
             </label>
@@ -152,7 +152,7 @@ export default function ContactForm() {
           <label
             htmlFor="email"
             className="block text-xs font-semibold uppercase tracking-wide mb-2"
-            style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
           >
             Email Address *
           </label>
@@ -173,7 +173,7 @@ export default function ContactForm() {
           <fieldset>
             <legend
               className="block text-xs font-semibold uppercase tracking-wide mb-3"
-              style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
+              style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
             >
               Are you buying or selling?
             </legend>
@@ -190,7 +190,7 @@ export default function ContactForm() {
                     borderColor: form.intent === opt.value ? "var(--color-primary)" : "rgba(196,185,172,0.5)",
                     backgroundColor: form.intent === opt.value ? "var(--color-primary)" : "var(--color-white)",
                     color: form.intent === opt.value ? "white" : "var(--color-text)",
-                    fontFamily: "var(--font-inter)",
+                    fontFamily: "var(--font-roboto)",
                   }}
                 >
                   <input
@@ -212,7 +212,7 @@ export default function ContactForm() {
           <label
             htmlFor="message"
             className="block text-xs font-semibold uppercase tracking-wide mb-2"
-            style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
           >
             Your Message *
           </label>

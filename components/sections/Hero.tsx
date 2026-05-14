@@ -16,35 +16,33 @@ export default function Hero() {
           {/* Photo — right on desktop, top on mobile */}
           <motion.div
             className="order-first lg:order-last relative"
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ scale: 0.97 }}
+            animate={{ scale: 1 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <div className="relative aspect-[3/4] max-w-sm mx-auto lg:max-w-none rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/chelsea-hero.jpeg"
+                src="/chelsey-hero-periwinkle.jpeg"
                 alt="Chelsey Fanning, REALTOR® in Post Falls, Idaho"
                 fill
                 priority
+                fetchPriority="high"
                 sizes="(max-width: 1024px) 90vw, 45vw"
                 className="object-cover object-top"
               />
+            </div>
 
-              {/* Accent badge */}
-              <div
-                className="absolute bottom-6 left-6 right-6 rounded-2xl p-4 shadow-lg"
-                style={{ backgroundColor: "rgba(250,247,242,0.92)", backdropFilter: "blur(12px)" }}
+            {/* Name badge below image */}
+            <div className="mt-4 text-center">
+              <p
+                className="text-sm font-semibold"
+                style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
               >
-                <p
-                  className="text-sm font-semibold"
-                  style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
-                >
-                  Chelsey Fanning
-                </p>
-                <p className="text-xs" style={{ color: "var(--color-muted)" }}>
-                  REALTOR® · eXp Realty · Post Falls, ID
-                </p>
-              </div>
+                Chelsey Fanning
+              </p>
+              <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
+                REALTOR® · eXp Realty · Post Falls, ID
+              </p>
             </div>
           </motion.div>
 
@@ -57,7 +55,7 @@ export default function Hero() {
           >
             <p
               className="text-sm font-semibold tracking-widest uppercase mb-6"
-              style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+              style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
             >
               Post Falls · Coeur d&apos;Alene · North Idaho
             </p>
@@ -67,7 +65,7 @@ export default function Hero() {
             </h1>
             <p
               className="text-lg leading-relaxed mb-10 max-w-lg"
-              style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+              style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
             >
               From your first home to your forever home — Chelsey Fanning brings expertise,
               honesty, and genuine care to every transaction in Post Falls, Coeur d&apos;Alene,
@@ -82,26 +80,6 @@ export default function Hero() {
               </Button>
             </div>
 
-            {/* Trust signals inline */}
-            <div className="flex flex-wrap gap-8 mt-12 pt-10 border-t" style={{ borderColor: "rgba(196,185,172,0.4)" }}>
-              {[
-                { num: "5★", label: "Google Rating" },
-                { num: "7+", label: "Years in North Idaho" },
-                { num: "100+", label: "Families Helped" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p
-                    className="text-2xl font-bold"
-                    style={{ fontFamily: "var(--font-cormorant)", color: "var(--color-primary)" }}
-                  >
-                    {stat.num}
-                  </p>
-                  <p className="text-xs uppercase tracking-wide" style={{ color: "var(--color-muted)" }}>
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </div>

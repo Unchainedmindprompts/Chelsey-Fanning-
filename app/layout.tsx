@@ -5,58 +5,30 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 // Fonts loaded from local npm packages — no Google Fonts network requests at build time.
-// On Vercel production, next/font/google can be swapped back in.
-const inter = localFont({
+const roboto = localFont({
   src: [
     {
-      path: "../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2",
+      path: "../node_modules/@fontsource/roboto/files/roboto-latin-300-normal.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../node_modules/@fontsource/inter/files/inter-latin-500-normal.woff2",
+      path: "../node_modules/@fontsource/roboto/files/roboto-latin-500-normal.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2",
+      path: "../node_modules/@fontsource/roboto/files/roboto-latin-700-normal.woff2",
       weight: "700",
       style: "normal",
     },
   ],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const cormorant = localFont({
-  src: [
-    {
-      path: "../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-normal.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-italic.woff2",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-600-normal.woff2",
-      weight: "600",
-      style: "normal",
-    },
-  ],
-  variable: "--font-cormorant",
+  variable: "--font-roboto",
   display: "swap",
 });
 
@@ -66,7 +38,7 @@ export const metadata: Metadata = {
     template: "%s | Chelsey Fanning · Realtor · Post Falls, ID",
   },
   description:
-    "Chelsey Fanning is a trusted REALTOR® based in Post Falls, Idaho, serving buyers and sellers across North Idaho — Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and Spokane Valley. eXp Realty.",
+    "Chelsey Fanning is a trusted REALTOR® based in Post Falls, Idaho, serving buyers and sellers across North Idaho — Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake. eXp Realty.",
   metadataBase: new URL("https://chelseyfanning.com"),
   openGraph: {
     type: "website",
@@ -98,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${cormorant.variable} h-full antialiased`}
+      className={`${roboto.variable} h-full antialiased`}
     >
       <body
         className="min-h-full flex flex-col"

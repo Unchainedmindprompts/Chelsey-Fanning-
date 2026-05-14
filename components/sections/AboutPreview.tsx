@@ -34,7 +34,7 @@ export default function AboutPreview() {
               color: "var(--color-white)",
             }}
           >
-            <p className="text-2xl font-bold" style={{ fontFamily: "var(--font-cormorant)" }}>eXp Realty</p>
+            <p className="text-2xl font-bold" style={{ fontFamily: "var(--font-roboto)" }}>eXp Realty</p>
             <p className="text-xs tracking-widest uppercase opacity-80">Post Falls, Idaho</p>
           </div>
         </motion.div>
@@ -48,7 +48,7 @@ export default function AboutPreview() {
         >
           <p
             className="text-sm font-semibold tracking-widest uppercase mb-4"
-            style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
           >
             Meet Chelsey
           </p>
@@ -57,7 +57,7 @@ export default function AboutPreview() {
           </h2>
           <p
             className="text-base leading-relaxed mb-4"
-            style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
           >
             I&apos;ve built my business on one simple principle: treat every client like family. Whether
             you&apos;re nervously stepping into your first open house or selling the home you&apos;ve lived in
@@ -65,7 +65,7 @@ export default function AboutPreview() {
           </p>
           <p
             className="text-base leading-relaxed mb-8"
-            style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
           >
             I&apos;m proud to call North Idaho home — the mountains, the lakes, the community. I love
             this place, and I love helping people find their place in it.
@@ -73,7 +73,7 @@ export default function AboutPreview() {
           <Link
             href="/about"
             className="inline-flex items-center gap-2 text-base font-semibold transition-colors hover:underline"
-            style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
           >
             My full story →
           </Link>

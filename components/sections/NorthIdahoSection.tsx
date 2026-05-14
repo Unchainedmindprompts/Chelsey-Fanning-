@@ -9,7 +9,6 @@ const CITIES = [
   "Hayden",
   "Rathdrum",
   "Spirit Lake",
-  "Spokane Valley",
 ];
 
 export default function NorthIdahoSection() {
@@ -18,7 +17,7 @@ export default function NorthIdahoSection() {
       <div className="max-w-3xl mx-auto text-center">
         <motion.p
           className="text-sm font-semibold tracking-widest uppercase mb-4"
-          style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+          style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -37,7 +36,7 @@ export default function NorthIdahoSection() {
         </motion.h2>
         <motion.p
           className="text-base leading-relaxed mb-6"
-          style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+          style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -52,7 +51,7 @@ export default function NorthIdahoSection() {
         </motion.p>
         <motion.p
           className="text-base leading-relaxed mb-10"
-          style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+          style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -79,7 +78,7 @@ export default function NorthIdahoSection() {
                 backgroundColor: "var(--color-white)",
                 color: "var(--color-text)",
                 border: "1px solid rgba(196,185,172,0.5)",
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-roboto)",
               }}
             >
               {city}

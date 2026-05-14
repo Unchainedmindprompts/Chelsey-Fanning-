@@ -28,7 +28,7 @@ export default function ContactPage() {
             <div className="lg:pt-4">
               <p
                 className="text-sm font-semibold tracking-widest uppercase mb-4"
-                style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+                style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
               >
                 Let&apos;s Connect
               </p>
@@ -37,7 +37,7 @@ export default function ContactPage() {
               </h1>
               <p
                 className="text-base leading-relaxed mb-10"
-                style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+                style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
               >
                 No pressure, no scripts. Just an honest conversation about your goals. I respond
                 to all messages the same day — usually within a few hours.
@@ -55,7 +55,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold mb-0.5" style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}>
+                    <p className="text-sm font-semibold mb-0.5" style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}>
                       Phone
                     </p>
                     <a
@@ -78,7 +78,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold mb-0.5" style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}>
+                    <p className="text-sm font-semibold mb-0.5" style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}>
                       Email
                     </p>
                     <a
@@ -101,7 +101,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold mb-0.5" style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}>
+                    <p className="text-sm font-semibold mb-0.5" style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}>
                       Location
                     </p>
                     <p className="text-base" style={{ color: "var(--color-text)" }}>

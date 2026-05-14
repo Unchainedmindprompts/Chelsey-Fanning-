@@ -60,7 +60,7 @@ export default function AboutPage() {
             <div>
               <p
                 className="text-sm font-semibold tracking-widest uppercase mb-4"
-                style={{ color: "var(--color-primary)", fontFamily: "var(--font-inter)" }}
+                style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
               >
                 My Story
               </p>
@@ -69,7 +69,7 @@ export default function AboutPage() {
               </h1>
               <div
                 className="space-y-5 text-base leading-relaxed"
-                style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+                style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
               >
                 <p>
                   I became a real estate agent because I genuinely believe that where you live
@@ -103,7 +103,7 @@ export default function AboutPage() {
               <div className="mt-8">
                 <p
                   className="text-sm font-medium"
-                  style={{ color: "var(--color-muted)", fontFamily: "var(--font-inter)" }}
+                  style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
                 >
                   Licensed with{" "}
                   <a
@@ -154,7 +154,7 @@ export default function AboutPage() {
               </h3>
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "var(--color-text)", fontFamily: "var(--font-inter)" }}
+                style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
               >
                 {value.body}
               </p>
@@ -168,14 +168,14 @@ export default function AboutPage() {
         <div className="max-w-2xl mx-auto text-center">
           <p
             className="text-base leading-relaxed italic"
-            style={{ color: "var(--color-muted)", fontFamily: "var(--font-cormorant)", fontSize: "1.1rem" }}
+            style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)", fontSize: "1.1rem" }}
           >
             &ldquo;I became a realtor because I love people, and I love North Idaho. Getting to
             combine both every day? That&apos;s the job.&rdquo;
           </p>
           <p
             className="mt-3 text-sm font-semibold"
-            style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-inter)" }}
+            style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}
           >
             — Chelsey Fanning
           </p>

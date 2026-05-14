@@ -2,15 +2,16 @@ import { AGGREGATE_RATING } from "@/content/testimonials";
 
 // ─── Shared sameAs profiles ───────────────────────────────────────────────────
 export const CHELSEA_SAME_AS = [
-  "https://www.google.com/maps?cid=YOUR_GBP_CID",        // TODO: fill at launch
-  "https://www.bingplaces.com/YOUR_LISTING",              // TODO: fill at launch
-  "https://businessconnect.apple.com/YOUR_LISTING",       // TODO: fill at launch
-  "https://www.yelp.com/biz/chelsea-fanning-post-falls",
-  "https://www.bbb.org/YOUR_LISTING",                     // TODO: fill at launch
-  "https://www.yellowpages.com/YOUR_LISTING",             // TODO: fill at launch
-  "https://www.instagram.com/YOUR_HANDLE",                // TODO: fill at launch
-  "https://www.facebook.com/YOUR_HANDLE",                 // TODO: fill at launch
-  "https://exprealty.com/agents/YOUR_PROFILE",            // TODO: fill at launch
+  "https://www.google.com/maps/place/Chelsey+Fanning+%7C+EXP+Realty/@47.7017621,-117.0105906,17z/data=!3m2!4b1!5s0x5361dd207347a5a9:0x87198999aad55a76!4m6!3m5!1s0x4a524c972f2da505:0xa86d95d4b35ac75c!8m2!3d47.7017621!4d-117.0105906!16s%2Fg%2F11szjk3vmc",
+  "https://www.bing.com/maps?ss=ypid.YN4C9F60D2EBC9BE8F",
+  "https://www.yelp.com/biz/chelsey-fanning-exp-realty-post-falls",
+  "https://www.bbb.org/us/id/post-falls/profile/real-estate-agent/chelsey-fanning-realtor-1296-1000195312",
+  "https://www.zillow.com/profile/ChelseyFanning",
+  "https://www.facebook.com/cfanningrealtor",
+  "https://www.instagram.com/life_with_chels",
+  "https://www.exprealty.com/agents-search/Chelsey-Fanning_bcde9e92-9fd2-11f0-b1d9-b78ca4428fb6",
+  "https://www.homes.com/real-estate-agents/chelsey-fanning/q63yz7z/",
+  "https://www.realtor.com/realestateagents/5bc7b0ea76e8ec0011336928",
 ];
 
 // ─── NAP constants ────────────────────────────────────────────────────────────
@@ -41,13 +42,55 @@ export const SERVICE_AREAS = [
   "Hayden",
   "Rathdrum",
   "Spirit Lake",
-  "Spokane Valley",
 ];
+
+// ─── Shared Person node — embedded in LocalBusiness and used standalone on /about ──
+const AGENT_PERSON_NODE = {
+  "@type": ["Person", "RealEstateAgent"],
+  "@id": `${NAP.url}/#agent`,
+  name: NAP.name,
+  jobTitle: NAP.title,
+  hasCredential: "Idaho Real Estate License LC54829",
+  description:
+    "Chelsey Fanning is a licensed REALTOR® (Idaho License LC54829) with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake in North Idaho. With 7+ years of experience and over 100 transactions closed, she specializes in first-time home buyers, move-up families, and luxury properties. Her approach is built on three values: making real estate simple, keeping the process helpful, and ensuring every transaction is an enjoyable experience for her clients.",
+  url: `${NAP.url}/about`,
+  image: `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
+  telephone: NAP.phone,
+  email: NAP.email,
+  sameAs: CHELSEA_SAME_AS,
+  worksFor: {
+    "@type": "Organization",
+    "@id": "https://www.exprealty.com/#organization",
+    name: "eXp Realty",
+    url: "https://www.exprealty.com",
+  },
+  knowsAbout: [
+    "Residential real estate",
+    "First-time homebuyers",
+    "Luxury real estate",
+    "Relocation",
+    "Buyer representation",
+    "Seller representation",
+    "North Idaho real estate market",
+    "Post Falls real estate",
+    "Coeur d'Alene real estate",
+    "Competitive offer strategy",
+    "Real estate negotiation",
+  ],
+  areaServed: [
+    "Post Falls Idaho",
+    "Coeur d'Alene Idaho",
+    "Hayden Idaho",
+    "Rathdrum Idaho",
+    "Spirit Lake Idaho",
+  ],
+};
 
 // ─── LocalBusiness + RealEstateAgent schema ───────────────────────────────────
 export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}) {
   return {
     "@context": "https://schema.org",
+    "@id": `${NAP.url}/#business`,
     "@type": ["LocalBusiness", "RealEstateAgent"],
     name: NAP.name,
     description:
@@ -69,12 +112,13 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
       name: city,
     })),
     sameAs: CHELSEA_SAME_AS,
-    image: `${NAP.url}/chelsea-hero.jpg`,        // TODO: real image path
+    image: `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
     priceRange: "$$",
     aggregateRating: {
       "@type": "AggregateRating",
       ...AGGREGATE_RATING,
     },
+    founder: AGENT_PERSON_NODE,
     ...overrides,
   };
 }
@@ -83,39 +127,17 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
 export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
   return {
     "@context": "https://schema.org",
-    "@type": ["Person", "RealEstateAgent"],
-    name: NAP.name,
-    jobTitle: NAP.title,
-    worksFor: {
-      "@type": "Organization",
-      name: NAP.brokerage,
-      url: "https://exprealty.com",
-    },
-    url: NAP.url,
-    telephone: NAP.phone,
-    email: NAP.email,
-    address: {
-      "@type": "PostalAddress",
-      ...NAP.address,
-    },
-    sameAs: CHELSEA_SAME_AS,
-    image: `${NAP.url}/chelsea-about.jpg`,       // TODO: real image path
-    knowsAbout: [
-      "Real estate buying",
-      "Real estate selling",
-      "First-time home buyers",
-      "Luxury real estate",
-      "North Idaho real estate market",
-    ],
+    ...AGENT_PERSON_NODE,
     ...overrides,
   };
 }
 
 // ─── FAQ schema ───────────────────────────────────────────────────────────────
-export function buildFAQSchema(faqs: { question: string; answer: string }[]) {
+export function buildFAQSchema(faqs: { question: string; answer: string }[], id?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    ...(id ? { "@id": id } : {}),
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
@@ -124,6 +146,20 @@ export function buildFAQSchema(faqs: { question: string; answer: string }[]) {
         text: faq.answer,
       },
     })),
+  };
+}
+
+// ─── WebSite schema ───────────────────────────────────────────────────────────
+export function buildWebSiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${NAP.url}/#website`,
+    name: "Chelsey Fanning | REALTOR® | North Idaho",
+    url: NAP.url,
+    publisher: {
+      "@id": `${NAP.url}/#agent`,
+    },
   };
 }
 
@@ -138,23 +174,21 @@ export function buildArticleSchema(article: {
 }) {
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: article.title,
     description: article.description,
     url: `${NAP.url}/blog/${article.slug}`,
     datePublished: article.datePublished,
     dateModified: article.dateModified ?? article.datePublished,
     author: {
-      "@type": "Person",
-      name: NAP.name,
-      url: `${NAP.url}/about`,
+      "@id": `${NAP.url}/#agent`,
     },
     publisher: {
-      "@type": "Organization",
-      name: NAP.name,
-      url: NAP.url,
+      "@id": `${NAP.url}/#business`,
     },
-    image: article.imageUrl ?? `${NAP.url}/og-default.jpg`,
+    image: article.imageUrl
+      ? article.imageUrl.startsWith("http") ? article.imageUrl : `${NAP.url}${article.imageUrl}`
+      : `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${NAP.url}/blog/${article.slug}`,
@@ -171,6 +205,7 @@ export function buildAggregateRatingSchema(reviews: {
 }[]) {
   return {
     "@context": "https://schema.org",
+    "@id": `${NAP.url}/#business`,
     "@type": "RealEstateAgent",
     name: NAP.name,
     url: NAP.url,
@@ -211,9 +246,7 @@ export function buildServiceSchema(service: {
     description: service.description,
     url: service.url,
     provider: {
-      "@type": "RealEstateAgent",
-      name: NAP.name,
-      url: NAP.url,
+      "@id": `${NAP.url}/#business`,
     },
     areaServed: SERVICE_AREAS.map((city) => ({ "@type": "City", name: city })),
   };

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 const BASE_URL = "https://chelseyfanning.com";
 const SITE_NAME = "Chelsey Fanning · Realtor · Post Falls, ID";
-const DEFAULT_OG_IMAGE = "/og-default.jpg";
+const DEFAULT_OG_IMAGE = "/chelsey-hero-periwinkle.jpeg";
 
 interface PageMetaInput {
   title: string;
@@ -52,6 +52,7 @@ export function generatePageMetadata({
       card: "summary_large_image",
       title: `${title} | ${SITE_NAME}`,
       description,
+      images: [ogImageUrl.startsWith("http") ? ogImageUrl : `${BASE_URL}${ogImageUrl}`],
     },
   };
 }
