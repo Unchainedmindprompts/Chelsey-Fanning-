@@ -170,6 +170,8 @@ export default async function BlogPostPage({ params }: Props) {
         datePublished={post.date}
         dateModified={post.dateModified}
         imageUrl={post.imageUrl}
+        about={post.about}
+        mentions={post.mentions}
       />
       <BreadcrumbSchema post={post} />
       {post.faqs && post.faqs.length > 0 && <FAQSchema faqs={post.faqs} slug={post.slug} />}
