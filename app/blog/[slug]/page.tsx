@@ -4,7 +4,7 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
-import type { ReviewSource } from "@/lib/blog";
+import type { ReviewSource, ListingFrontmatter } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
 import ArticleSchema from "@/components/schema/ArticleSchema";
 import { NAP } from "@/lib/schema";
@@ -89,6 +89,48 @@ function ReviewSchema({ review, slug }: { review: ReviewSource; slug: string }) 
   );
 }
 
+// Listing schema — renders only when listing frontmatter is present
+function ListingSchema({ listing, slug }: { listing: ListingFrontmatter; slug: string }) {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "@id": `${NAP.url}/blog/${slug}#listing`,
+    name: listing.address,
+    datePosted: listing.datePosted,
+    offers: {
+      "@type": "Offer",
+      price: String(listing.price),
+      priceCurrency: "USD",
+      availability: listing.status === "active"
+        ? "https://schema.org/InStock"
+        : "https://schema.org/SoldOut",
+      seller: { "@id": `${NAP.url}/#agent` },
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: listing.streetAddress,
+      addressLocality: listing.addressLocality,
+      addressRegion: listing.addressRegion,
+      postalCode: listing.postalCode,
+      addressCountry: "US",
+    },
+    numberOfBedrooms: listing.beds,
+    numberOfBathroomsTotal: listing.baths,
+    floorSize: { "@type": "QuantitativeValue", value: listing.sqft, unitCode: "FTK" },
+    subjectOf: { "@id": `${NAP.url}/blog/${slug}` },
+  };
+  if (listing.yearBuilt) schema.yearBuilt = listing.yearBuilt;
+  if (listing.acres) schema.lotSize = { "@type": "QuantitativeValue", value: listing.acres, unitText: "acres" };
+  if (listing.url) schema.url = listing.url;
+  if (listing.mlsId) schema.identifier = listing.mlsId;
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 // Breadcrumb schema helper
 function BreadcrumbSchema({ post }: { post: { slug: string; title: string } }) {
   const schema = {
@@ -132,6 +174,7 @@ export default async function BlogPostPage({ params }: Props) {
       <BreadcrumbSchema post={post} />
       {post.faqs && post.faqs.length > 0 && <FAQSchema faqs={post.faqs} slug={post.slug} />}
       {post.reviewSource && <ReviewSchema review={post.reviewSource} slug={post.slug} />}
+      {post.listing && <ListingSchema listing={post.listing} slug={post.slug} />}
 
       <article style={{ backgroundColor: "var(--color-base)" }}>
         {/* Article header */}
