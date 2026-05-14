@@ -212,7 +212,6 @@ export function buildArticleSchema(article: {
 
   return schema;
 }
-}
 
 // ─── Review / AggregateRating schema ─────────────────────────────────────────
 export function buildAggregateRatingSchema(reviews: {
