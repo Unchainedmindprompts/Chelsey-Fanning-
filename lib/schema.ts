@@ -171,29 +171,47 @@ export function buildArticleSchema(article: {
   datePublished: string;
   dateModified?: string;
   imageUrl?: string;
+  about?: Array<Record<string, unknown>>;
+  mentions?: Array<Record<string, unknown>>;
 }) {
-  return {
+  const imageUrl = article.imageUrl
+    ? article.imageUrl.startsWith("http") ? article.imageUrl : `${NAP.url}${article.imageUrl}`
+    : `${NAP.url}/chelsey-hero-periwinkle.jpeg`;
+
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${NAP.url}/blog/${article.slug}#article`,
     headline: article.title,
     description: article.description,
     url: `${NAP.url}/blog/${article.slug}`,
     datePublished: article.datePublished,
     dateModified: article.dateModified ?? article.datePublished,
-    author: {
-      "@id": `${NAP.url}/#agent`,
+    author: { "@id": `${NAP.url}/#agent` },
+    publisher: { "@id": `${NAP.url}/#business` },
+    image: {
+      "@type": "ImageObject",
+      url: imageUrl,
+      width: 1200,
+      height: 630,
     },
-    publisher: {
-      "@id": `${NAP.url}/#business`,
-    },
-    image: article.imageUrl
-      ? article.imageUrl.startsWith("http") ? article.imageUrl : `${NAP.url}${article.imageUrl}`
-      : `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${NAP.url}/blog/${article.slug}`,
     },
+    isPartOf: {
+      "@type": "Blog",
+      "@id": `${NAP.url}/blog`,
+      name: "North Idaho Real Estate Blog",
+      publisher: { "@id": `${NAP.url}/#business` },
+    },
   };
+
+  if (article.about?.length) schema.about = article.about;
+  if (article.mentions?.length) schema.mentions = article.mentions;
+
+  return schema;
+}
 }
 
 // ─── Review / AggregateRating schema ─────────────────────────────────────────

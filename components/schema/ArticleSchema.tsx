@@ -7,6 +7,8 @@ interface ArticleSchemaProps {
   datePublished: string;
   dateModified?: string;
   imageUrl?: string;
+  about?: Array<Record<string, unknown>>;
+  mentions?: Array<Record<string, unknown>>;
 }
 
 export default function ArticleSchema(props: ArticleSchemaProps) {

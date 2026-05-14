@@ -45,6 +45,8 @@ export interface BlogPost {
   featured?: boolean;
   displayOrder?: number;
   faqs?: Array<{ question: string; answer: string }>;
+  about?: Array<Record<string, unknown>>;
+  mentions?: Array<Record<string, unknown>>;
   listing?: ListingFrontmatter;
   readingTime: number;
   content: string;
@@ -82,6 +84,8 @@ export function getAllPosts(): BlogPost[] {
         featured: data.featured,
         displayOrder: data.displayOrder,
         faqs: data.faqs,
+        about: data.about,
+        mentions: data.mentions,
         listing: data.listing,
         readingTime: estimateReadingTime(content),
         content,
