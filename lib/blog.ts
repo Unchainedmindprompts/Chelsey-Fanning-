@@ -115,6 +115,9 @@ export function getPostBySlug(slug: string): BlogPost | null {
     featured: data.featured,
     displayOrder: data.displayOrder,
     faqs: data.faqs,
+    about: data.about,
+    mentions: data.mentions,
+    listing: data.listing,
     readingTime: estimateReadingTime(content),
     content,
   };
