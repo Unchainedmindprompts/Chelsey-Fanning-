@@ -178,6 +178,9 @@ export function buildArticleSchema(article: {
     ? article.imageUrl.startsWith("http") ? article.imageUrl : `${NAP.url}${article.imageUrl}`
     : `${NAP.url}/chelsey-hero-periwinkle.jpeg`;
 
+  // Ensure dates are full ISO 8601 with timezone (Mountain Time, UTC-7)
+  const toISO = (d: string) => /T/.test(d) ? d : `${d}T00:00:00-07:00`;
+
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -185,9 +188,14 @@ export function buildArticleSchema(article: {
     headline: article.title,
     description: article.description,
     url: `${NAP.url}/blog/${article.slug}`,
-    datePublished: article.datePublished,
-    dateModified: article.dateModified ?? article.datePublished,
-    author: { "@id": `${NAP.url}/#agent` },
+    datePublished: toISO(article.datePublished),
+    dateModified: toISO(article.dateModified ?? article.datePublished),
+    author: {
+      "@type": ["Person", "RealEstateAgent"],
+      "@id": `${NAP.url}/#agent`,
+      name: NAP.name,
+      url: `${NAP.url}/about`,
+    },
     publisher: { "@id": `${NAP.url}/#business` },
     image: {
       "@type": "ImageObject",
