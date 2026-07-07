@@ -3,7 +3,6 @@ import Image from "next/image";
 import { generatePageMetadata } from "@/lib/metadata";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import ContactCTA from "@/components/sections/ContactCTA";
-import PersonSchema from "@/components/schema/PersonSchema";
 import WebPageSchema from "@/components/schema/WebPageSchema";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
 import { NAP } from "@/lib/schema";
@@ -34,7 +33,6 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <>
-      <PersonSchema />
       <WebPageSchema
         type="AboutPage"
         path="/about"
@@ -140,7 +138,8 @@ export default function AboutPage() {
       {/* Values section */}
       <SectionWrapper background="surface">
         <div className="text-center mb-14">
-          <h2 className="text-h2" style={{ color: "var(--color-charcoal)" }}>
+          <h2 className="text-h2" style={{ color: "var(--color-charcoal)" }}
+          >
             What I Stand For
           </h2>
         </div>

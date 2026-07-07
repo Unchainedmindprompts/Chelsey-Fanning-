@@ -9,6 +9,7 @@ import ContactCTA from "@/components/sections/ContactCTA";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 import WebSiteSchema from "@/components/schema/WebSiteSchema";
 import WebPageSchema from "@/components/schema/WebPageSchema";
+import PersonSchema from "@/components/schema/PersonSchema";
 import { NAP } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -47,6 +48,7 @@ export default function HomePage() {
     <>
       <LocalBusinessSchema />
       <WebSiteSchema />
+      <PersonSchema />
       <WebPageSchema
         path=""
         name="Chelsey Fanning | REALTOR® | Post Falls, Idaho"
