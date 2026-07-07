@@ -131,11 +131,32 @@ function ListingSchema({ listing, slug }: { listing: ListingFrontmatter; slug: s
   );
 }
 
-// Breadcrumb schema helper
+function ArticleWebPageSchema({ post }: { post: { slug: string; title: string; description: string } }) {
+  const url = `${NAP.url}/blog/${post.slug}`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": url,
+    name: post.title,
+    url,
+    description: post.description,
+    isPartOf: { "@id": `${NAP.url}/#website` },
+    about: { "@id": `${NAP.url}/#business` },
+    breadcrumb: { "@id": `${NAP.url}/blog/${post.slug}#breadcrumb` },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 function BreadcrumbSchema({ post }: { post: { slug: string; title: string } }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${NAP.url}/blog/${post.slug}#breadcrumb`,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: NAP.url },
       { "@type": "ListItem", position: 2, name: "Blog", item: `${NAP.url}/blog` },
@@ -174,6 +195,7 @@ export default async function BlogPostPage({ params }: Props) {
         mentions={post.mentions}
       />
       <BreadcrumbSchema post={post} />
+      <ArticleWebPageSchema post={post} />
       {post.faqs && post.faqs.length > 0 && <FAQSchema faqs={post.faqs} slug={post.slug} />}
       {post.reviewSource && <ReviewSchema review={post.reviewSource} slug={post.slug} />}
       {post.listing && <ListingSchema listing={post.listing} slug={post.slug} />}
