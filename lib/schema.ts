@@ -1,11 +1,17 @@
 import { AGGREGATE_RATING } from "@/content/testimonials";
 
 // ─── Shared sameAs profiles ───────────────────────────────────────────────────
+// Rule 3: sameAs on the entity it represents.
+// Business/location directory listings → #business
 export const CHELSEA_SAME_AS = [
   "https://www.google.com/maps/place/Chelsey+Fanning+%7C+EXP+Realty/@47.7017621,-117.0105906,17z/data=!3m2!4b1!5s0x5361dd207347a5a9:0x87198999aad55a76!4m6!3m5!1s0x4a524c972f2da505:0xa86d95d4b35ac75c!8m2!3d47.7017621!4d-117.0105906!16s%2Fg%2F11szjk3vmc",
   "https://www.bing.com/maps?ss=ypid.YN4C9F60D2EBC9BE8F",
   "https://www.yelp.com/biz/chelsey-fanning-exp-realty-post-falls",
   "https://www.bbb.org/us/id/post-falls/profile/real-estate-agent/chelsey-fanning-realtor-1296-1000195312",
+];
+
+// Agent-directory profiles that represent Chelsey as a licensed professional → #agent
+const AGENT_SAME_AS = [
   "https://www.zillow.com/profile/ChelseyFanning",
   "https://www.facebook.com/cfanningrealtor",
   "https://www.instagram.com/life_with_chels",
@@ -44,9 +50,10 @@ export const SERVICE_AREAS = [
   { name: "Spirit Lake",    sameAs: "https://en.wikipedia.org/wiki/Spirit_Lake,_Idaho" },
 ];
 
-// ─── Canonical Person node — defined ONCE here, referenced elsewhere via @id ──
+// ─── Canonical Person node — defined ONCE here, emitted on the homepage ───────
 // Rule 4: @type is "Person" only. Profession expressed via jobTitle + hasOccupation.
-// Rule 3: sameAs removed — all 10 profiles are business listings; they belong on #business.
+// Rule 3: sameAs split — agent-directory profiles here; business/location profiles on #business.
+// Bidirectional: #business → founder → #agent; #agent → affiliation → #business
 const AGENT_PERSON_NODE = {
   "@type": "Person",
   "@id": `${NAP.url}/#agent`,
@@ -74,6 +81,8 @@ const AGENT_PERSON_NODE = {
     name: "eXp Realty",
     url: "https://www.exprealty.com",
   },
+  affiliation: { "@id": `${NAP.url}/#business` },
+  sameAs: AGENT_SAME_AS,
   knowsAbout: [
     "Residential real estate",
     "First-time homebuyers",
@@ -107,6 +116,9 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
     },
     geo: {
       "@type": "GeoCoordinates",
+      // TODO: confirm these match the actual Google Maps / Bing office pin before going live.
+      // Current values (47.7182, -116.9443) differ ~2 mi from the Google Maps sameAs URL pin
+      // (47.7017621, -117.0105906). Use whichever matches the authoritative public listing.
       latitude: NAP.geo.latitude,
       longitude: NAP.geo.longitude,
     },
