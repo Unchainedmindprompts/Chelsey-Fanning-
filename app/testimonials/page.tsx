@@ -5,7 +5,10 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import ContactCTA from "@/components/sections/ContactCTA";
 import ReviewSchema from "@/components/schema/ReviewSchema";
+import WebPageSchema from "@/components/schema/WebPageSchema";
+import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
 import { TESTIMONIALS, AGGREGATE_RATING } from "@/content/testimonials";
+import { NAP } from "@/lib/schema";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Client Testimonials & Reviews",
@@ -20,7 +23,7 @@ const GOOGLE_REVIEWS_URL = "https://share.google/u2Lgk0szuKiVmZzp3";
 const CATEGORIES = [
   {
     key: "first-time-buyer",
-    heading: "For the ones who said \u201cI don\u2019t even know where to start.\u201d",
+    heading: "For the ones who said “I don’t even know where to start.”",
     background: "base" as const,
   },
   {
@@ -56,6 +59,19 @@ export default function TestimonialsPage() {
   return (
     <>
       <ReviewSchema />
+      <WebPageSchema
+        path="/testimonials"
+        name="Client Reviews — Chelsey Fanning REALTOR® Post Falls, Idaho"
+        description="Verified Google reviews from buyers, sellers, and families across Post Falls, Coeur d'Alene, and North Idaho."
+        breadcrumbId={`${NAP.url}/testimonials#breadcrumb`}
+      />
+      <BreadcrumbSchema
+        id={`${NAP.url}/testimonials#breadcrumb`}
+        items={[
+          { name: "Home", url: NAP.url },
+          { name: "Reviews" },
+        ]}
+      />
 
       {/* Page hero */}
       <section

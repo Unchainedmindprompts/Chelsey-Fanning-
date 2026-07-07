@@ -4,7 +4,9 @@ import { generatePageMetadata } from "@/lib/metadata";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import ContactCTA from "@/components/sections/ContactCTA";
 import PersonSchema from "@/components/schema/PersonSchema";
-import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
+import WebPageSchema from "@/components/schema/WebPageSchema";
+import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
+import { NAP } from "@/lib/schema";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "About Chelsey Fanning",
@@ -33,7 +35,19 @@ export default function AboutPage() {
   return (
     <>
       <PersonSchema />
-      <LocalBusinessSchema />
+      <WebPageSchema
+        type="AboutPage"
+        path="/about"
+        name="About Chelsey Fanning — REALTOR® Post Falls, Idaho"
+        breadcrumbId={`${NAP.url}/about#breadcrumb`}
+      />
+      <BreadcrumbSchema
+        id={`${NAP.url}/about#breadcrumb`}
+        items={[
+          { name: "Home", url: NAP.url },
+          { name: "About" },
+        ]}
+      />
 
       {/* Hero section */}
       <section
@@ -115,16 +129,7 @@ export default function AboutPage() {
                   >
                     eXp Realty
                   </a>
-                  {" · "}
-                  <a
-                    href="https://exprealty.com/agents/YOUR_PROFILE" // TODO: real eXp profile URL
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                    style={{ color: "var(--color-primary)" }}
-                  >
-                    Browse my active listings on eXp →
-                  </a>
+                  {/* TODO: add "Browse my active listings on eXp →" link once Chelsey sends her eXp profile URL */}
                 </p>
               </div>
             </div>
