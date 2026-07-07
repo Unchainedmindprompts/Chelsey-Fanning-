@@ -44,12 +44,23 @@ export const SERVICE_AREAS = [
   "Spirit Lake",
 ];
 
-// ─── Shared Person node — embedded in LocalBusiness and used standalone on /about ──
+// ─── Canonical Person node — defined ONCE here, referenced elsewhere via @id ──
+// Rule 4: @type is "Person" only. Profession expressed via jobTitle + hasOccupation.
+// Rule 3: sameAs removed — all 10 profiles are business listings; they belong on #business.
 const AGENT_PERSON_NODE = {
-  "@type": ["Person", "RealEstateAgent"],
+  "@type": "Person",
   "@id": `${NAP.url}/#agent`,
   name: NAP.name,
   jobTitle: NAP.title,
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "Real Estate Agent",
+    occupationLocation: {
+      "@type": "City",
+      name: "Post Falls",
+      containedInPlace: { "@type": "State", name: "Idaho" },
+    },
+  },
   hasCredential: "Idaho Real Estate License LC54829",
   description:
     "Chelsey Fanning is a licensed REALTOR® (Idaho License LC54829) with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake in North Idaho. With 7+ years of experience and over 100 transactions closed, she specializes in first-time home buyers, move-up families, and luxury properties. Her approach is built on three values: making real estate simple, keeping the process helpful, and ensuring every transaction is an enjoyable experience for her clients.",
@@ -57,7 +68,6 @@ const AGENT_PERSON_NODE = {
   image: `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
   telephone: NAP.phone,
   email: NAP.email,
-  sameAs: CHELSEA_SAME_AS,
   worksFor: {
     "@type": "Organization",
     "@id": "https://www.exprealty.com/#organization",
@@ -76,13 +86,6 @@ const AGENT_PERSON_NODE = {
     "Coeur d'Alene real estate",
     "Competitive offer strategy",
     "Real estate negotiation",
-  ],
-  areaServed: [
-    "Post Falls Idaho",
-    "Coeur d'Alene Idaho",
-    "Hayden Idaho",
-    "Rathdrum Idaho",
-    "Spirit Lake Idaho",
   ],
 };
 
@@ -118,7 +121,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
       "@type": "AggregateRating",
       ...AGGREGATE_RATING,
     },
-    founder: AGENT_PERSON_NODE,
+    founder: { "@id": `${NAP.url}/#agent` },
     ...overrides,
   };
 }
@@ -157,9 +160,7 @@ export function buildWebSiteSchema() {
     "@id": `${NAP.url}/#website`,
     name: "Chelsey Fanning | REALTOR® | North Idaho",
     url: NAP.url,
-    publisher: {
-      "@id": `${NAP.url}/#agent`,
-    },
+    publisher: { "@id": `${NAP.url}/#business` },
   };
 }
 
@@ -190,12 +191,7 @@ export function buildArticleSchema(article: {
     url: `${NAP.url}/blog/${article.slug}`,
     datePublished: toISO(article.datePublished),
     dateModified: toISO(article.dateModified ?? article.datePublished),
-    author: {
-      "@type": ["Person", "RealEstateAgent"],
-      "@id": `${NAP.url}/#agent`,
-      name: NAP.name,
-      url: `${NAP.url}/about`,
-    },
+    author: { "@id": `${NAP.url}/#agent` },
     publisher: { "@id": `${NAP.url}/#business` },
     image: {
       "@type": "ImageObject",
@@ -219,43 +215,6 @@ export function buildArticleSchema(article: {
   if (article.mentions?.length) schema.mentions = article.mentions;
 
   return schema;
-}
-
-// ─── Review / AggregateRating schema ─────────────────────────────────────────
-export function buildAggregateRatingSchema(reviews: {
-  author: string;
-  rating: number;
-  body: string;
-  date: string;
-}[]) {
-  return {
-    "@context": "https://schema.org",
-    "@id": `${NAP.url}/#business`,
-    "@type": "RealEstateAgent",
-    name: NAP.name,
-    url: NAP.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: (
-        reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-      ).toFixed(1),
-      reviewCount: reviews.length,
-      bestRating: "5",
-      worstRating: "1",
-    },
-    review: reviews.map((r) => ({
-      "@type": "Review",
-      author: { "@type": "Person", name: r.author },
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: r.rating,
-        bestRating: "5",
-        worstRating: "1",
-      },
-      reviewBody: r.body,
-      datePublished: r.date,
-    })),
-  };
 }
 
 // ─── Service schema ───────────────────────────────────────────────────────────
