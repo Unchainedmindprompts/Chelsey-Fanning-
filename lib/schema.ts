@@ -203,12 +203,7 @@ export function buildArticleSchema(article: {
       "@type": "WebPage",
       "@id": `${NAP.url}/blog/${article.slug}`,
     },
-    isPartOf: {
-      "@type": "Blog",
-      "@id": `${NAP.url}/blog`,
-      name: "North Idaho Real Estate Blog",
-      publisher: { "@id": `${NAP.url}/#business` },
-    },
+    isPartOf: { "@id": `${NAP.url}/blog` },
   };
 
   if (article.about?.length) schema.about = article.about;

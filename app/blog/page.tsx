@@ -3,7 +3,9 @@ import Link from "next/link";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getAllPosts } from "@/lib/blog";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
+import WebPageSchema from "@/components/schema/WebPageSchema";
+import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
+import { NAP } from "@/lib/schema";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "North Idaho Real Estate Blog",
@@ -12,6 +14,26 @@ export const metadata: Metadata = generatePageMetadata({
   path: "/blog",
   keywords: ["North Idaho real estate blog", "Post Falls housing market", "first time buyer tips Idaho"],
 });
+
+function BlogEntitySchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${NAP.url}/blog`,
+    name: "North Idaho Real Estate Blog",
+    description:
+      "Insights, market updates, and advice for buyers and sellers in Post Falls, Coeur d'Alene, and all of North Idaho — from REALTOR® Chelsey Fanning.",
+    url: `${NAP.url}/blog`,
+    publisher: { "@id": `${NAP.url}/#business` },
+    author: { "@id": `${NAP.url}/#agent` },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
 
 const CATEGORY_COLORS: Record<string, string> = {
   "Market Updates":      "var(--color-primary)",
@@ -26,7 +48,21 @@ export default function BlogPage() {
 
   return (
     <>
-      <LocalBusinessSchema />
+      <BlogEntitySchema />
+      <WebPageSchema
+        type="CollectionPage"
+        path="/blog"
+        name="North Idaho Real Estate Blog — Chelsey Fanning REALTOR®"
+        description="Honest takes on the North Idaho market, practical advice for buyers and sellers, and genuine local perspective."
+        breadcrumbId={`${NAP.url}/blog#breadcrumb`}
+      />
+      <BreadcrumbSchema
+        id={`${NAP.url}/blog#breadcrumb`}
+        items={[
+          { name: "Home", url: NAP.url },
+          { name: "Blog" },
+        ]}
+      />
 
       {/* Page hero */}
       <section
