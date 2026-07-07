@@ -37,11 +37,11 @@ export const NAP = {
 
 // ─── Service area cities ──────────────────────────────────────────────────────
 export const SERVICE_AREAS = [
-  "Post Falls",
-  "Coeur d'Alene",
-  "Hayden",
-  "Rathdrum",
-  "Spirit Lake",
+  { name: "Post Falls",     sameAs: "https://en.wikipedia.org/wiki/Post_Falls,_Idaho" },
+  { name: "Coeur d'Alene", sameAs: "https://en.wikipedia.org/wiki/Coeur_d%27Alene,_Idaho" },
+  { name: "Hayden",         sameAs: "https://en.wikipedia.org/wiki/Hayden,_Idaho" },
+  { name: "Rathdrum",       sameAs: "https://en.wikipedia.org/wiki/Rathdrum,_Idaho" },
+  { name: "Spirit Lake",    sameAs: "https://en.wikipedia.org/wiki/Spirit_Lake,_Idaho" },
 ];
 
 // ─── Canonical Person node — defined ONCE here, referenced elsewhere via @id ──
@@ -112,7 +112,8 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
     },
     areaServed: SERVICE_AREAS.map((city) => ({
       "@type": "City",
-      name: city,
+      name: city.name,
+      sameAs: city.sameAs,
     })),
     sameAs: CHELSEA_SAME_AS,
     image: `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
@@ -227,6 +228,6 @@ export function buildServiceSchema(service: {
     provider: {
       "@id": `${NAP.url}/#business`,
     },
-    areaServed: SERVICE_AREAS.map((city) => ({ "@type": "City", name: city })),
+    areaServed: SERVICE_AREAS.map((city) => ({ "@type": "City", name: city.name, sameAs: city.sameAs })),
   };
 }

@@ -55,6 +55,7 @@ function FAQSchema({ faqs, slug }: { faqs: Array<{ question: string; answer: str
 
 // Review schema — renders only when reviewSource frontmatter is present
 function ReviewSchema({ review, slug }: { review: ReviewSource; slug: string }) {
+  const toISO = (d: string) => (/T/.test(d) ? d : `${d}T00:00:00-07:00`);
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Review",
@@ -63,7 +64,7 @@ function ReviewSchema({ review, slug }: { review: ReviewSource; slug: string }) 
       "@type": "Person",
       name: review.reviewerName,
     },
-    datePublished: review.reviewDate,
+    datePublished: toISO(review.reviewDate),
     reviewBody: review.reviewBody,
     reviewRating: {
       "@type": "Rating",
@@ -96,7 +97,7 @@ function ListingSchema({ listing, slug }: { listing: ListingFrontmatter; slug: s
     "@type": "RealEstateListing",
     "@id": `${NAP.url}/blog/${slug}#listing`,
     name: listing.address,
-    datePosted: listing.datePosted,
+    datePosted: (/T/.test(listing.datePosted) ? listing.datePosted : `${listing.datePosted}T00:00:00-07:00`),
     offers: {
       "@type": "Offer",
       price: String(listing.price),

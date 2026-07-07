@@ -129,16 +129,7 @@ export default function AboutPage() {
                   >
                     eXp Realty
                   </a>
-                  {" · "}
-                  <a
-                    href="https://exprealty.com/agents/YOUR_PROFILE" // TODO: real eXp profile URL
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                    style={{ color: "var(--color-primary)" }}
-                  >
-                    Browse my active listings on eXp →
-                  </a>
+                  {/* TODO: add "Browse my active listings on eXp →" link once Chelsey sends her eXp profile URL */}
                 </p>
               </div>
             </div>
