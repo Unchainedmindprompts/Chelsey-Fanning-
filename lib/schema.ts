@@ -1,5 +1,3 @@
-import { AGGREGATE_RATING } from "@/content/testimonials";
-
 // ─── Shared sameAs profiles ───────────────────────────────────────────────────
 // Rule 3: sameAs on the entity it represents.
 // Business/location directory listings → #business
@@ -130,10 +128,6 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
     sameAs: CHELSEA_SAME_AS,
     image: `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
     priceRange: "$$",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ...AGGREGATE_RATING,
-    },
     founder: { "@id": `${NAP.url}/#agent` },
     ...overrides,
   };
@@ -212,10 +206,7 @@ export function buildArticleSchema(article: {
       width: 1200,
       height: 630,
     },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${NAP.url}/blog/${article.slug}`,
-    },
+    mainEntityOfPage: `${NAP.url}/blog/${article.slug}`,
     isPartOf: { "@id": `${NAP.url}/blog` },
   };
 
