@@ -4,7 +4,6 @@ import { generatePageMetadata } from "@/lib/metadata";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import ContactCTA from "@/components/sections/ContactCTA";
-import ReviewSchema from "@/components/schema/ReviewSchema";
 import WebPageSchema from "@/components/schema/WebPageSchema";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
 import { TESTIMONIALS, AGGREGATE_RATING } from "@/content/testimonials";
@@ -58,7 +57,6 @@ const renderable = TESTIMONIALS.filter((t) => t.fullText.length > 0);
 export default function TestimonialsPage() {
   return (
     <>
-      <ReviewSchema />
       <WebPageSchema
         path="/testimonials"
         name="Client Reviews — Chelsey Fanning REALTOR® Post Falls, Idaho"

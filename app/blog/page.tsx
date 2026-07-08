@@ -3,7 +3,6 @@ import Link from "next/link";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getAllPosts } from "@/lib/blog";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import WebPageSchema from "@/components/schema/WebPageSchema";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
 import { NAP } from "@/lib/schema";
 
@@ -15,17 +14,22 @@ export const metadata: Metadata = generatePageMetadata({
   keywords: ["North Idaho real estate blog", "Post Falls housing market", "first time buyer tips Idaho"],
 });
 
-function BlogEntitySchema() {
+function BlogIndexSchema({ posts }: { posts: Array<{ slug: string }> }) {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Blog",
+    "@type": ["Blog", "CollectionPage"],
     "@id": `${NAP.url}/blog`,
-    name: "North Idaho Real Estate Blog",
+    name: "North Idaho Real Estate Blog — Chelsey Fanning REALTOR®",
     description:
-      "Insights, market updates, and advice for buyers and sellers in Post Falls, Coeur d'Alene, and all of North Idaho — from REALTOR® Chelsey Fanning.",
+      "Honest takes on the North Idaho market, practical advice for buyers and sellers, and genuine local perspective.",
     url: `${NAP.url}/blog`,
+    inLanguage: "en-US",
+    isPartOf: { "@id": `${NAP.url}/#website` },
+    about: { "@id": `${NAP.url}/#business` },
     publisher: { "@id": `${NAP.url}/#business` },
     author: { "@id": `${NAP.url}/#agent` },
+    breadcrumb: { "@id": `${NAP.url}/blog#breadcrumb` },
+    hasPart: posts.map((p) => ({ "@id": `${NAP.url}/blog/${p.slug}#article` })),
   };
   return (
     <script
@@ -48,14 +52,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <BlogEntitySchema />
-      <WebPageSchema
-        type="CollectionPage"
-        path="/blog"
-        name="North Idaho Real Estate Blog — Chelsey Fanning REALTOR®"
-        description="Honest takes on the North Idaho market, practical advice for buyers and sellers, and genuine local perspective."
-        breadcrumbId={`${NAP.url}/blog#breadcrumb`}
-      />
+      <BlogIndexSchema posts={posts} />
       <BreadcrumbSchema
         id={`${NAP.url}/blog#breadcrumb`}
         items={[
