@@ -39,6 +39,7 @@ function FAQSchema({ faqs, slug }: { faqs: Array<{ question: string; answer: str
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "@id": `${NAP.url}/blog/${slug}#faq`,
+    isPartOf: { "@id": `${NAP.url}/blog/${slug}` },
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.question,
@@ -104,6 +105,7 @@ function ArticleWebPageSchema({ post }: { post: { slug: string; title: string; d
     name: post.title,
     url,
     description: post.description,
+    inLanguage: "en-US",
     isPartOf: { "@id": `${NAP.url}/#website` },
     about: { "@id": `${NAP.url}/#business` },
     breadcrumb: { "@id": `${NAP.url}/blog/${post.slug}#breadcrumb` },

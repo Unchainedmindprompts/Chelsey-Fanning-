@@ -91,7 +91,7 @@ const BUYER_FAQS = [
 export default function BuyersPage() {
   return (
     <>
-      <FAQSchema faqs={BUYER_FAQS} id={`${NAP.url}/buyers#faq`} />
+      <FAQSchema faqs={BUYER_FAQS} id={`${NAP.url}/buyers#faq`} pageId={`${NAP.url}/buyers`} />
       <WebPageSchema
         path="/buyers"
         name="Home Buyers in Post Falls & North Idaho"

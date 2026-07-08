@@ -81,7 +81,7 @@ const SELLER_FAQS = [
 export default function SellersPage() {
   return (
     <>
-      <FAQSchema faqs={SELLER_FAQS} id={`${NAP.url}/sellers#faq`} />
+      <FAQSchema faqs={SELLER_FAQS} id={`${NAP.url}/sellers#faq`} pageId={`${NAP.url}/sellers`} />
       <WebPageSchema
         path="/sellers"
         name="Selling Your Home in Post Falls & North Idaho"

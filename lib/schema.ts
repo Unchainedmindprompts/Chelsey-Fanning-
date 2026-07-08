@@ -143,11 +143,16 @@ export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
 }
 
 // ─── FAQ schema ───────────────────────────────────────────────────────────────
-export function buildFAQSchema(faqs: { question: string; answer: string }[], id?: string) {
+export function buildFAQSchema(
+  faqs: { question: string; answer: string }[],
+  id?: string,
+  pageId?: string,
+) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     ...(id ? { "@id": id } : {}),
+    ...(pageId ? { isPartOf: { "@id": pageId } } : {}),
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
@@ -167,6 +172,7 @@ export function buildWebSiteSchema() {
     "@id": `${NAP.url}/#website`,
     name: "Chelsey Fanning | REALTOR® | North Idaho",
     url: NAP.url,
+    inLanguage: "en-US",
     publisher: { "@id": `${NAP.url}/#business` },
   };
 }
@@ -225,6 +231,7 @@ export function buildServiceSchema(service: {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${service.url}#service`,
     name: service.name,
     description: service.description,
     url: service.url,

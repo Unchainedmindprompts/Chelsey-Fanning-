@@ -22,6 +22,7 @@ export default function WebPageSchema({
     "@id": url,
     name,
     url,
+    inLanguage: "en-US",
     isPartOf: { "@id": `${NAP.url}/#website` },
     about: { "@id": `${NAP.url}/#business` },
   };

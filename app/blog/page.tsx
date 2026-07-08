@@ -14,7 +14,7 @@ export const metadata: Metadata = generatePageMetadata({
   keywords: ["North Idaho real estate blog", "Post Falls housing market", "first time buyer tips Idaho"],
 });
 
-function BlogIndexSchema() {
+function BlogIndexSchema({ posts }: { posts: Array<{ slug: string }> }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": ["Blog", "CollectionPage"],
@@ -23,10 +23,13 @@ function BlogIndexSchema() {
     description:
       "Honest takes on the North Idaho market, practical advice for buyers and sellers, and genuine local perspective.",
     url: `${NAP.url}/blog`,
+    inLanguage: "en-US",
     isPartOf: { "@id": `${NAP.url}/#website` },
     about: { "@id": `${NAP.url}/#business` },
     publisher: { "@id": `${NAP.url}/#business` },
     author: { "@id": `${NAP.url}/#agent` },
+    breadcrumb: { "@id": `${NAP.url}/blog#breadcrumb` },
+    hasPart: posts.map((p) => ({ "@id": `${NAP.url}/blog/${p.slug}#article` })),
   };
   return (
     <script
@@ -49,7 +52,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <BlogIndexSchema />
+      <BlogIndexSchema posts={posts} />
       <BreadcrumbSchema
         id={`${NAP.url}/blog#breadcrumb`}
         items={[

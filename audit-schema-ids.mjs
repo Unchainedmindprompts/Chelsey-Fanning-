@@ -7,9 +7,16 @@
  * REFERENCE  = everything else: bare { "@id":"..." } stubs, publisher/author
  *              inline refs, or @id lines whose enclosing object has only @type+@id.
  *
+ * @id detection — three mechanisms:
+ *   (a) Literal:  "@id": "..."  or  "@id": `...`
+ *   (b) Variable: "@id": identifier  → look backward for const binding, resolve
+ *   (c) JSX prop: id={`...`}  (BreadcrumbSchema / FAQSchema id prop)
+ *                 path="..."  (WebPageSchema path prop → NAP.url + path)
+ *
  * False-positive guards:
- *   (a) Remaining ${...} after const-resolution → dynamic/per-instance → skip.
- *   (b) Innermost-object scan prevents outer-context bleed.
+ *   · Remaining ${...} after const-resolution → dynamic/per-instance → skip.
+ *   · Innermost-object scan prevents outer-context bleed.
+ *   · JSX path prop only accepted when value is "" or starts with "/".
  *
  * Exit 0 = PASS. Exit 1 = FAIL.
  */
@@ -104,7 +111,21 @@ function innermostObject(lines, idLineIdx) {
   return objLines.join("\n");
 }
 
-// ── Per-file scanner ──────────────────────────────────────────────────────────
+// ── Variable binding resolver (for "@id": identifier patterns) ────────────────
+// Looks backward in lines[] from fromLine for `const/let/var <varName> = `...``
+// Returns the raw template literal content (without backticks), or null if not found.
+function resolveVarBinding(lines, fromLine, varName) {
+  const re = new RegExp(
+    `(?:const|let|var)\\s+${varName}\\s*=\\s*\`([^\`]+)\``
+  );
+  for (let j = fromLine; j >= Math.max(0, fromLine - 40); j--) {
+    const m = lines[j].match(re);
+    if (m) return m[1];
+  }
+  return null;
+}
+
+// ── Per-file scanner (literal + variable @id patterns) ────────────────────────
 function scanFile(filePath) {
   const src   = fs.readFileSync(filePath, "utf8");
   const lines = src.split("\n");
@@ -112,31 +133,103 @@ function scanFile(filePath) {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    const m = line.match(/"@id"\s*:\s*[`"]([^`"]+)[`"]/);
-    if (!m) continue;
 
-    const rawId = m[1];
-    const id    = resolveConsts(rawId);
-    if (DYNAMIC_RE.test(id)) continue; // per-instance local node — skip
+    // (a) Literal @id: "@id": "..." or "@id": `...`
+    const mLit = line.match(/"@id"\s*:\s*[`"]([^`"]+)[`"]/);
+    if (mLit) {
+      const rawId = mLit[1];
+      const id    = resolveConsts(rawId);
+      if (DYNAMIC_RE.test(id)) continue; // per-instance local node — skip
 
-    // Extract innermost object containing this @id
-    const objSrc = innermostObject(lines, i);
+      const objSrc = innermostObject(lines, i);
+      const hasAtType    = /"@type"\s*:/.test(objSrc);
+      const defPropCount = (objSrc.match(DEF_PROPS_RE) ?? []).length;
+      const isDef = hasAtType && defPropCount >= 2;
 
-    const hasAtType    = /"@type"\s*:/.test(objSrc);
-    const defPropCount = (objSrc.match(DEF_PROPS_RE) ?? []).length;
+      hits.push({
+        kind: isDef ? "def" : "ref",
+        id,
+        file: path.relative(ROOT, filePath),
+        ln: i + 1,
+      });
+      continue;
+    }
 
-    // DEFINITION: innermost object has @type + at least 2 meaningful properties.
-    // "@type" + "@id" + name-only = type-name stub (NAP-stub ref) — NOT a def.
-    // This allows itemReviewed: { @type, @id, name } to pass as a ref, which is
-    // required because Google's Review snippet validator mandates name on itemReviewed.
-    const isDef = hasAtType && defPropCount >= 2;
+    // (b) Variable @id: "@id": identifier  (not string/template)
+    // Only match when the identifier is a plain JS name, not a string/template.
+    const mVar = line.match(/"@id"\s*:\s*([a-zA-Z_$]\w*)\b/);
+    if (mVar) {
+      const varName = mVar[1];
+      const rawVal  = resolveVarBinding(lines, i, varName);
+      if (rawVal === null) continue; // parameter or unresolvable — skip
 
-    hits.push({
-      kind: isDef ? "def" : "ref",
-      id,
-      file: path.relative(ROOT, filePath),
-      ln: i + 1,
-    });
+      const id = resolveConsts(rawVal);
+      if (DYNAMIC_RE.test(id)) continue; // per-instance (slug, path param) — skip
+
+      const objSrc = innermostObject(lines, i);
+      const hasAtType    = /"@type"\s*:/.test(objSrc);
+      const defPropCount = (objSrc.match(DEF_PROPS_RE) ?? []).length;
+      const isDef = hasAtType && defPropCount >= 2;
+
+      hits.push({
+        kind: isDef ? "def" : "ref",
+        id,
+        file: path.relative(ROOT, filePath),
+        ln: i + 1,
+        via: "var",
+      });
+    }
+  }
+
+  return hits;
+}
+
+// ── JSX prop scanner ──────────────────────────────────────────────────────────
+// Detects @ids emitted by schema components via their JSX props:
+//   · id={`...`}   → BreadcrumbSchema / FAQSchema pass this directly as "@id"
+//   · path="..."   → WebPageSchema computes "@id" as NAP.url + path
+//
+// These are full entity definitions (the components emit @type + properties),
+// so all hits are classified as "def".
+function scanJsxProps(filePath) {
+  const src   = fs.readFileSync(filePath, "utf8");
+  const lines = src.split("\n");
+  const hits  = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
+    // BreadcrumbSchema / FAQSchema: id={`${NAP.url}/...`}
+    const mId = line.match(/\bid\s*=\s*\{`([^`]+)`\}/);
+    if (mId) {
+      const id = resolveConsts(mId[1]);
+      if (!DYNAMIC_RE.test(id) && id.startsWith("https://chelseyfanning.com")) {
+        hits.push({
+          kind: "def",
+          id,
+          file: path.relative(ROOT, filePath),
+          ln: i + 1,
+          via: "jsx-id",
+        });
+      }
+    }
+
+    // WebPageSchema: path="..." or path={"..."} → "@id" = NAP.url + path
+    // Only accept "" (homepage) or "/..." (rooted paths).
+    const mPath = line.match(/\bpath\s*=\s*(?:"([^"]*)"|\{"([^"]*)"\})/);
+    if (mPath) {
+      const pathVal = mPath[1] ?? mPath[2];
+      if (pathVal === "" || pathVal.startsWith("/")) {
+        const id = `https://chelseyfanning.com${pathVal}`;
+        hits.push({
+          kind: "def",
+          id,
+          file: path.relative(ROOT, filePath),
+          ln: i + 1,
+          via: "jsx-path",
+        });
+      }
+    }
   }
 
   return hits;
@@ -150,13 +243,19 @@ for (const dir of SCAN_DIRS) {
   const full = path.join(ROOT, dir);
   if (!fs.existsSync(full)) continue;
   for (const f of walkTs(full)) {
+    // Literal + variable @id scan
     for (const hit of scanFile(f)) {
       if (hit.kind === "def") {
         if (!defs.has(hit.id)) defs.set(hit.id, []);
-        defs.get(hit.id).push({ file: hit.file, ln: hit.ln });
+        defs.get(hit.id).push({ file: hit.file, ln: hit.ln, via: hit.via });
       } else {
         refs.push(hit);
       }
+    }
+    // JSX prop scan (adds component call-site @ids as definitions)
+    for (const hit of scanJsxProps(f)) {
+      if (!defs.has(hit.id)) defs.set(hit.id, []);
+      defs.get(hit.id).push({ file: hit.file, ln: hit.ln, via: hit.via });
     }
   }
 }
@@ -169,8 +268,8 @@ for (const [id, locs] of [...defs.entries()].sort()) {
   const dup = locs.length > 1;
   if (dup) pass = false;
   console.log(`${dup ? "✗ DUP  " : "  OK   "} ${id}`);
-  for (const { file, ln } of locs)
-    console.log(`         ${file}:${ln}`);
+  for (const { file, ln, via } of locs)
+    console.log(`         ${file}:${ln}${via ? `  [${via}]` : ""}`);
 }
 
 console.log("\n══ REFERENCES → definition check ══════════════════════════");
