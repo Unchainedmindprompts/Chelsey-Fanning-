@@ -2,6 +2,25 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+export interface ListingFrontmatter {
+  status: "active" | "sold";
+  price: number;
+  address: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  beds: number;
+  baths: number;
+  sqft: number;
+  acres?: number;
+  yearBuilt?: number;
+  url?: string;
+  mlsId?: string;
+  datePosted: string;
+  dateSold?: string;
+}
+
 export interface ReviewSource {
   reviewerId: string;
   reviewerName: string;
@@ -26,6 +45,9 @@ export interface BlogPost {
   featured?: boolean;
   displayOrder?: number;
   faqs?: Array<{ question: string; answer: string }>;
+  about?: Array<Record<string, unknown>>;
+  mentions?: Array<Record<string, unknown>>;
+  listing?: ListingFrontmatter;
   readingTime: number;
   content: string;
 }
@@ -62,6 +84,9 @@ export function getAllPosts(): BlogPost[] {
         featured: data.featured,
         displayOrder: data.displayOrder,
         faqs: data.faqs,
+        about: data.about,
+        mentions: data.mentions,
+        listing: data.listing,
         readingTime: estimateReadingTime(content),
         content,
       } satisfies BlogPost;
@@ -90,6 +115,9 @@ export function getPostBySlug(slug: string): BlogPost | null {
     featured: data.featured,
     displayOrder: data.displayOrder,
     faqs: data.faqs,
+    about: data.about,
+    mentions: data.mentions,
+    listing: data.listing,
     readingTime: estimateReadingTime(content),
     content,
   };

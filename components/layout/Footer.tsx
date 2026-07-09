@@ -11,6 +11,14 @@ const QUICK_LINKS = [
   { label: "Contact",      href: "/contact" },
 ];
 
+const SERVICE_AREA_LINKS = [
+  { label: "Post Falls",    href: "/areas/post-falls" },
+  { label: "Coeur d'Alene", href: "/areas/coeur-dalene" },
+  { label: "Hayden",        href: "/areas/hayden" },
+  { label: "Rathdrum",      href: "/areas/rathdrum" },
+  { label: "Spirit Lake",   href: "/areas/spirit-lake" },
+];
+
 const FOOTER_BG      = "#0F1123";
 const FOOTER_HEADING = "#FFFFFF";
 const FOOTER_BODY    = "#94A3C0";
@@ -41,7 +49,7 @@ export default function Footer() {
   return (
     <footer style={{ backgroundColor: FOOTER_BG, color: FOOTER_BODY }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
 
           {/* Brand column */}
           <div className="lg:col-span-2">
@@ -119,6 +127,29 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {QUICK_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm transition-colors hover:text-white"
+                    style={{ color: FOOTER_BODY }}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Service Areas column */}
+          <div>
+            <h3
+              className="text-sm font-semibold uppercase tracking-widest mb-5"
+              style={{ fontFamily: "var(--font-roboto)", color: FOOTER_HEADING }}
+            >
+              Service Areas
+            </h3>
+            <ul className="space-y-3">
+              {SERVICE_AREA_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

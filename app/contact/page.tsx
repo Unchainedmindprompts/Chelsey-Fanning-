@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { generatePageMetadata } from "@/lib/metadata";
-import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
+import WebPageSchema from "@/components/schema/WebPageSchema";
+import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
 import { NAP } from "@/lib/schema";
 import ContactForm from "./ContactForm";
 
@@ -15,7 +16,19 @@ export const metadata: Metadata = generatePageMetadata({
 export default function ContactPage() {
   return (
     <>
-      <LocalBusinessSchema />
+      <WebPageSchema
+        type="ContactPage"
+        path="/contact"
+        name="Contact Chelsey Fanning — REALTOR® Post Falls, Idaho"
+        breadcrumbId={`${NAP.url}/contact#breadcrumb`}
+      />
+      <BreadcrumbSchema
+        id={`${NAP.url}/contact#breadcrumb`}
+        items={[
+          { name: "Home", url: NAP.url },
+          { name: "Contact" },
+        ]}
+      />
 
       <section
         className="pt-36 pb-20"

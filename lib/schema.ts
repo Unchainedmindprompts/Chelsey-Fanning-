@@ -1,11 +1,15 @@
-import { AGGREGATE_RATING } from "@/content/testimonials";
-
-// ─── Shared sameAs profiles ───────────────────────────────────────────────────
+// ─── Shared sameAs profiles ───────────────────────────────────────
+// Rule 3: sameAs on the entity it represents.
+// Business/location directory listings → #business
 export const CHELSEA_SAME_AS = [
   "https://www.google.com/maps/place/Chelsey+Fanning+%7C+EXP+Realty/@47.7017621,-117.0105906,17z/data=!3m2!4b1!5s0x5361dd207347a5a9:0x87198999aad55a76!4m6!3m5!1s0x4a524c972f2da505:0xa86d95d4b35ac75c!8m2!3d47.7017621!4d-117.0105906!16s%2Fg%2F11szjk3vmc",
   "https://www.bing.com/maps?ss=ypid.YN4C9F60D2EBC9BE8F",
   "https://www.yelp.com/biz/chelsey-fanning-exp-realty-post-falls",
   "https://www.bbb.org/us/id/post-falls/profile/real-estate-agent/chelsey-fanning-realtor-1296-1000195312",
+];
+
+// Agent-directory profiles that represent Chelsey as a licensed professional → #agent
+const AGENT_SAME_AS = [
   "https://www.zillow.com/profile/ChelseyFanning",
   "https://www.facebook.com/cfanningrealtor",
   "https://www.instagram.com/life_with_chels",
@@ -14,7 +18,7 @@ export const CHELSEA_SAME_AS = [
   "https://www.realtor.com/realestateagents/5bc7b0ea76e8ec0011336928",
 ];
 
-// ─── NAP constants ────────────────────────────────────────────────────────────
+// ─── NAP constants ────────────────────────────────────────────
 export const NAP = {
   name: "Chelsey Fanning",
   title: "REALTOR®",
@@ -29,27 +33,39 @@ export const NAP = {
     addressCountry: "US",
   },
   geo: {
-    latitude: 47.7182,
-    longitude: -116.9443,
+    latitude: 47.7017621,
+    longitude: -117.0105906,
   },
   url: "https://chelseyfanning.com",
 };
 
-// ─── Service area cities ──────────────────────────────────────────────────────
+// ─── Service area cities ────────────────────────────────────────────
 export const SERVICE_AREAS = [
-  "Post Falls",
-  "Coeur d'Alene",
-  "Hayden",
-  "Rathdrum",
-  "Spirit Lake",
+  { name: "Post Falls",     sameAs: "https://en.wikipedia.org/wiki/Post_Falls,_Idaho",       url: `${NAP.url}/areas/post-falls` },
+  { name: "Coeur d'Alene", sameAs: "https://en.wikipedia.org/wiki/Coeur_d%27Alene,_Idaho",  url: `${NAP.url}/areas/coeur-dalene` },
+  { name: "Hayden",         sameAs: "https://en.wikipedia.org/wiki/Hayden,_Idaho",            url: `${NAP.url}/areas/hayden` },
+  { name: "Rathdrum",       sameAs: "https://en.wikipedia.org/wiki/Rathdrum,_Idaho",          url: `${NAP.url}/areas/rathdrum` },
+  { name: "Spirit Lake",    sameAs: "https://en.wikipedia.org/wiki/Spirit_Lake,_Idaho",       url: `${NAP.url}/areas/spirit-lake` },
 ];
 
-// ─── Shared Person node — embedded in LocalBusiness and used standalone on /about ──
+// ─── Canonical Person node — defined ONCE here, emitted on the homepage ───────
+// Rule 4: @type is "Person" only. Profession expressed via jobTitle + hasOccupation.
+// Rule 3: sameAs split — agent-directory profiles here; business/location profiles on #business.
+// Bidirectional: #business → founder → #agent; #agent → affiliation → #business
 const AGENT_PERSON_NODE = {
-  "@type": ["Person", "RealEstateAgent"],
+  "@type": "Person",
   "@id": `${NAP.url}/#agent`,
   name: NAP.name,
   jobTitle: NAP.title,
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "Real Estate Agent",
+    occupationLocation: {
+      "@type": "City",
+      name: "Post Falls",
+      containedInPlace: { "@type": "State", name: "Idaho" },
+    },
+  },
   hasCredential: "Idaho Real Estate License LC54829",
   description:
     "Chelsey Fanning is a licensed REALTOR® (Idaho License LC54829) with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake in North Idaho. With 7+ years of experience and over 100 transactions closed, she specializes in first-time home buyers, move-up families, and luxury properties. Her approach is built on three values: making real estate simple, keeping the process helpful, and ensuring every transaction is an enjoyable experience for her clients.",
@@ -57,13 +73,14 @@ const AGENT_PERSON_NODE = {
   image: `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
   telephone: NAP.phone,
   email: NAP.email,
-  sameAs: CHELSEA_SAME_AS,
   worksFor: {
     "@type": "Organization",
     "@id": "https://www.exprealty.com/#organization",
     name: "eXp Realty",
     url: "https://www.exprealty.com",
   },
+  affiliation: { "@id": `${NAP.url}/#business` },
+  sameAs: AGENT_SAME_AS,
   knowsAbout: [
     "Residential real estate",
     "First-time homebuyers",
@@ -74,19 +91,15 @@ const AGENT_PERSON_NODE = {
     "North Idaho real estate market",
     "Post Falls real estate",
     "Coeur d'Alene real estate",
+    "Hayden real estate",
+    "Rathdrum real estate",
+    "Spirit Lake real estate",
     "Competitive offer strategy",
     "Real estate negotiation",
   ],
-  areaServed: [
-    "Post Falls Idaho",
-    "Coeur d'Alene Idaho",
-    "Hayden Idaho",
-    "Rathdrum Idaho",
-    "Spirit Lake Idaho",
-  ],
 };
 
-// ─── LocalBusiness + RealEstateAgent schema ───────────────────────────────────
+// ─── LocalBusiness + RealEstateAgent schema ─────────────────────────────────
 export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}) {
   return {
     "@context": "https://schema.org",
@@ -94,7 +107,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
     "@type": ["LocalBusiness", "RealEstateAgent"],
     name: NAP.name,
     description:
-      "Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, and all of North Idaho.",
+      "Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and all of North Idaho.",
     url: NAP.url,
     telephone: NAP.phone,
     email: NAP.email,
@@ -109,21 +122,19 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
     },
     areaServed: SERVICE_AREAS.map((city) => ({
       "@type": "City",
-      name: city,
+      name: city.name,
+      sameAs: city.sameAs,
+      url: city.url,
     })),
     sameAs: CHELSEA_SAME_AS,
     image: `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
     priceRange: "$$",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ...AGGREGATE_RATING,
-    },
-    founder: AGENT_PERSON_NODE,
+    founder: { "@id": `${NAP.url}/#agent` },
     ...overrides,
   };
 }
 
-// ─── Person + RealEstateAgent schema ─────────────────────────────────────────
+// ─── Person + RealEstateAgent schema ──────────────────────────────────────
 export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
   return {
     "@context": "https://schema.org",
@@ -132,12 +143,17 @@ export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
   };
 }
 
-// ─── FAQ schema ───────────────────────────────────────────────────────────────
-export function buildFAQSchema(faqs: { question: string; answer: string }[], id?: string) {
+// ─── FAQ schema ────────────────────────────────────────────────────────────────
+export function buildFAQSchema(
+  faqs: { question: string; answer: string }[],
+  id?: string,
+  pageId?: string,
+) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     ...(id ? { "@id": id } : {}),
+    ...(pageId ? { isPartOf: { "@id": pageId } } : {}),
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
@@ -149,7 +165,7 @@ export function buildFAQSchema(faqs: { question: string; answer: string }[], id?
   };
 }
 
-// ─── WebSite schema ───────────────────────────────────────────────────────────
+// ─── WebSite schema ────────────────────────────────────────────────────────
 export function buildWebSiteSchema() {
   return {
     "@context": "https://schema.org",
@@ -157,13 +173,12 @@ export function buildWebSiteSchema() {
     "@id": `${NAP.url}/#website`,
     name: "Chelsey Fanning | REALTOR® | North Idaho",
     url: NAP.url,
-    publisher: {
-      "@id": `${NAP.url}/#agent`,
-    },
+    inLanguage: "en-US",
+    publisher: { "@id": `${NAP.url}/#business` },
   };
 }
 
-// ─── Article schema ───────────────────────────────────────────────────────────
+// ─── Article schema ────────────────────────────────────────────────────────────
 export function buildArticleSchema(article: {
   title: string;
   description: string;
@@ -171,69 +186,44 @@ export function buildArticleSchema(article: {
   datePublished: string;
   dateModified?: string;
   imageUrl?: string;
+  about?: Array<Record<string, unknown>>;
+  mentions?: Array<Record<string, unknown>>;
 }) {
-  return {
+  const imageUrl = article.imageUrl
+    ? article.imageUrl.startsWith("http") ? article.imageUrl : `${NAP.url}${article.imageUrl}`
+    : `${NAP.url}/chelsey-hero-periwinkle.jpeg`;
+
+  // Ensure dates are full ISO 8601 with timezone (Mountain Time, UTC-7)
+  const toISO = (d: string) => /T/.test(d) ? d : `${d}T00:00:00-07:00`;
+
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${NAP.url}/blog/${article.slug}#article`,
     headline: article.title,
     description: article.description,
     url: `${NAP.url}/blog/${article.slug}`,
-    datePublished: article.datePublished,
-    dateModified: article.dateModified ?? article.datePublished,
-    author: {
-      "@id": `${NAP.url}/#agent`,
+    datePublished: toISO(article.datePublished),
+    dateModified: toISO(article.dateModified ?? article.datePublished),
+    author: { "@id": `${NAP.url}/#agent` },
+    publisher: { "@id": `${NAP.url}/#business` },
+    image: {
+      "@type": "ImageObject",
+      url: imageUrl,
+      width: 1200,
+      height: 630,
     },
-    publisher: {
-      "@id": `${NAP.url}/#business`,
-    },
-    image: article.imageUrl
-      ? article.imageUrl.startsWith("http") ? article.imageUrl : `${NAP.url}${article.imageUrl}`
-      : `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${NAP.url}/blog/${article.slug}`,
-    },
+    mainEntityOfPage: `${NAP.url}/blog/${article.slug}`,
+    isPartOf: { "@id": `${NAP.url}/blog` },
   };
+
+  if (article.about?.length) schema.about = article.about;
+  if (article.mentions?.length) schema.mentions = article.mentions;
+
+  return schema;
 }
 
-// ─── Review / AggregateRating schema ─────────────────────────────────────────
-export function buildAggregateRatingSchema(reviews: {
-  author: string;
-  rating: number;
-  body: string;
-  date: string;
-}[]) {
-  return {
-    "@context": "https://schema.org",
-    "@id": `${NAP.url}/#business`,
-    "@type": "RealEstateAgent",
-    name: NAP.name,
-    url: NAP.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: (
-        reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-      ).toFixed(1),
-      reviewCount: reviews.length,
-      bestRating: "5",
-      worstRating: "1",
-    },
-    review: reviews.map((r) => ({
-      "@type": "Review",
-      author: { "@type": "Person", name: r.author },
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: r.rating,
-        bestRating: "5",
-        worstRating: "1",
-      },
-      reviewBody: r.body,
-      datePublished: r.date,
-    })),
-  };
-}
-
-// ─── Service schema ───────────────────────────────────────────────────────────
+// ─── Service schema ────────────────────────────────────────────────────────────
 export function buildServiceSchema(service: {
   name: string;
   description: string;
@@ -242,12 +232,13 @@ export function buildServiceSchema(service: {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${service.url}#service`,
     name: service.name,
     description: service.description,
     url: service.url,
     provider: {
       "@id": `${NAP.url}/#business`,
     },
-    areaServed: SERVICE_AREAS.map((city) => ({ "@type": "City", name: city })),
+    areaServed: SERVICE_AREAS.map((city) => ({ "@type": "City", name: city.name, sameAs: city.sameAs })),
   };
 }

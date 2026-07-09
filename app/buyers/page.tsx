@@ -4,7 +4,10 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 import Button from "@/components/ui/Button";
 import ContactCTA from "@/components/sections/ContactCTA";
 import FAQSchema from "@/components/schema/FAQSchema";
-import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
+import WebPageSchema from "@/components/schema/WebPageSchema";
+import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
+import ServiceSchema from "@/components/schema/ServiceSchema";
+import { NAP } from "@/lib/schema";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Home Buyers in Post Falls & North Idaho",
@@ -88,8 +91,25 @@ const BUYER_FAQS = [
 export default function BuyersPage() {
   return (
     <>
-      <FAQSchema faqs={BUYER_FAQS} id="https://chelseyfanning.com/buyers#faq" />
-      <LocalBusinessSchema />
+      <FAQSchema faqs={BUYER_FAQS} id={`${NAP.url}/buyers#faq`} pageId={`${NAP.url}/buyers`} />
+      <WebPageSchema
+        path="/buyers"
+        name="Home Buyers in Post Falls & North Idaho"
+        description="Chelsey Fanning helps buyers find homes across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake in North Idaho."
+        breadcrumbId={`${NAP.url}/buyers#breadcrumb`}
+      />
+      <BreadcrumbSchema
+        id={`${NAP.url}/buyers#breadcrumb`}
+        items={[
+          { name: "Home", url: NAP.url },
+          { name: "Buyers" },
+        ]}
+      />
+      <ServiceSchema
+        name="Buyer Representation"
+        description="Full-service buyer representation for home purchases across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake in North Idaho — from search through closing."
+        url={`${NAP.url}/buyers`}
+      />
 
       {/* Page hero */}
       <section

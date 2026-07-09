@@ -4,7 +4,7 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
-import type { ReviewSource } from "@/lib/blog";
+import type { ListingFrontmatter } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
 import ArticleSchema from "@/components/schema/ArticleSchema";
 import { NAP } from "@/lib/schema";
@@ -39,6 +39,7 @@ function FAQSchema({ faqs, slug }: { faqs: Array<{ question: string; answer: str
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "@id": `${NAP.url}/blog/${slug}#faq`,
+    isPartOf: { "@id": `${NAP.url}/blog/${slug}` },
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.question,
@@ -53,34 +54,40 @@ function FAQSchema({ faqs, slug }: { faqs: Array<{ question: string; answer: str
   );
 }
 
-// Review schema — renders only when reviewSource frontmatter is present
-function ReviewSchema({ review, slug }: { review: ReviewSource; slug: string }) {
+// Listing schema — renders only when listing frontmatter is present
+function ListingSchema({ listing, slug }: { listing: ListingFrontmatter; slug: string }) {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "Review",
-    "@id": `${NAP.url}/reviews/${review.reviewerId}`,
-    author: {
-      "@type": "Person",
-      name: review.reviewerName,
+    "@type": "RealEstateListing",
+    "@id": `${NAP.url}/blog/${slug}#listing`,
+    name: listing.address,
+    datePosted: (/T/.test(listing.datePosted) ? listing.datePosted : `${listing.datePosted}T00:00:00-07:00`),
+    offers: {
+      "@type": "Offer",
+      price: String(listing.price),
+      priceCurrency: "USD",
+      availability: listing.status === "active"
+        ? "https://schema.org/InStock"
+        : "https://schema.org/SoldOut",
+      seller: { "@id": `${NAP.url}/#agent` },
     },
-    datePublished: review.reviewDate,
-    reviewBody: review.reviewBody,
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: String(review.rating),
-      bestRating: "5",
-      worstRating: "1",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: listing.streetAddress,
+      addressLocality: listing.addressLocality,
+      addressRegion: listing.addressRegion,
+      postalCode: listing.postalCode,
+      addressCountry: "US",
     },
-    itemReviewed: {
-      "@type": ["LocalBusiness", "RealEstateAgent"],
-      "@id": `${NAP.url}/#business`,
-      name: "Chelsey Fanning",
-    },
-    subjectOf: {
-      "@id": `${NAP.url}/blog/${slug}`,
-    },
+    numberOfBedrooms: listing.beds,
+    numberOfBathroomsTotal: listing.baths,
+    floorSize: { "@type": "QuantitativeValue", value: listing.sqft, unitCode: "FTK" },
+    subjectOf: { "@id": `${NAP.url}/blog/${slug}` },
   };
-  if (review.reviewUrl) schema.url = review.reviewUrl;
+  if (listing.yearBuilt) schema.yearBuilt = listing.yearBuilt;
+  if (listing.acres) schema.lotSize = { "@type": "QuantitativeValue", value: listing.acres, unitText: "acres" };
+  if (listing.url) schema.url = listing.url;
+  if (listing.mlsId) schema.identifier = listing.mlsId;
   return (
     <script
       type="application/ld+json"
@@ -89,11 +96,33 @@ function ReviewSchema({ review, slug }: { review: ReviewSource; slug: string }) 
   );
 }
 
-// Breadcrumb schema helper
+function ArticleWebPageSchema({ post }: { post: { slug: string; title: string; description: string } }) {
+  const url = `${NAP.url}/blog/${post.slug}`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": url,
+    name: post.title,
+    url,
+    description: post.description,
+    inLanguage: "en-US",
+    isPartOf: { "@id": `${NAP.url}/#website` },
+    about: { "@id": `${NAP.url}/#business` },
+    breadcrumb: { "@id": `${NAP.url}/blog/${post.slug}#breadcrumb` },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 function BreadcrumbSchema({ post }: { post: { slug: string; title: string } }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${NAP.url}/blog/${post.slug}#breadcrumb`,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: NAP.url },
       { "@type": "ListItem", position: 2, name: "Blog", item: `${NAP.url}/blog` },
@@ -128,10 +157,13 @@ export default async function BlogPostPage({ params }: Props) {
         datePublished={post.date}
         dateModified={post.dateModified}
         imageUrl={post.imageUrl}
+        about={post.about}
+        mentions={post.mentions}
       />
       <BreadcrumbSchema post={post} />
+      <ArticleWebPageSchema post={post} />
       {post.faqs && post.faqs.length > 0 && <FAQSchema faqs={post.faqs} slug={post.slug} />}
-      {post.reviewSource && <ReviewSchema review={post.reviewSource} slug={post.slug} />}
+      {post.listing && <ListingSchema listing={post.listing} slug={post.slug} />}
 
       <article style={{ backgroundColor: "var(--color-base)" }}>
         {/* Article header */}

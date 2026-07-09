@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { NAP } from "@/lib/schema";
 
-const BASE_URL = "https://chelseyfanning.com";
+const BASE_URL = NAP.url;
 const SITE_NAME = "Chelsey Fanning · Realtor · Post Falls, ID";
 const DEFAULT_OG_IMAGE = "/chelsey-hero-periwinkle.jpeg";
 
