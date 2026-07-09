@@ -33,8 +33,8 @@ export const NAP = {
     addressCountry: "US",
   },
   geo: {
-    latitude: 47.7182,
-    longitude: -116.9443,
+    latitude: 47.7017621,
+    longitude: -117.0105906,
   },
   url: "https://chelseyfanning.com",
 };
@@ -117,9 +117,6 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
     },
     geo: {
       "@type": "GeoCoordinates",
-      // TODO: confirm these match the actual Google Maps / Bing office pin before going live.
-      // Current values (47.7182, -116.9443) differ ~2 mi from the Google Maps sameAs URL pin
-      // (47.7017621, -117.0105906). Use whichever matches the authoritative public listing.
       latitude: NAP.geo.latitude,
       longitude: NAP.geo.longitude,
     },
