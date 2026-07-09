@@ -23,29 +23,6 @@ export const metadata: Metadata = generatePageMetadata({
   ],
 });
 
-function InsiderSlot({ children }: { children: React.ReactNode }) {
-  if (process.env.NODE_ENV === "production") return null;
-  return (
-    <div
-      className="rounded-xl px-6 py-4 my-6 text-sm italic leading-relaxed"
-      style={{
-        backgroundColor: "rgba(99,102,241,0.06)",
-        border: "1px dashed #6366f1",
-        color: "var(--color-muted)",
-        fontFamily: "var(--font-roboto)",
-      }}
-    >
-      <span
-        className="block text-xs font-semibold uppercase tracking-widest mb-1 not-italic"
-        style={{ color: "#6366f1" }}
-      >
-        ⚠ dev only — insider note needed
-      </span>
-      {children}
-    </div>
-  );
-}
-
 export default function PostFallsPage() {
   return (
     <>
@@ -139,10 +116,6 @@ export default function PostFallsPage() {
               across price points.
             </p>
           </div>
-          <InsiderSlot>
-            Which Post Falls subdivisions are moving fastest right now, and which are sitting? Any
-            street or view corridor that commands a premium worth naming here?
-          </InsiderSlot>
         </div>
       </SectionWrapper>
 
@@ -222,11 +195,6 @@ export default function PostFallsPage() {
               figuring that out is half of what I do up front.
             </p>
           </div>
-          <InsiderSlot>
-            Where is out-of-state relocation money landing in Post Falls right now, and how often
-            are you seeing multiple offers? One or two current, honest specifics make this section
-            un-fakeable.
-          </InsiderSlot>
         </div>
       </SectionWrapper>
 
