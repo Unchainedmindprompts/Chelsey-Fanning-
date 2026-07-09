@@ -118,9 +118,11 @@ export default function PostFallsPage() {
               homes with its own park, tends to draw families wanting a newer subdivision feel.
               Along the river, <strong>South Shore</strong> and the areas near the city center run
               to the higher end, including the limited stretch of Spokane River waterfront. Newer
-              communities like <strong>Crown Reserve</strong> (a 148-lot first phase approved in
-              2025) and <strong>The Parkllyn</strong>, a 55+ community, keep adding inventory
-              across price points.
+              communities keep adding inventory across price points — from{" "}
+              <strong>Crown Reserve</strong> (a 148-lot first phase approved in 2025) to{" "}
+              <strong>The Parkllyn</strong>, an Architerra family community built around three
+              parks, playgrounds, and pickleball courts, with homes starting in the
+              mid-$450,000s.
             </p>
           </div>
         </div>
