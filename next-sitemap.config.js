@@ -10,7 +10,18 @@ const config = {
   transform: async (config, path) => {
     // Higher priority for core pages
     const highPriority = ["/", "/about", "/buyers", "/sellers", "/testimonials", "/contact"];
-    const priority = highPriority.includes(path) ? 1.0 : config.priority;
+    const mediumHighPriority = [
+      "/areas/post-falls",
+      "/areas/coeur-dalene",
+      "/areas/hayden",
+      "/areas/rathdrum",
+      "/areas/spirit-lake",
+    ];
+    const priority = highPriority.includes(path)
+      ? 1.0
+      : mediumHighPriority.includes(path)
+        ? 0.9
+        : config.priority;
 
     return {
       loc: path,
