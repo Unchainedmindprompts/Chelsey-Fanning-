@@ -24,21 +24,22 @@ export const metadata: Metadata = generatePageMetadata({
 });
 
 function InsiderSlot({ children }: { children: React.ReactNode }) {
+  if (process.env.NODE_ENV === "production") return null;
   return (
     <div
       className="rounded-xl px-6 py-4 my-6 text-sm italic leading-relaxed"
       style={{
-        backgroundColor: "rgba(var(--color-primary-rgb, 99,102,241),0.06)",
-        border: "1px dashed var(--color-primary)",
+        backgroundColor: "rgba(99,102,241,0.06)",
+        border: "1px dashed #6366f1",
         color: "var(--color-muted)",
         fontFamily: "var(--font-roboto)",
       }}
     >
       <span
         className="block text-xs font-semibold uppercase tracking-widest mb-1 not-italic"
-        style={{ color: "var(--color-primary)" }}
+        style={{ color: "#6366f1" }}
       >
-        Chelsey — insider note needed
+        ⚠ dev only — insider note needed
       </span>
       {children}
     </div>
