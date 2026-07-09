@@ -1,17 +1,46 @@
-interface Stat {
+import type { ReactNode } from "react";
+
+export interface SnapshotStat {
   label: string;
   value: string;
   note?: string;
 }
 
-const STATS: Stat[] = [
-  { label: "Median Sale Price",         value: "~$525,000", note: "3 months ending May 2026; up ~4% YoY" },
-  { label: "Avg. Days on Market",       value: "14 days",   note: "Among the fastest in Kootenai County" },
-  { label: "Months of Supply",          value: "1.85 mo.",  note: "Single-family homes, early 2026" },
-  { label: "Median Price / Sq. Ft.",    value: "~$283",     note: "" },
-];
+interface MarketSnapshotProps {
+  city: string;
+  asOf?: string;
+  stats: SnapshotStat[];
+  footnote?: ReactNode;
+}
 
-export default function MarketSnapshot() {
+const DEFAULT_FOOTNOTE = (
+  <>
+    Figures reflect the most recent available data and are updated periodically.
+    For a current, address-specific read,{" "}
+    <a
+      href="/contact"
+      className="underline hover:opacity-80 transition-opacity"
+      style={{ color: "var(--color-primary)" }}
+    >
+      get in touch
+    </a>
+    .
+  </>
+);
+
+export default function MarketSnapshot({
+  city,
+  asOf = "mid-2026",
+  stats,
+  footnote,
+}: MarketSnapshotProps) {
+  const colsClass =
+    stats.length <= 2
+      ? "grid-cols-2"
+      : stats.length === 3
+        ? "grid-cols-2 md:grid-cols-3"
+        : "grid-cols-2 md:grid-cols-4";
+
   return (
     <div
       className="rounded-2xl p-8"
@@ -25,18 +54,18 @@ export default function MarketSnapshot() {
           className="text-sm font-semibold uppercase tracking-widest"
           style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
         >
-          Post Falls Market Snapshot
+          {city} Market Snapshot
         </h3>
         <span
           className="text-xs"
           style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
         >
-          as of mid-2026
+          as of {asOf}
         </span>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {STATS.map((stat) => (
+      <div className={`grid ${colsClass} gap-6`}>
+        {stats.map((stat) => (
           <div key={stat.label}>
             <p
               className="text-2xl font-bold mb-1"
@@ -63,16 +92,7 @@ export default function MarketSnapshot() {
         className="mt-6 text-xs italic leading-relaxed"
         style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
       >
-        Figures reflect the most recent available data and are updated periodically.
-        For a current, address-specific read,{" "}
-        <a
-          href="/contact"
-          className="underline hover:opacity-80 transition-opacity"
-          style={{ color: "var(--color-primary)" }}
-        >
-          get in touch
-        </a>
-        .
+        {footnote ?? DEFAULT_FOOTNOTE}
       </p>
     </div>
   );

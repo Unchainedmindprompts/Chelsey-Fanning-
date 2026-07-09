@@ -10,7 +10,13 @@ const config = {
   transform: async (config, path) => {
     // Higher priority for core pages
     const highPriority = ["/", "/about", "/buyers", "/sellers", "/testimonials", "/contact"];
-    const mediumHighPriority = ["/areas/post-falls"];
+    const mediumHighPriority = [
+      "/areas/post-falls",
+      "/areas/coeur-dalene",
+      "/areas/hayden",
+      "/areas/rathdrum",
+      "/areas/spirit-lake",
+    ];
     const priority = highPriority.includes(path)
       ? 1.0
       : mediumHighPriority.includes(path)

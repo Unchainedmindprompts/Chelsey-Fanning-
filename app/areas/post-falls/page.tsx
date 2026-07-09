@@ -5,8 +5,15 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 import ContactCTA from "@/components/sections/ContactCTA";
 import WebPageSchema from "@/components/schema/WebPageSchema";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
-import MarketSnapshot from "@/components/areas/MarketSnapshot";
+import MarketSnapshot, { type SnapshotStat } from "@/components/areas/MarketSnapshot";
 import { NAP } from "@/lib/schema";
+
+const SNAPSHOT: SnapshotStat[] = [
+  { label: "Median Sale Price",      value: "~$525,000", note: "3 months ending May 2026; up ~4% YoY" },
+  { label: "Avg. Days on Market",    value: "14 days",   note: "Among the fastest in Kootenai County" },
+  { label: "Months of Supply",       value: "1.85 mo.",  note: "Single-family homes, early 2026" },
+  { label: "Median Price / Sq. Ft.", value: "~$283",     note: "" },
+];
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Buying or Selling a Home in Post Falls, ID | Chelsey Fanning, Realtor",
@@ -76,7 +83,7 @@ export default function PostFallsPage() {
 
       {/* Market snapshot */}
       <SectionWrapper background="surface">
-        <MarketSnapshot />
+        <MarketSnapshot city="Post Falls" stats={SNAPSHOT} />
         <div
           className="mt-8 max-w-3xl text-base leading-relaxed"
           style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}

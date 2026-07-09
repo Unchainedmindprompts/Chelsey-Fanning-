@@ -11,13 +11,12 @@ const QUICK_LINKS = [
   { label: "Contact",      href: "/contact" },
 ];
 
-// Add more cities here as their pages are built
 const SERVICE_AREA_LINKS = [
-  { label: "Post Falls", href: "/areas/post-falls" },
-  // { label: "Coeur d'Alene", href: "/areas/coeur-dalene" },
-  // { label: "Hayden",        href: "/areas/hayden" },
-  // { label: "Rathdrum",      href: "/areas/rathdrum" },
-  // { label: "Spirit Lake",   href: "/areas/spirit-lake" },
+  { label: "Post Falls",    href: "/areas/post-falls" },
+  { label: "Coeur d'Alene", href: "/areas/coeur-dalene" },
+  { label: "Hayden",        href: "/areas/hayden" },
+  { label: "Rathdrum",      href: "/areas/rathdrum" },
+  { label: "Spirit Lake",   href: "/areas/spirit-lake" },
 ];
 
 const FOOTER_BG      = "#0F1123";
