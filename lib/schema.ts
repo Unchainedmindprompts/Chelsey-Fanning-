@@ -1,4 +1,4 @@
-// ─── Shared sameAs profiles ─────────────────────────────────────────────
+// ─── Shared sameAs profiles ───────────────────────────────────────
 // Rule 3: sameAs on the entity it represents.
 // Business/location directory listings → #business
 export const CHELSEA_SAME_AS = [
@@ -146,7 +146,8 @@ export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
   };
 }
 
-// ─── FAQ schema ──────────────────────────────────────────────────────────────export function buildFAQSchema(
+// ─── FAQ schema ────────────────────────────────────────────────────────────────
+export function buildFAQSchema(
   faqs: { question: string; answer: string }[],
   id?: string,
   pageId?: string,
