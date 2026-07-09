@@ -1,4 +1,4 @@
-// ─── Shared sameAs profiles ───────────────────────────────────────────────────
+// ─── Shared sameAs profiles ─────────────────────────────────────────────
 // Rule 3: sameAs on the entity it represents.
 // Business/location directory listings → #business
 export const CHELSEA_SAME_AS = [
@@ -18,7 +18,7 @@ const AGENT_SAME_AS = [
   "https://www.realtor.com/realestateagents/5bc7b0ea76e8ec0011336928",
 ];
 
-// ─── NAP constants ────────────────────────────────────────────────────────────
+// ─── NAP constants ────────────────────────────────────────────
 export const NAP = {
   name: "Chelsey Fanning",
   title: "REALTOR®",
@@ -39,13 +39,13 @@ export const NAP = {
   url: "https://chelseyfanning.com",
 };
 
-// ─── Service area cities ──────────────────────────────────────────────────────
+// ─── Service area cities ────────────────────────────────────────────
 export const SERVICE_AREAS = [
-  { name: "Post Falls",     sameAs: "https://en.wikipedia.org/wiki/Post_Falls,_Idaho" },
-  { name: "Coeur d'Alene", sameAs: "https://en.wikipedia.org/wiki/Coeur_d%27Alene,_Idaho" },
-  { name: "Hayden",         sameAs: "https://en.wikipedia.org/wiki/Hayden,_Idaho" },
-  { name: "Rathdrum",       sameAs: "https://en.wikipedia.org/wiki/Rathdrum,_Idaho" },
-  { name: "Spirit Lake",    sameAs: "https://en.wikipedia.org/wiki/Spirit_Lake,_Idaho" },
+  { name: "Post Falls",     sameAs: "https://en.wikipedia.org/wiki/Post_Falls,_Idaho",       url: `${NAP.url}/areas/post-falls` },
+  { name: "Coeur d'Alene", sameAs: "https://en.wikipedia.org/wiki/Coeur_d%27Alene,_Idaho",  url: `${NAP.url}/areas/coeur-dalene` },
+  { name: "Hayden",         sameAs: "https://en.wikipedia.org/wiki/Hayden,_Idaho",            url: `${NAP.url}/areas/hayden` },
+  { name: "Rathdrum",       sameAs: "https://en.wikipedia.org/wiki/Rathdrum,_Idaho",          url: `${NAP.url}/areas/rathdrum` },
+  { name: "Spirit Lake",    sameAs: "https://en.wikipedia.org/wiki/Spirit_Lake,_Idaho",       url: `${NAP.url}/areas/spirit-lake` },
 ];
 
 // ─── Canonical Person node — defined ONCE here, emitted on the homepage ───────
@@ -91,12 +91,15 @@ const AGENT_PERSON_NODE = {
     "North Idaho real estate market",
     "Post Falls real estate",
     "Coeur d'Alene real estate",
+    "Hayden real estate",
+    "Rathdrum real estate",
+    "Spirit Lake real estate",
     "Competitive offer strategy",
     "Real estate negotiation",
   ],
 };
 
-// ─── LocalBusiness + RealEstateAgent schema ───────────────────────────────────
+// ─── LocalBusiness + RealEstateAgent schema ─────────────────────────────────
 export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}) {
   return {
     "@context": "https://schema.org",
@@ -104,7 +107,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
     "@type": ["LocalBusiness", "RealEstateAgent"],
     name: NAP.name,
     description:
-      "Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, and all of North Idaho.",
+      "Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and all of North Idaho.",
     url: NAP.url,
     telephone: NAP.phone,
     email: NAP.email,
@@ -124,6 +127,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
       "@type": "City",
       name: city.name,
       sameAs: city.sameAs,
+      url: city.url,
     })),
     sameAs: CHELSEA_SAME_AS,
     image: `${NAP.url}/chelsey-hero-periwinkle.jpeg`,
@@ -133,7 +137,7 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
   };
 }
 
-// ─── Person + RealEstateAgent schema ─────────────────────────────────────────
+// ─── Person + RealEstateAgent schema ──────────────────────────────────────
 export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
   return {
     "@context": "https://schema.org",
@@ -142,8 +146,7 @@ export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
   };
 }
 
-// ─── FAQ schema ───────────────────────────────────────────────────────────────
-export function buildFAQSchema(
+// ─── FAQ schema ──────────────────────────────────────────────────────────────export function buildFAQSchema(
   faqs: { question: string; answer: string }[],
   id?: string,
   pageId?: string,
@@ -164,7 +167,7 @@ export function buildFAQSchema(
   };
 }
 
-// ─── WebSite schema ───────────────────────────────────────────────────────────
+// ─── WebSite schema ────────────────────────────────────────────────────────
 export function buildWebSiteSchema() {
   return {
     "@context": "https://schema.org",
@@ -177,7 +180,7 @@ export function buildWebSiteSchema() {
   };
 }
 
-// ─── Article schema ───────────────────────────────────────────────────────────
+// ─── Article schema ────────────────────────────────────────────────────────────
 export function buildArticleSchema(article: {
   title: string;
   description: string;
@@ -222,7 +225,7 @@ export function buildArticleSchema(article: {
   return schema;
 }
 
-// ─── Service schema ───────────────────────────────────────────────────────────
+// ─── Service schema ────────────────────────────────────────────────────────────
 export function buildServiceSchema(service: {
   name: string;
   description: string;
