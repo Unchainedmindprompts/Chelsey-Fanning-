@@ -1,13 +1,14 @@
 import { TESTIMONIALS, AGGREGATE_RATING } from "@/content/testimonials";
-import { NAP } from "@/lib/schema";
+import { BRAND_NAME, BUSINESS_ID, NAP } from "@/lib/schema";
 
 export default function ReviewSchema() {
   const reviews = TESTIMONIALS.filter((t) => t.fullText.length > 0);
 
   const schema = {
     "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    name: NAP.name,
+    "@id": BUSINESS_ID,
+    "@type": "Organization",
+    name: BRAND_NAME,
     url: NAP.url,
     aggregateRating: {
       "@type": "AggregateRating",

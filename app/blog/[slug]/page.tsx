@@ -72,7 +72,7 @@ function ReviewSchema({ review, slug }: { review: ReviewSource; slug: string }) 
       worstRating: "1",
     },
     itemReviewed: {
-      "@type": ["LocalBusiness", "RealEstateAgent"],
+      "@type": "Organization",
       "@id": `${NAP.url}/#business`,
       name: "Chelsey Fanning",
     },
