@@ -1,11 +1,12 @@
 # Chelsey Fanning
 
-> Chelsey Fanning is the customer-facing practice of Chelsey Fanning, a licensed Idaho REALTOR® with eXp Realty. She helps buyers and sellers in Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake. Contact is a request for a conversation, not an instant booking.
+> The homepage is about Chelsey Fanning, a licensed Idaho REALTOR® affiliated with eXp Realty. Her Person identity, her customer-facing real-estate practice, and eXp Realty are three separate facts. Contact is a request for a conversation, not an instant booking.
 
 ## Identity
-- Brand: Chelsey Fanning (this website)
-- Person: Chelsey Fanning, licensed REALTOR®, Idaho License LC54829
-- Brokerage: eXp Realty (exprealty.com)
+- Person: Chelsey Fanning, REALTOR®, Idaho License LC54829 (https://chelseyfanning.com/#agent)
+- Practice: Chelsey Fanning | REALTOR® | eXp Realty, typed RealEstateAgent (https://chelseyfanning.com/#business)
+- Brokerage: eXp Realty (https://www.exprealty.com), local node https://chelseyfanning.com/#exp-realty
+- Affiliation is Chelsey → eXp Realty. The practice is not a subsidiary or branch of eXp Realty.
 
 ## Contact
 - Phone: (208) 755-6079
@@ -23,7 +24,7 @@
 - [Contact](https://chelseyfanning.com/contact): Request a conversation — not an instant booking
 
 ## About
-Licensed Idaho REALTOR® (License LC54829) with eXp Realty in Post Falls, Idaho. Markets: Post Falls, Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and North Idaho. Public site copy includes 7+ years serving North Idaho. Google rating published on this site: 5.0 from 27 reviews. No luxury-specialist designation is claimed.
+Licensed Idaho REALTOR® (License LC54829) with eXp Realty in Post Falls, Idaho. Markets: Post Falls, Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and North Idaho. Public site copy includes 7+ years serving North Idaho and 100+ completed transactions. Google rating published on this site: 5.0 from 27 reviews. No luxury-specialist designation is claimed.
 
 ## Blog Posts
 - [What a Jumbo Loan Lender Looks for in a Luxury Real Estate Agent](https://chelseyfanning.com/blog/what-jumbo-loan-lender-looks-for-luxury-real-estate-agent)

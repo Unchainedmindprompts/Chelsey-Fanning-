@@ -1,26 +1,39 @@
 {
   "schema_version": "1.0",
-  "name": "Chelsey Fanning",
-  "description": "Customer-facing practice of licensed Idaho REALTOR® Chelsey Fanning at eXp Realty. She helps buyers and sellers in Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake, including first-time buyers, move-up families, and luxury properties. Contact is a request for a conversation, not an instant booking.",
+  "name": "Chelsey Fanning | REALTOR® | eXp Realty",
+  "description": "Customer-facing real-estate practice of licensed Idaho REALTOR® Chelsey Fanning, affiliated with eXp Realty. She helps buyers and sellers in Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake, including first-time buyers, move-up families, and luxury properties. Contact is a request for a conversation, not an instant booking.",
   "url": "https://chelseyfanning.com",
   "contact": {
     "phone": "+1-208-755-6079",
     "email": "cfanning.realtor@gmail.com",
-    "address": "510 S Clearwater Loop, Suite 100, Post Falls, ID 83854"
+    "address": "510 S Clearwater Loop, Suite 100, Post Falls, ID 83854",
+    "note": "Contact is a request for a conversation, not an instant booking."
   },
-  "brand": {
-    "name": "Chelsey Fanning",
-    "type": "Organization",
-    "url": "https://chelseyfanning.com"
+  "practice": {
+    "id": "https://chelseyfanning.com/#business",
+    "name": "Chelsey Fanning | REALTOR® | eXp Realty",
+    "type": "RealEstateAgent",
+    "url": "https://chelseyfanning.com",
+    "employee": "https://chelseyfanning.com/#agent"
   },
   "agent": {
+    "id": "https://chelseyfanning.com/#agent",
     "name": "Chelsey Fanning",
-    "title": "Licensed REALTOR®",
-    "license": "Idaho Real Estate License LC54829",
-    "brokerage": "eXp Realty"
+    "type": "Person",
+    "title": "REALTOR®",
+    "license": "LC54829",
+    "credential": {
+      "type": "EducationalOccupationalCredential",
+      "credentialCategory": "Real Estate License",
+      "identifier": "LC54829",
+      "recognizedBy": "Idaho Real Estate Commission"
+    },
+    "worksFor": "https://chelseyfanning.com/#exp-realty"
   },
   "brokerage": {
+    "id": "https://chelseyfanning.com/#exp-realty",
     "name": "eXp Realty",
+    "type": "Organization",
     "url": "https://www.exprealty.com"
   },
   "service_area": {

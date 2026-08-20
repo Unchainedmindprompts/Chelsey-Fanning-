@@ -1,24 +1,38 @@
 import { AGGREGATE_RATING } from "@/content/testimonials";
 
-// Three real-world entities — do not collapse them:
-//   #business  Organization "Chelsey Fanning" (customer-facing brand / this website)
-//   #agent     Person "Chelsey Fanning" (licensed REALTOR®)
-//   ORGANIZATION_ID  eXp Realty brokerage (defined on exprealty.com)
+// Homepage entity graph — keep these identities separate:
+//   #business      RealEstateAgent  Chelsey's customer-facing practice
+//   #agent         Person           Chelsey Fanning, licensed Idaho REALTOR®
+//   #exp-realty    Organization     eXp Realty (local node; we do not control exprealty.com)
+//   #website       WebSite
+//   #webpage       WebPage          homepage
+//   #primaryimage  ImageObject      hero image
 //
-// Canonical @ids are preserved. Brand is not the brokerage.
+// Affiliation is Person → worksFor → #exp-realty.
+// The practice is not a subsidiary, branch, or suborganization of eXp Realty.
 
 export const BASE_URL = "https://chelseyfanning.com";
 export const BUSINESS_ID = `${BASE_URL}/#business`;
 export const AGENT_ID = `${BASE_URL}/#agent`;
 export const WEBSITE_ID = `${BASE_URL}/#website`;
-export const ORGANIZATION_ID = "https://www.exprealty.com/#organization";
+export const WEBPAGE_ID = `${BASE_URL}/#webpage`;
+export const PRIMARY_IMAGE_ID = `${BASE_URL}/#primaryimage`;
+export const EXP_REALTY_ID = `${BASE_URL}/#exp-realty`;
 
 export const AGENT_NAME = "Chelsey Fanning";
-export const BRAND_NAME = "Chelsey Fanning";
+export const PRACTICE_NAME = "Chelsey Fanning | REALTOR® | eXp Realty";
+export const BRAND_NAME = PRACTICE_NAME;
 export const BROKERAGE_NAME = "eXp Realty";
 export const BROKERAGE_URL = "https://www.exprealty.com";
 export const LICENSE_NUMBER = "LC54829";
 export const LICENSE_LABEL = `Idaho Real Estate License ${LICENSE_NUMBER}`;
+export const HERO_IMAGE_URL = `${BASE_URL}/chelsey-hero-periwinkle.jpeg`;
+
+export const AGENT_REF = { "@id": AGENT_ID } as const;
+export const PRACTICE_REF = { "@id": BUSINESS_ID } as const;
+export const EXP_REALTY_REF = { "@id": EXP_REALTY_ID } as const;
+export const WEBSITE_REF = { "@id": WEBSITE_ID } as const;
+export const PRIMARY_IMAGE_REF = { "@id": PRIMARY_IMAGE_ID } as const;
 
 export const AGENT_AUTHOR_STUB = {
   "@type": "Person",
@@ -27,16 +41,17 @@ export const AGENT_AUTHOR_STUB = {
 } as const;
 
 export const BRAND_PUBLISHER_STUB = {
-  "@type": "Organization",
+  "@type": "RealEstateAgent",
   "@id": BUSINESS_ID,
-  name: BRAND_NAME,
+  name: PRACTICE_NAME,
 } as const;
 
 export const BROKERAGE_STUB = {
   "@type": "Organization",
-  "@id": ORGANIZATION_ID,
+  "@id": EXP_REALTY_ID,
   name: BROKERAGE_NAME,
   url: BROKERAGE_URL,
+  sameAs: BROKERAGE_URL,
 } as const;
 
 // ─── Shared sameAs profiles ───────────────────────────────────────────────────
@@ -84,55 +99,32 @@ export const SERVICE_AREAS = [
 ];
 
 const AGENT_DESCRIPTION =
-  "Chelsey Fanning is a licensed REALTOR® (Idaho License LC54829) with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake in North Idaho. She works with first-time home buyers, move-up families, and luxury properties. Contact is a request for a conversation, not an instant booking.";
+  "Chelsey Fanning is a licensed REALTOR® (Idaho License LC54829) with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake in North Idaho. With 7+ years serving North Idaho and 100+ completed transactions, she works with first-time home buyers, move-up families, and luxury properties. Contact is a request for a conversation, not an instant booking.";
 
-const BRAND_DESCRIPTION =
-  "Customer-facing practice of licensed Idaho REALTOR® Chelsey Fanning at eXp Realty. Contact is a request for a conversation, not an instant booking.";
+const PRACTICE_DESCRIPTION =
+  "Customer-facing real-estate practice of licensed Idaho REALTOR® Chelsey Fanning, affiliated with eXp Realty. Contact is a request for a conversation, not an instant booking.";
 
-// Full Person definition — used on /about. Other pages should stub #agent.
-const AGENT_PERSON_NODE = {
-  "@type": "Person",
-  "@id": AGENT_ID,
-  name: AGENT_NAME,
-  jobTitle: "Licensed REALTOR®",
-  hasCredential: LICENSE_LABEL,
-  description: AGENT_DESCRIPTION,
-  url: `${BASE_URL}/about`,
-  image: `${BASE_URL}/chelsey-hero-periwinkle.jpeg`,
-  telephone: NAP.phone,
-  email: NAP.email,
-  sameAs: CHELSEA_SAME_AS,
-  worksFor: BROKERAGE_STUB,
-  knowsAbout: [
-    "Residential real estate",
-    "First-time homebuyers",
-    "Luxury real estate",
-    "Relocation",
-    "Buyer representation",
-    "Seller representation",
-    "North Idaho real estate market",
-    "Post Falls real estate",
-    "Coeur d'Alene real estate",
-    "Competitive offer strategy",
-    "Real estate negotiation",
-  ],
-  areaServed: [
-    "Post Falls Idaho",
-    "Coeur d'Alene Idaho",
-    "Hayden Idaho",
-    "Rathdrum Idaho",
-    "Spirit Lake Idaho",
-  ],
-};
+const HOMEPAGE_NAME = "Chelsey Fanning | Realtor in Post Falls, Idaho | eXp Realty";
+const HOMEPAGE_DESCRIPTION =
+  "Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and all of North Idaho. 5-star rated. 100+ transactions.";
 
-// ─── Brand Organization schema (#business) ────────────────────────────────────
-export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}) {
+// ─── Canonical nodes (no @context; defined once, referenced by @id) ───────────
+export function buildExpRealtyNode() {
   return {
-    "@context": "https://schema.org",
-    "@id": BUSINESS_ID,
     "@type": "Organization",
-    name: BRAND_NAME,
-    description: BRAND_DESCRIPTION,
+    "@id": EXP_REALTY_ID,
+    name: BROKERAGE_NAME,
+    url: BROKERAGE_URL,
+    sameAs: BROKERAGE_URL,
+  };
+}
+
+export function buildPracticeNode(overrides: Record<string, unknown> = {}) {
+  return {
+    "@id": BUSINESS_ID,
+    "@type": "RealEstateAgent",
+    name: PRACTICE_NAME,
+    description: PRACTICE_DESCRIPTION,
     url: BASE_URL,
     telephone: NAP.phone,
     email: NAP.email,
@@ -149,9 +141,8 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
       "@type": "City",
       name: city,
     })),
-    image: `${BASE_URL}/chelsey-hero-periwinkle.jpeg`,
-    employee: AGENT_AUTHOR_STUB,
-    parentOrganization: BROKERAGE_STUB,
+    image: HERO_IMAGE_URL,
+    employee: AGENT_REF,
     aggregateRating: {
       "@type": "AggregateRating",
       ...AGGREGATE_RATING,
@@ -160,12 +151,93 @@ export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}
   };
 }
 
+export function buildPersonNode(overrides: Record<string, unknown> = {}) {
+  return {
+    "@type": "Person",
+    "@id": AGENT_ID,
+    name: AGENT_NAME,
+    jobTitle: NAP.title,
+    description: AGENT_DESCRIPTION,
+    url: BASE_URL,
+    image: HERO_IMAGE_URL,
+    telephone: NAP.phone,
+    email: NAP.email,
+    sameAs: CHELSEA_SAME_AS,
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Real Estate License",
+      identifier: LICENSE_NUMBER,
+      recognizedBy: {
+        "@type": "Organization",
+        name: "Idaho Real Estate Commission",
+      },
+    },
+    worksFor: EXP_REALTY_REF,
+    ...overrides,
+  };
+}
+
+export function buildWebSiteNode() {
+  return {
+    "@type": "WebSite",
+    "@id": WEBSITE_ID,
+    name: "Chelsey Fanning | REALTOR® | North Idaho",
+    url: BASE_URL,
+    publisher: PRACTICE_REF,
+  };
+}
+
+export function buildPrimaryImageNode() {
+  return {
+    "@type": "ImageObject",
+    "@id": PRIMARY_IMAGE_ID,
+    url: HERO_IMAGE_URL,
+    contentUrl: HERO_IMAGE_URL,
+    caption: "Chelsey Fanning, REALTOR® in Post Falls, Idaho",
+  };
+}
+
+export function buildHomeWebPageNode() {
+  return {
+    "@type": "WebPage",
+    "@id": WEBPAGE_ID,
+    url: BASE_URL,
+    name: HOMEPAGE_NAME,
+    description: HOMEPAGE_DESCRIPTION,
+    isPartOf: WEBSITE_REF,
+    about: [AGENT_REF, PRACTICE_REF],
+    mainEntity: AGENT_REF,
+    primaryImageOfPage: PRIMARY_IMAGE_REF,
+  };
+}
+
+export function buildHomepageGraph() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      buildPracticeNode(),
+      buildPersonNode(),
+      buildExpRealtyNode(),
+      buildWebSiteNode(),
+      buildHomeWebPageNode(),
+      buildPrimaryImageNode(),
+    ],
+  };
+}
+
+// ─── Practice schema (#business) ──────────────────────────────────────────────
+export function buildLocalBusinessSchema(overrides: Record<string, unknown> = {}) {
+  return {
+    "@context": "https://schema.org",
+    ...buildPracticeNode(overrides),
+  };
+}
+
 // ─── Person schema (#agent) ───────────────────────────────────────────────────
 export function buildPersonSchema(overrides: Record<string, unknown> = {}) {
   return {
     "@context": "https://schema.org",
-    ...AGENT_PERSON_NODE,
-    ...overrides,
+    ...buildPersonNode(overrides),
   };
 }
 
@@ -190,11 +262,7 @@ export function buildFAQSchema(faqs: { question: string; answer: string }[], id?
 export function buildWebSiteSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": WEBSITE_ID,
-    name: "Chelsey Fanning | REALTOR® | North Idaho",
-    url: BASE_URL,
-    publisher: BRAND_PUBLISHER_STUB,
+    ...buildWebSiteNode(),
   };
 }
 
@@ -219,7 +287,7 @@ export function buildArticleSchema(article: {
     publisher: BRAND_PUBLISHER_STUB,
     image: article.imageUrl
       ? article.imageUrl.startsWith("http") ? article.imageUrl : `${BASE_URL}${article.imageUrl}`
-      : `${BASE_URL}/chelsey-hero-periwinkle.jpeg`,
+      : HERO_IMAGE_URL,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${BASE_URL}/blog/${article.slug}`,
@@ -237,8 +305,8 @@ export function buildAggregateRatingSchema(reviews: {
   return {
     "@context": "https://schema.org",
     "@id": BUSINESS_ID,
-    "@type": "Organization",
-    name: BRAND_NAME,
+    "@type": "RealEstateAgent",
+    name: PRACTICE_NAME,
     url: BASE_URL,
     aggregateRating: {
       "@type": "AggregateRating",

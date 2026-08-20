@@ -6,8 +6,7 @@ import FeaturedTestimonials from "@/components/sections/FeaturedTestimonials";
 import AboutPreview from "@/components/sections/AboutPreview";
 import NorthIdahoSection from "@/components/sections/NorthIdahoSection";
 import ContactCTA from "@/components/sections/ContactCTA";
-import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
-import WebSiteSchema from "@/components/schema/WebSiteSchema";
+import HomepageSchema from "@/components/schema/HomepageSchema";
 
 export const metadata: Metadata = {
   title: "Chelsey Fanning | Realtor in Post Falls, Idaho | eXp Realty",
@@ -43,8 +42,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <LocalBusinessSchema />
-      <WebSiteSchema />
+      <HomepageSchema />
       <Hero />
       <StatsBar />
       <WhoIWorkWith />
