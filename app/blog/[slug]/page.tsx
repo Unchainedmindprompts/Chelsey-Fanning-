@@ -72,9 +72,9 @@ function ReviewSchema({ review, slug }: { review: ReviewSource; slug: string }) 
       worstRating: "1",
     },
     itemReviewed: {
-      "@type": "Organization",
+      "@type": "RealEstateAgent",
       "@id": `${NAP.url}/#business`,
-      name: "Chelsey Fanning",
+      name: "Chelsey Fanning | REALTOR® | eXp Realty",
     },
     subjectOf: {
       "@id": `${NAP.url}/blog/${slug}`,
