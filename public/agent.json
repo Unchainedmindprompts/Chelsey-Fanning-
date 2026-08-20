@@ -1,88 +1,61 @@
 {
-  "$schema": "https://agent2json.com/schema/v1",
-  "version": "1.0",
+  "schema_version": "1.0",
   "name": "Chelsey Fanning",
-  "type": "business",
-  "category": "RealEstateAgent",
-  "description": "Chelsey Fanning is a licensed REALTOR® with eXp Realty in Post Falls, Idaho. She specializes in residential real estate for buyers and sellers across North Idaho — from first-time buyers to luxury properties.",
+  "description": "Customer-facing practice of licensed Idaho REALTOR® Chelsey Fanning at eXp Realty. She helps buyers and sellers in Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake, including first-time buyers, move-up families, and luxury properties. Contact is a request for a conversation, not an instant booking.",
   "url": "https://chelseyfanning.com",
-  "logo": "https://chelseyfanning.com/chelsey-hero-periwinkle.jpeg",
   "contact": {
-    "phone": "(208) 755-6079",
+    "phone": "+1-208-755-6079",
     "email": "cfanning.realtor@gmail.com",
-    "form": "https://chelseyfanning.com/contact"
+    "address": "510 S Clearwater Loop, Suite 100, Post Falls, ID 83854"
   },
-  "address": {
-    "street": "Post Falls, ID",
-    "city": "Post Falls",
-    "state": "Idaho",
-    "postalCode": "83854",
-    "country": "US",
-    "geo": {
-      "lat": 47.7182,
-      "lng": -116.9443
-    }
+  "brand": {
+    "name": "Chelsey Fanning",
+    "type": "Organization",
+    "url": "https://chelseyfanning.com"
   },
-  "serviceArea": [
-    "Post Falls, ID",
-    "Coeur d'Alene, ID",
-    "Hayden, ID",
-    "Rathdrum, ID",
-    "Spirit Lake, ID"
-  ],
+  "agent": {
+    "name": "Chelsey Fanning",
+    "title": "Licensed REALTOR®",
+    "license": "Idaho Real Estate License LC54829",
+    "brokerage": "eXp Realty"
+  },
+  "brokerage": {
+    "name": "eXp Realty",
+    "url": "https://www.exprealty.com"
+  },
+  "service_area": {
+    "primary": [
+      "Post Falls, ID",
+      "Coeur d'Alene, ID",
+      "Hayden, ID",
+      "Rathdrum, ID",
+      "Spirit Lake, ID"
+    ],
+    "regional": ["North Idaho", "Northern Idaho"]
+  },
   "services": [
     {
-      "name": "Home Buyer Representation",
-      "description": "Full buyer representation for residential purchases — first-time buyers, move-up, luxury. Includes market analysis, offer strategy, inspection guidance, and closing support.",
-      "url": "https://chelseyfanning.com/buyers"
+      "name": "Buyer Representation",
+      "url": "https://chelseyfanning.com/buyers",
+      "description": "Buyer representation for residential purchases in North Idaho, including first-time buyers."
     },
     {
-      "name": "Home Seller Representation",
-      "description": "Full listing and seller representation — pricing strategy, professional photography, MLS listing, offer negotiation, and transaction management through closing.",
-      "url": "https://chelseyfanning.com/sellers"
+      "name": "Seller Representation",
+      "url": "https://chelseyfanning.com/sellers",
+      "description": "Seller representation for residential listings in North Idaho."
     },
     {
       "name": "First-Time Buyer Guidance",
-      "description": "Specialized support for first-time home buyers in North Idaho — pre-approval navigation, education, and patient guidance through every step of the process.",
-      "url": "https://chelseyfanning.com/buyers"
-    },
-    {
-      "name": "Relocation Assistance",
-      "description": "Out-of-state buyers relocating to North Idaho. Remote tours, community expertise, timeline coordination, and local market knowledge.",
-      "url": "https://chelseyfanning.com/contact"
+      "url": "https://chelseyfanning.com/buyers",
+      "description": "Guidance for first-time home buyers in Post Falls and North Idaho. Contact is a request, not a confirmed appointment."
     }
   ],
-  "credentials": {
-    "license": "Idaho Real Estate License",
-    "brokerage": "eXp Realty",
-    "brokerageUrl": "https://exprealty.com"
-  },
-  "ratings": {
-    "platform": "Google",
-    "score": 5.0,
-    "maxScore": 5.0,
-    "reviewCount": 27
-  },
-  "social": {
-    "instagram": "https://www.instagram.com/life_with_chels",
-    "facebook": "https://www.facebook.com/cfanningrealtor"
-  },
-  "endpoints": {
-    "contact": {
-      "method": "POST",
-      "url": "https://chelseyfanning.com/api/contact",
-      "contentType": "application/json",
-      "fields": ["name", "email", "phone", "intent", "message"]
+  "resources": [
+    {
+      "type": "collection",
+      "title": "North Idaho buyer and seller guides",
+      "url": "https://chelseyfanning.com/blog",
+      "topic": "Existing written library of North Idaho real estate articles"
     }
-  },
-  "content": {
-    "blog": "https://chelseyfanning.com/blog",
-    "testimonials": "https://chelseyfanning.com/testimonials",
-    "llms": "https://chelseyfanning.com/llms.txt",
-    "sitemap": "https://chelseyfanning.com/sitemap.xml"
-  },
-  "compliance": {
-    "equalHousing": true,
-    "disclosure": "Chelsey Fanning is a licensed REALTOR® with eXp Realty in the state of Idaho. All information deemed reliable but not guaranteed."
-  }
+  ]
 }

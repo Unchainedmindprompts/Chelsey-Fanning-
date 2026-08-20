@@ -40,7 +40,9 @@ export default function ContactPage() {
                 style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
               >
                 No pressure, no scripts. Just an honest conversation about your goals. I respond
-                to all messages the same day — usually within a few hours.
+                to all messages the same day — usually within a few hours. Sending a message,
+                calling, or emailing is a request for a conversation — not an instant booking
+                and not a confirmed appointment.
               </p>
 
               {/* NAP */}

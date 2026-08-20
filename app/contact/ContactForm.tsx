@@ -102,7 +102,8 @@ export default function ContactForm() {
         className="text-sm mb-8"
         style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
       >
-        I respond same-day. No spam, ever.
+        I respond same-day. No spam, ever. This is a request for a conversation,
+        not a booking or a confirmed appointment.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-5" noValidate>

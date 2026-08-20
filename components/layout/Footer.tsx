@@ -144,7 +144,7 @@ export default function Footer() {
               <FairHousingLogo />
             </div>
             <p className="text-xs mt-4 leading-relaxed" style={{ color: FOOTER_BODY }}>
-              Chelsey Fanning is a licensed REALTOR® with eXp Realty in the state of Idaho. All information deemed reliable but not guaranteed. This is not a solicitation if you are already under contract.
+              Chelsey Fanning is a licensed REALTOR® (Idaho License LC54829) with eXp Realty. All information deemed reliable but not guaranteed. This is not a solicitation if you are already under contract. Contact is a request for a conversation, not a booking.
             </p>
           </div>
         </div>
