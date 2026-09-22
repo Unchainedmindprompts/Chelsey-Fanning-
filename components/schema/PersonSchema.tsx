@@ -1,9 +1,9 @@
-import { buildExpRealtyNode, buildPersonNode } from "@/lib/schema";
+import { buildExpRealtyNode, buildPersonNode, buildTeamNode, buildProfilePageNode } from "@/lib/schema";
 
 export default function PersonSchema(overrides: Record<string, unknown> = {}) {
   const schema = {
     "@context": "https://schema.org",
-    "@graph": [buildPersonNode(overrides), buildExpRealtyNode()],
+    "@graph": [buildPersonNode(overrides), buildExpRealtyNode(), buildTeamNode(), buildProfilePageNode()],
   };
   return (
     <script

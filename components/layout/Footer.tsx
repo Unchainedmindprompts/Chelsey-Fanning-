@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { NAP } from "@/lib/schema";
+import { NAP, LICENSE_NUMBER } from "@/lib/schema";
 
 const QUICK_LINKS = [
   { label: "Home",         href: "/" },
   { label: "About",        href: "/about" },
+  { label: "Recent Work",  href: "/experience" },
   { label: "Buyers",       href: "/buyers" },
   { label: "Sellers",      href: "/sellers" },
   { label: "Testimonials", href: "/testimonials" },
@@ -49,17 +50,16 @@ export default function Footer() {
               className="text-2xl font-semibold mb-1"
               style={{ fontFamily: "var(--font-roboto)", color: FOOTER_HEADING }}
             >
-              Chelsey Fanning
+              {NAP.name}
             </p>
             <p
               className="text-xs font-medium tracking-widest uppercase mb-4"
               style={{ color: FOOTER_BODY }}
             >
-              REALTOR® · eXp Realty · Post Falls, Idaho
+              {NAP.title} · {NAP.brokerage}
             </p>
             <address className="not-italic text-sm leading-relaxed mb-4" style={{ color: FOOTER_BODY }}>
-              <p>{NAP.address.streetAddress}</p>
-              <p>{NAP.address.addressLocality}, {NAP.address.addressRegion} {NAP.address.postalCode}</p>
+              <p>{NAP.serviceArea}</p>
               <p>
                 <a
                   href={`tel:${NAP.phone.replace(/\D/g, "")}`}
@@ -144,7 +144,7 @@ export default function Footer() {
               <FairHousingLogo />
             </div>
             <p className="text-xs mt-4 leading-relaxed" style={{ color: FOOTER_BODY }}>
-              Chelsey Fanning is a licensed REALTOR® (Idaho License LC54829) with eXp Realty. All information deemed reliable but not guaranteed. This is not a solicitation if you are already under contract. Contact is a request for a conversation, not a booking.
+              Chelsey Fanning is a licensed REALTOR® (Idaho License {LICENSE_NUMBER}) with eXp Realty. All information deemed reliable but not guaranteed. This is not a solicitation if you are already under contract. Contact is a request for a conversation, not a booking.
             </p>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function Footer() {
           className="mt-12 pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 text-xs"
           style={{ borderColor: FOOTER_BORDER, color: FOOTER_BODY }}
         >
-          <p>© 2026 Chelsey Fanning · REALTOR® · eXp Realty · Post Falls, Idaho</p>
+          <p>© 2026 Chelsey Fanning · {NAP.title} · {NAP.brokerage}</p>
           <p>
             Site by{" "}
             <a

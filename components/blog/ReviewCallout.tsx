@@ -1,3 +1,4 @@
+import { PROFILE_LINKS } from "@/content/professional-profile";
 import type { ReviewSource } from "@/lib/blog";
 
 function Stars({ rating }: { rating: number }) {
@@ -39,7 +40,7 @@ export default function ReviewCallout({ review }: { review: ReviewSource }) {
             fontSize: "clamp(1.15rem, 2vw, 1.35rem)",
           }}
         >
-          &ldquo;{review.shortQuote || review.reviewBody}&rdquo;
+          &ldquo;{review.shortQuote && review.reviewBody.includes(review.shortQuote) ? review.shortQuote : review.reviewBody}&rdquo;
         </p>
       </blockquote>
 
@@ -55,7 +56,7 @@ export default function ReviewCallout({ review }: { review: ReviewSource }) {
             {review.reviewerName}
           </p>
           <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
-            Verified Google Review
+            <a href={review.reviewUrl ?? PROFILE_LINKS.google} className="underline">Google review source</a>
           </p>
         </div>
       </div>

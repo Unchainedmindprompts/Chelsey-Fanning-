@@ -75,7 +75,7 @@ export default function Hero() {
               <Button href="/contact" variant="primary" size="lg">
                 Let&apos;s Talk
               </Button>
-              <Button href="/testimonials" variant="outline" size="lg">
+              <Button href="/experience" variant="outline" size="lg">
                 See My Work
               </Button>
             </div>

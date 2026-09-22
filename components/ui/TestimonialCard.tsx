@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { PROFILE_LINKS } from "@/content/professional-profile";
 import type { Testimonial } from "@/content/testimonials";
 
 interface TestimonialCardProps {
@@ -32,7 +33,12 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
   const hasFullText = testimonial.fullText.length > 0;
   const needsToggle = hasFullText && testimonial.fullText !== testimonial.shortQuote;
 
-  const displayText = expanded ? testimonial.fullText : (testimonial.shortQuote || testimonial.fullText);
+  const excerpt = testimonial.fullText.includes(testimonial.shortQuote) && testimonial.shortQuote
+    ? testimonial.shortQuote
+    : testimonial.fullText.length > 180
+      ? `${testimonial.fullText.slice(0, testimonial.fullText.lastIndexOf(" ", 180))}…`
+      : testimonial.fullText;
+  const displayText = expanded ? testimonial.fullText : excerpt;
 
   const formattedDate = new Date(testimonial.date).toLocaleDateString("en-US", {
     year: "numeric",
@@ -89,13 +95,14 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
         <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
           {formattedDate}
         </p>
+        <a href={PROFILE_LINKS.google} className="block mt-3 text-xs underline">Google profile · original review source</a>
         {testimonial.blogSlug && (
           <Link
             href={`/blog/${testimonial.blogSlug}`}
             className="inline-block mt-3 text-xs font-semibold hover:underline"
             style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
           >
-            Read the full story →
+            Read the related guide →
           </Link>
         )}
       </footer>

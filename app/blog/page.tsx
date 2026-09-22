@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getAllPosts } from "@/lib/blog";
 import SectionWrapper from "@/components/ui/SectionWrapper";
@@ -80,17 +81,19 @@ export default function BlogPage() {
                     border: "1px solid rgba(196,185,172,0.3)",
                   }}
                 >
-                  {/* Post image placeholder */}
+                  {/* Article image */}
                   <div
                     className="aspect-video flex items-center justify-center"
                     style={{ backgroundColor: "var(--color-surface)" }}
                   >
                     {post.imageUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
+                      <Image
                         src={post.imageUrl}
-                        alt={post.title}
-                        className="w-full h-full object-cover object-top"
+                        alt={post.imageAlt ?? post.title}
+                        width={1440}
+                        height={810}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="w-full h-full object-cover"
                       />
                     ) : (
                       <span className="text-xs" style={{ color: "var(--color-muted)" }}>

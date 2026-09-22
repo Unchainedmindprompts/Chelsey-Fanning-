@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
-import type { ReviewSource } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
 import ArticleSchema from "@/components/schema/ArticleSchema";
 import { NAP } from "@/lib/schema";
@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.description,
     path: `/blog/${slug}`,
     ogImageUrl: post.imageUrl ?? "/chelsey-hero-periwinkle.jpeg",
+    ogImageAlt: post.imageAlt,
+    ogImageWidth: post.imageUrl ? 1440 : undefined,
+    ogImageHeight: post.imageUrl ? 810 : undefined,
     keywords: post.tags,
   });
 }
@@ -45,42 +48,6 @@ function FAQSchema({ faqs, slug }: { faqs: Array<{ question: string; answer: str
       acceptedAnswer: { "@type": "Answer", text: f.answer },
     })),
   };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
-}
-
-// Review schema — renders only when reviewSource frontmatter is present
-function ReviewSchema({ review, slug }: { review: ReviewSource; slug: string }) {
-  const schema: Record<string, unknown> = {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "@id": `${NAP.url}/reviews/${review.reviewerId}`,
-    author: {
-      "@type": "Person",
-      name: review.reviewerName,
-    },
-    datePublished: review.reviewDate,
-    reviewBody: review.reviewBody,
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: String(review.rating),
-      bestRating: "5",
-      worstRating: "1",
-    },
-    itemReviewed: {
-      "@type": "RealEstateAgent",
-      "@id": `${NAP.url}/#business`,
-      name: "Chelsey Fanning | REALTOR® | eXp Realty",
-    },
-    subjectOf: {
-      "@id": `${NAP.url}/blog/${slug}`,
-    },
-  };
-  if (review.reviewUrl) schema.url = review.reviewUrl;
   return (
     <script
       type="application/ld+json"
@@ -128,10 +95,10 @@ export default async function BlogPostPage({ params }: Props) {
         datePublished={post.date}
         dateModified={post.dateModified}
         imageUrl={post.imageUrl}
+        imageAlt={post.imageAlt}
       />
       <BreadcrumbSchema post={post} />
       {post.faqs && post.faqs.length > 0 && <FAQSchema faqs={post.faqs} slug={post.slug} />}
-      {post.reviewSource && <ReviewSchema review={post.reviewSource} slug={post.slug} />}
 
       <article style={{ backgroundColor: "var(--color-base)" }}>
         {/* Article header */}
@@ -165,17 +132,33 @@ export default async function BlogPostPage({ params }: Props) {
             </h1>
 
             <div
-              className="flex items-center gap-6 text-sm"
+              className="flex flex-wrap items-center gap-4 text-sm"
               style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
             >
-              <span>By {post.author}</span>
+              <span>By <Link href="/about" className="hover:underline">{post.author}</Link></span>
               <span>·</span>
               <time dateTime={post.date}>{formattedDate}</time>
               <span>·</span>
               <span>{post.readingTime} min read</span>
+              {post.dateModified && post.dateModified !== post.date && (
+                <span>Updated <time dateTime={post.dateModified}>{new Date(`${post.dateModified}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</time></span>
+              )}
             </div>
           </div>
         </header>
+
+        {post.imageUrl && (
+          <div className="max-w-5xl mx-auto px-6 lg:px-8 mb-12">
+            <Image
+              src={post.imageUrl}
+              alt={post.imageAlt ?? post.title}
+              width={1440}
+              height={810}
+              sizes="(max-width: 1024px) 100vw, 960px"
+              className="w-full h-auto rounded-2xl"
+            />
+          </div>
+        )}
 
         {/* Article body — split at FAQ heading to inject ReviewCallout */}
         {(() => {

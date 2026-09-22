@@ -22,6 +22,7 @@ export interface BlogPost {
   tags: string[];
   author: string;
   imageUrl?: string;
+  imageAlt?: string;
   reviewSource?: ReviewSource;
   featured?: boolean;
   displayOrder?: number;
@@ -58,6 +59,7 @@ export function getAllPosts(): BlogPost[] {
         tags: data.tags ?? [],
         author: data.author ?? "Chelsey Fanning",
         imageUrl: data.imageUrl,
+        imageAlt: data.imageAlt,
         reviewSource: data.reviewSource,
         featured: data.featured,
         displayOrder: data.displayOrder,
@@ -86,6 +88,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     tags: data.tags ?? [],
     author: data.author ?? "Chelsey Fanning",
     imageUrl: data.imageUrl,
+    imageAlt: data.imageAlt,
     reviewSource: data.reviewSource,
     featured: data.featured,
     displayOrder: data.displayOrder,
