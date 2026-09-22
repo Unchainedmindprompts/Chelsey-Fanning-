@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { NAP } from "@/lib/schema";
+import { NAP, LICENSE_NUMBER } from "@/lib/schema";
 
 const QUICK_LINKS = [
   { label: "Home",         href: "/" },
   { label: "About",        href: "/about" },
+  { label: "Recent Work",  href: "/experience" },
   { label: "Buyers",       href: "/buyers" },
   { label: "Sellers",      href: "/sellers" },
   { label: "Testimonials", href: "/testimonials" },
@@ -143,7 +144,7 @@ export default function Footer() {
               <FairHousingLogo />
             </div>
             <p className="text-xs mt-4 leading-relaxed" style={{ color: FOOTER_BODY }}>
-              Chelsey Fanning is a licensed REALTOR® (Idaho License LC54829) with eXp Realty. All information deemed reliable but not guaranteed. This is not a solicitation if you are already under contract. Contact is a request for a conversation, not a booking.
+              Chelsey Fanning is a licensed REALTOR® (Idaho License {LICENSE_NUMBER}) with eXp Realty. All information deemed reliable but not guaranteed. This is not a solicitation if you are already under contract. Contact is a request for a conversation, not a booking.
             </p>
           </div>
         </div>

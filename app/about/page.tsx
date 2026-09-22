@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { LICENSE_NUMBER } from "@/lib/schema";
+import { PROFILE_LINKS, TEAM_NAME } from "@/content/professional-profile";
 import Image from "next/image";
 import { generatePageMetadata } from "@/lib/metadata";
 import SectionWrapper from "@/components/ui/SectionWrapper";
@@ -77,7 +80,7 @@ export default function AboutPage() {
                   belonging. That&apos;s not a small thing, and I don&apos;t treat it like one.
                 </p>
                 <p>
-                  I&apos;ve been working with buyers and sellers across North Idaho for over seven years,
+                  I&apos;ve been licensed since 2018, helping buyers and sellers across North Idaho,
                   and I still get excited about every single transaction. Closing day hasn&apos;t gotten
                   old. Watching a first-time buyer get their keys? That never gets old.
                 </p>
@@ -117,13 +120,13 @@ export default function AboutPage() {
                   </a>
                   {" · "}
                   <a
-                    href="https://exprealty.com/agents/YOUR_PROFILE" // TODO: real eXp profile URL
+                    href={PROFILE_LINKS.team}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:underline"
                     style={{ color: "var(--color-primary)" }}
                   >
-                    Browse my active listings on eXp →
+                    View my team profile and listings →
                   </a>
                 </p>
               </div>
@@ -131,6 +134,22 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <SectionWrapper background="surface">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-h2 mb-5">Experience you can look into</h2>
+          <p className="text-base leading-relaxed mb-5">Licensed since 2018, I work with eXp Realty and {TEAM_NAME}. My work includes first homes, relocation, land purchases and helping homeowners sell and move on to their next chapter.</p>
+          <dl className="grid sm:grid-cols-2 gap-6 mb-6">
+            <div><dt className="font-semibold">Idaho real estate license</dt><dd>{LICENSE_NUMBER} · <a href={PROFILE_LINKS.licenseSearch} className="underline">Idaho license lookup</a></dd></div>
+            <div><dt className="font-semibold">Team affiliation</dt><dd><a href={PROFILE_LINKS.team} className="underline">{TEAM_NAME}, brokered by eXp Realty</a></dd></div>
+          </dl>
+          <div className="flex flex-wrap gap-6 text-sm font-semibold">
+            <Link href="/experience" className="underline">Explore recent work →</Link>
+            <Link href="/testimonials" className="underline">Read client and professional feedback →</Link>
+            <a href={PROFILE_LINKS.realtor} className="underline">View Realtor.com profile →</a>
+          </div>
+        </div>
+      </SectionWrapper>
 
       {/* Values section */}
       <SectionWrapper background="surface">

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "name": "Chelsey Fanning | REALTOR® | eXp Realty",
-  "description": "Customer-facing real-estate practice of licensed Idaho REALTOR® Chelsey Fanning, affiliated with eXp Realty. She helps buyers and sellers in Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake, including first-time buyers, move-up families, and luxury properties. Contact is a request for a conversation, not an instant booking.",
+  "name": "Chelsey Fanning | REALTOR\u00ae | eXp Realty",
+  "description": "Customer-facing real-estate practice of licensed Idaho REALTOR\u00ae Chelsey Fanning, affiliated with eXp Realty. She helps buyers and sellers in Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake, including first-time buyers, move-up families, and luxury properties. Contact is a request for a conversation, not an instant booking.",
   "url": "https://chelseyfanning.com",
   "contact": {
     "phone": "+1-208-755-6079",
@@ -11,7 +11,7 @@
   },
   "practice": {
     "id": "https://chelseyfanning.com/#business",
-    "name": "Chelsey Fanning | REALTOR® | eXp Realty",
+    "name": "Chelsey Fanning | REALTOR\u00ae | eXp Realty",
     "type": "RealEstateAgent",
     "url": "https://chelseyfanning.com",
     "employee": "https://chelseyfanning.com/#agent"
@@ -20,15 +20,18 @@
     "id": "https://chelseyfanning.com/#agent",
     "name": "Chelsey Fanning",
     "type": "Person",
-    "title": "REALTOR®",
-    "license": "LC54829",
+    "title": "REALTOR\u00ae",
+    "license": "SP47170",
     "credential": {
       "type": "EducationalOccupationalCredential",
       "credentialCategory": "Real Estate License",
-      "identifier": "LC54829",
-      "recognizedBy": "Idaho Real Estate Commission"
+      "identifier": "SP47170",
+      "recognizedBy": "Idaho Real Estate Commission",
+      "url": "https://edopl.idaho.gov/OnlineServices/?link=PubSearch"
     },
-    "worksFor": "https://chelseyfanning.com/#exp-realty"
+    "worksFor": "https://chelseyfanning.com/#exp-realty",
+    "licensed_since": 2018,
+    "affiliation": "https://chelseyfanning.com/#lifestyle-north-realty"
   },
   "brokerage": {
     "id": "https://chelseyfanning.com/#exp-realty",
@@ -44,7 +47,10 @@
       "Rathdrum, ID",
       "Spirit Lake, ID"
     ],
-    "regional": ["North Idaho", "Northern Idaho"]
+    "regional": [
+      "North Idaho",
+      "Northern Idaho"
+    ]
   },
   "services": [
     {
@@ -69,6 +75,16 @@
       "title": "North Idaho buyer and seller guides",
       "url": "https://chelseyfanning.com/blog",
       "topic": "Existing written library of North Idaho real estate articles"
+    },
+    {
+      "type": "collection",
+      "title": "Recent work and listing sources",
+      "url": "https://chelseyfanning.com/experience"
     }
-  ]
+  ],
+  "team": {
+    "id": "https://chelseyfanning.com/#lifestyle-north-realty",
+    "name": "Lifestyle North Realty",
+    "url": "https://lifestylenorthrealty.com"
+  }
 }

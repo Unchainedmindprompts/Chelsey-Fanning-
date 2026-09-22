@@ -16,7 +16,7 @@ const config = {
       loc: path,
       changefreq: config.changefreq,
       priority,
-      lastmod: new Date().toISOString(),
+      // Omit lastmod until it can reflect actual page content changes.
     };
   },
 };

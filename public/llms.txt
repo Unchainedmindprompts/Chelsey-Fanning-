@@ -3,7 +3,7 @@
 > The homepage is about Chelsey Fanning, a licensed Idaho REALTOR® affiliated with eXp Realty. Her Person identity, her customer-facing real-estate practice, and eXp Realty are three separate facts. Contact is a request for a conversation, not an instant booking.
 
 ## Identity
-- Person: Chelsey Fanning, REALTOR®, Idaho License LC54829 (https://chelseyfanning.com/#agent)
+- Person: Chelsey Fanning, REALTOR®, Idaho License SP47170 (https://chelseyfanning.com/#agent)
 - Practice: Chelsey Fanning | REALTOR® | eXp Realty, typed RealEstateAgent (https://chelseyfanning.com/#business)
 - Brokerage: eXp Realty (https://www.exprealty.com), local node https://chelseyfanning.com/#exp-realty
 - Affiliation is Chelsey → eXp Realty. The practice is not a subsidiary or branch of eXp Realty.
@@ -24,7 +24,9 @@
 - [Contact](https://chelseyfanning.com/contact): Request a conversation — not an instant booking
 
 ## About
-Licensed Idaho REALTOR® (License LC54829) with eXp Realty in Post Falls, Idaho. Markets: Post Falls, Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and North Idaho. Public site copy includes 7+ years serving North Idaho and 100+ completed transactions. Google rating published on this site: 5.0 from 27 reviews. No luxury-specialist designation is claimed.
+Licensed Idaho REALTOR® (License SP47170) with eXp Realty in Post Falls, Idaho. Markets: Post Falls, Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and North Idaho. Licensed since 2018. Affiliated with Lifestyle North Realty, brokered by eXp Realty. Recent selected transactions and listing sources: https://chelseyfanning.com/experience. No independently reconciled lifetime transaction total is published. Google feedback is an April 2026 site collection, not a live rating feed. Zillow showed 5.0 from 13 reviews when checked September 22, 2026; platform counts are separate. No luxury-specialist designation is claimed.
+
+- [Recent work](https://chelseyfanning.com/experience): Selected closed transactions and links to current listing sources
 
 ## Blog Posts
 - [What a Jumbo Loan Lender Looks for in a Luxury Real Estate Agent](https://chelseyfanning.com/blog/what-jumbo-loan-lender-looks-for-luxury-real-estate-agent)
@@ -40,7 +42,7 @@ Licensed Idaho REALTOR® (License LC54829) with eXp Realty in Post Falls, Idaho.
 - [Buying and Selling at the Same Time in North Idaho](https://chelseyfanning.com/blog/buying-selling-same-time-north-idaho)
 
 ## Compliance
-- Licensed REALTOR® in Idaho (LC54829)
+- Licensed REALTOR® in Idaho (SP47170)
 - eXp Realty affiliate
 - Equal Housing Opportunity provider
 - All listings subject to MLS rules and Idaho real estate disclosure requirements

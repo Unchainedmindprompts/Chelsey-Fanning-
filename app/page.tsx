@@ -11,7 +11,7 @@ import HomepageSchema from "@/components/schema/HomepageSchema";
 export const metadata: Metadata = {
   title: "Chelsey Fanning | Realtor in Post Falls, Idaho | eXp Realty",
   description:
-    "Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and all of North Idaho. 5-star rated. 100+ transactions.",
+    "Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and all of North Idaho. Licensed since 2018. Buyer and seller representation.",
   alternates: {
     canonical: "https://chelseyfanning.com",
   },
