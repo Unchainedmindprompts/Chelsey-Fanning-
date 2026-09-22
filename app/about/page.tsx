@@ -138,7 +138,7 @@ export default function AboutPage() {
       <SectionWrapper background="surface">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-h2 mb-5">Experience you can look into</h2>
-          <p className="text-base leading-relaxed mb-5">Licensed since 2018, I work with eXp Realty and {TEAM_NAME}. My work includes first homes, relocation, land purchases and helping homeowners sell and move on to their next chapter.</p>
+          <p className="text-base leading-relaxed mb-5" style={{ color: "var(--color-text)" }}>Licensed since 2018, I work with eXp Realty and {TEAM_NAME}. My work includes first homes, relocation, land purchases and helping homeowners sell and move on to their next chapter.</p>
           <dl className="grid sm:grid-cols-2 gap-6 mb-6">
             <div><dt className="font-semibold">Idaho real estate license</dt><dd>{LICENSE_NUMBER} · <a href={PROFILE_LINKS.licenseSearch} className="underline">Idaho license lookup</a></dd></div>
             <div><dt className="font-semibold">Team affiliation</dt><dd><a href={PROFILE_LINKS.team} className="underline">{TEAM_NAME}, brokered by eXp Realty</a></dd></div>
