@@ -13,19 +13,19 @@ const STATS = [
 export default function StatsBar() {
   return (
     <section style={{ backgroundColor: "var(--color-surface)" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5">
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x" style={{ "--tw-divide-opacity": "1" } as React.CSSProperties}>
           {STATS.map((stat, i) => (
             <motion.div
               key={stat.label}
-              className="flex flex-col items-center text-center py-8 md:py-4 md:px-8"
+              className="flex flex-col items-center text-center py-5 md:py-4 md:px-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <p
-                className="text-h2 font-semibold mb-1"
+                className="text-3xl font-medium mb-1"
                 style={{ color: "var(--color-primary)", fontFamily: "var(--font-roboto)" }}
               >
                 {stat.value}

@@ -1,5 +1,6 @@
 import HomepageSchema from "@/components/schema/HomepageSchema";
 import type { Metadata } from "next";
+import RecentWorkPreview from "@/components/sections/RecentWorkPreview";
 import Hero from "@/components/sections/Hero";
 import StatsBar from "@/components/sections/StatsBar";
 import WhoIWorkWith from "@/components/sections/WhoIWorkWith";
@@ -48,6 +49,7 @@ export default function HomePage() {
       <StatsBar />
       <WhoIWorkWith />
       <FeaturedTestimonials />
+      <RecentWorkPreview />
       <AboutPreview />
       <NorthIdahoSection />
       <ContactCTA />
