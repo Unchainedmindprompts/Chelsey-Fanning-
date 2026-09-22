@@ -258,6 +258,7 @@ export function buildArticleSchema(article: {
   datePublished: string;
   dateModified?: string;
   imageUrl?: string;
+  imageAlt?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -270,7 +271,11 @@ export function buildArticleSchema(article: {
     author: AGENT_AUTHOR_STUB,
     publisher: BRAND_PUBLISHER_STUB,
     image: article.imageUrl
-      ? article.imageUrl.startsWith("http") ? article.imageUrl : `${BASE_URL}${article.imageUrl}`
+      ? {
+          "@type": "ImageObject",
+          url: article.imageUrl.startsWith("http") ? article.imageUrl : `${BASE_URL}${article.imageUrl}`,
+          ...(article.imageAlt ? { caption: article.imageAlt } : {}),
+        }
       : HERO_IMAGE_URL,
     mainEntityOfPage: {
       "@type": "WebPage",
