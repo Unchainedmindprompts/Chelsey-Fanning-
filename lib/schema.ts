@@ -68,24 +68,14 @@ export const CHELSEA_SAME_AS = [
   "https://www.realtor.com/realestateagents/5bc7b0ea76e8ec0011336928",
 ];
 
-// ─── NAP constants ────────────────────────────────────────────────────────────
+// ─── Public contact constants ────────────────────────────────────────────────────────────
 export const NAP = {
   name: AGENT_NAME,
   title: "REALTOR®",
   brokerage: BROKERAGE_NAME,
-  phone: "(208) 755-6079",
+  phone: "208-755-6079",
   email: "cfanning.realtor@gmail.com",
-  address: {
-    streetAddress: "510 S Clearwater Loop, Suite 100",
-    addressLocality: "Post Falls",
-    addressRegion: "ID",
-    postalCode: "83854",
-    addressCountry: "US",
-  },
-  geo: {
-    latitude: 47.7182,
-    longitude: -116.9443,
-  },
+  serviceArea: "Serving Post Falls, Coeur d'Alene & North Idaho",
   url: BASE_URL,
 };
 
@@ -98,11 +88,17 @@ export const SERVICE_AREAS = [
   "Spirit Lake",
 ];
 
+// Service regions are not a physical office address.
+export const SERVICE_AREA_SCHEMA = [
+  ...SERVICE_AREAS.map((city) => ({ "@type": "City", name: city })),
+  { "@type": "Place", name: "North Idaho" },
+];
+
 const AGENT_DESCRIPTION =
   "Chelsey Fanning is a licensed REALTOR® (Idaho License LC54829) with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake in North Idaho. With 7+ years serving North Idaho and 100+ completed transactions, she works with first-time home buyers, move-up families, and luxury properties. Contact is a request for a conversation, not an instant booking.";
 
 const PRACTICE_DESCRIPTION =
-  "Customer-facing real-estate practice of licensed Idaho REALTOR® Chelsey Fanning, affiliated with eXp Realty. Contact is a request for a conversation, not an instant booking.";
+  "Customer-facing real-estate practice of licensed Idaho REALTOR® Chelsey Fanning, affiliated with eXp Realty. Serving Post Falls, Coeur d'Alene & North Idaho. Contact is a request for a conversation, not an instant booking.";
 
 const HOMEPAGE_NAME = "Chelsey Fanning | Realtor in Post Falls, Idaho | eXp Realty";
 const HOMEPAGE_DESCRIPTION =
@@ -128,19 +124,7 @@ export function buildPracticeNode(overrides: Record<string, unknown> = {}) {
     url: BASE_URL,
     telephone: NAP.phone,
     email: NAP.email,
-    address: {
-      "@type": "PostalAddress",
-      ...NAP.address,
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: NAP.geo.latitude,
-      longitude: NAP.geo.longitude,
-    },
-    areaServed: SERVICE_AREAS.map((city) => ({
-      "@type": "City",
-      name: city,
-    })),
+    areaServed: SERVICE_AREA_SCHEMA,
     image: HERO_IMAGE_URL,
     employee: AGENT_REF,
     aggregateRating: {
@@ -345,6 +329,6 @@ export function buildServiceSchema(service: {
     description: service.description,
     url: service.url,
     provider: BRAND_PUBLISHER_STUB,
-    areaServed: SERVICE_AREAS.map((city) => ({ "@type": "City", name: city })),
+    areaServed: SERVICE_AREA_SCHEMA,
   };
 }

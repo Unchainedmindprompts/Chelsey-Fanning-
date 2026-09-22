@@ -49,17 +49,16 @@ export default function Footer() {
               className="text-2xl font-semibold mb-1"
               style={{ fontFamily: "var(--font-roboto)", color: FOOTER_HEADING }}
             >
-              Chelsey Fanning
+              {NAP.name}
             </p>
             <p
               className="text-xs font-medium tracking-widest uppercase mb-4"
               style={{ color: FOOTER_BODY }}
             >
-              REALTOR® · eXp Realty · Post Falls, Idaho
+              {NAP.title} · {NAP.brokerage}
             </p>
             <address className="not-italic text-sm leading-relaxed mb-4" style={{ color: FOOTER_BODY }}>
-              <p>{NAP.address.streetAddress}</p>
-              <p>{NAP.address.addressLocality}, {NAP.address.addressRegion} {NAP.address.postalCode}</p>
+              <p>{NAP.serviceArea}</p>
               <p>
                 <a
                   href={`tel:${NAP.phone.replace(/\D/g, "")}`}
@@ -154,7 +153,7 @@ export default function Footer() {
           className="mt-12 pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 text-xs"
           style={{ borderColor: FOOTER_BORDER, color: FOOTER_BODY }}
         >
-          <p>© 2026 Chelsey Fanning · REALTOR® · eXp Realty · Post Falls, Idaho</p>
+          <p>© 2026 Chelsey Fanning · {NAP.title} · {NAP.brokerage}</p>
           <p>
             Site by{" "}
             <a
