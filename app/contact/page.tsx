@@ -115,16 +115,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold mb-0.5" style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}>
-                      Location
+                      Service Area
                     </p>
                     <p className="text-base" style={{ color: "var(--color-text)" }}>
-                      {NAP.address.streetAddress}
-                    </p>
-                    <p className="text-base" style={{ color: "var(--color-text)" }}>
-                      {NAP.address.addressLocality}, {NAP.address.addressRegion} {NAP.address.postalCode}
-                    </p>
-                    <p className="text-xs mt-0.5" style={{ color: "var(--color-muted)" }}>
-                      Serving all of North Idaho
+                      {NAP.serviceArea}
                     </p>
                   </div>
                 </div>

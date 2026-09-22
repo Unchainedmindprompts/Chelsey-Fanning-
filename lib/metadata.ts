@@ -10,6 +10,9 @@ interface PageMetaInput {
   description: string;
   path: string;
   ogImageUrl?: string;
+  ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
   keywords?: string[];
 }
 
@@ -18,6 +21,9 @@ export function generatePageMetadata({
   description,
   path,
   ogImageUrl = DEFAULT_OG_IMAGE,
+  ogImageAlt,
+  ogImageWidth = 1200,
+  ogImageHeight = 630,
   keywords = [],
 }: PageMetaInput): Metadata {
   const url = `${BASE_URL}${path}`;
@@ -43,9 +49,9 @@ export function generatePageMetadata({
       images: [
         {
           url: ogImageUrl.startsWith("http") ? ogImageUrl : `${BASE_URL}${ogImageUrl}`,
-          width: 1200,
-          height: 630,
-          alt: title,
+          width: ogImageWidth,
+          height: ogImageHeight,
+          alt: ogImageAlt ?? title,
         },
       ],
     },
@@ -53,7 +59,10 @@ export function generatePageMetadata({
       card: "summary_large_image",
       title: `${title} | ${SITE_NAME}`,
       description,
-      images: [ogImageUrl.startsWith("http") ? ogImageUrl : `${BASE_URL}${ogImageUrl}`],
+      images: [{
+        url: ogImageUrl.startsWith("http") ? ogImageUrl : `${BASE_URL}${ogImageUrl}`,
+        alt: ogImageAlt ?? title,
+      }],
     },
   };
 }

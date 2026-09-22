@@ -326,8 +326,9 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: "desiree-jones",
     name: "Desiree Jones",
-    reviewerType: "client",
+    reviewerType: "industry-peer",
     category: "general",
+    badgeLabel: "From a fellow real estate professional",
     rating: 5,
     date: "2025-11-06",
     shortQuote: "Chelsey is the definition of professional, detail-oriented, and on the ball.",
@@ -361,7 +362,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-// ─── Derived aggregate — single source of truth for schema + UI ───────────────
+// Historical Google snapshot from the site collection, April 2026; not a live feed.
 export const AGGREGATE_RATING = {
   ratingValue: "5.0",
   reviewCount: TESTIMONIALS.length.toString(),

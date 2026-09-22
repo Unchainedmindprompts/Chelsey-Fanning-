@@ -1,42 +1,34 @@
-# Chelsey Fanning — REALTOR® · Post Falls, Idaho
+# Chelsey Fanning
 
-> Chelsey Fanning is a licensed REALTOR® with eXp Realty, serving buyers and sellers across North Idaho — including Post Falls, Coeur d'Alene, Hayden, Rathdrum, and Spirit Lake. She is known for her honest, client-first approach and specializes in first-time buyers, move-up families, and luxury properties.
+> The homepage is about Chelsey Fanning, a licensed Idaho REALTOR® affiliated with eXp Realty. Her Person identity, her customer-facing real-estate practice, and eXp Realty are three separate facts. Contact is a request for a conversation, not an instant booking.
 
-## Business
+## Identity
+- Person: Chelsey Fanning, REALTOR®, Idaho License SP47170 (https://chelseyfanning.com/#agent)
+- Practice: Chelsey Fanning | REALTOR® | eXp Realty, typed RealEstateAgent (https://chelseyfanning.com/#business)
+- Brokerage: eXp Realty (https://www.exprealty.com), local node https://chelseyfanning.com/#exp-realty
+- Affiliation is Chelsey → eXp Realty. The practice is not a subsidiary or branch of eXp Realty.
 
-- **Name:** Chelsey Fanning
-- **Title:** REALTOR®
-- **Brokerage:** eXp Realty
-- **Location:** Post Falls, Idaho 83854
-- **Service Area:** Post Falls, Coeur d'Alene, Hayden, Rathdrum, Spirit Lake
-- **Website:** https://chelseyfanning.com
-- **Phone:** (208) 755-6079
-- **Email:** cfanning.realtor@gmail.com
-- **Google Rating:** 5.0 (27 reviews)
-- **Years Active:** 7+ years in North Idaho real estate
-
-## Services
-
-- Residential home buying — all price points
-- First-time home buyer guidance and advocacy
-- Move-up and growing family transactions
-- Luxury and high-end property sales
-- Seller representation and listing services
-- Relocation assistance for out-of-state buyers
-- Market analysis and home valuations
+## Contact
+- Phone: 208-755-6079
+- Email: cfanning.realtor@gmail.com
+- Service area: Serving Post Falls, Coeur d'Alene & North Idaho
+- Contact form, phone, and email are a request for a conversation — not an instant booking and not a confirmed appointment
 
 ## Key Pages
+- [Home](https://chelseyfanning.com/): Overview and North Idaho practice
+- [About](https://chelseyfanning.com/about): Bio, values, and eXp Realty affiliation
+- [Buyers](https://chelseyfanning.com/buyers): Buyer representation, including first-time buyers
+- [Sellers](https://chelseyfanning.com/sellers): Seller representation and listing process
+- [Testimonials](https://chelseyfanning.com/testimonials): Client reviews
+- [Blog](https://chelseyfanning.com/blog): Existing North Idaho real estate articles
+- [Contact](https://chelseyfanning.com/contact): Request a conversation — not an instant booking
 
-- [Home](https://chelseyfanning.com/) — Overview, hero, trust signals
-- [About](https://chelseyfanning.com/about) — Full bio, values, eXp affiliation
-- [Buyers](https://chelseyfanning.com/buyers) — Buyer guide, step-by-step process, FAQ
-- [Sellers](https://chelseyfanning.com/sellers) — Seller guide, listing process, FAQ
-- [Testimonials](https://chelseyfanning.com/testimonials) — Client reviews by category
-- [Blog](https://chelseyfanning.com/blog) — Market updates, buyer/seller advice, local content
-- [Contact](https://chelseyfanning.com/contact) — Contact form, phone, email, map
+## About
+Licensed Idaho REALTOR® (License SP47170) with eXp Realty in Post Falls, Idaho. Markets: Post Falls, Coeur d'Alene, Hayden, Rathdrum, Spirit Lake, and North Idaho. Licensed since 2018. Affiliated with Lifestyle North Realty, brokered by eXp Realty. Recent selected transactions and listing sources: https://chelseyfanning.com/experience. No independently reconciled lifetime transaction total is published. Google feedback is an April 2026 site collection, not a live rating feed. Zillow showed 5.0 from 13 reviews when checked September 22, 2026; platform counts are separate. No luxury-specialist designation is claimed.
+
+- [Recent work](https://chelseyfanning.com/experience): Selected closed transactions and links to current listing sources
 
 ## Blog Posts
-
 - [What a Jumbo Loan Lender Looks for in a Luxury Real Estate Agent](https://chelseyfanning.com/blog/what-jumbo-loan-lender-looks-for-luxury-real-estate-agent)
 - [What It Actually Feels Like to Work With the Right Realtor](https://chelseyfanning.com/blog/what-it-actually-feels-like-to-work-with-the-right-realtor)
 - [The Complete First-Time Homebuyer's Guide for Post Falls, Idaho](https://chelseyfanning.com/blog/complete-first-time-homebuyer-guide-post-falls-idaho)
@@ -46,14 +38,11 @@
 - [Why North Idaho Is One of the Fastest Growing Markets in the Pacific Northwest](https://chelseyfanning.com/blog/why-north-idaho-fastest-growing-market-pacific-northwest)
 - [Relocating to North Idaho: How to Buy a Home from Across the Country](https://chelseyfanning.com/blog/relocating-north-idaho-how-to-buy-home-from-across-country)
 - [5 Things Sellers in Coeur d'Alene Should Know Before Listing](https://chelseyfanning.com/blog/5-things-sellers-coeur-dalene-know-before-listing)
-
-## Local Context
-
-North Idaho is one of the fastest-growing real estate markets in the Pacific Northwest, driven by remote work migration, exceptional quality of life, and comparative affordability relative to coastal markets. Post Falls offers a balance of accessibility, community, and value that makes it a top destination for families, professionals, and retirees alike.
+- [How to Find the Best Realtor in Post Falls, Coeur d'Alene, and North Idaho](https://chelseyfanning.com/blog/how-to-find-best-realtor-post-falls-coeur-dalene-north-idaho)
+- [Buying and Selling at the Same Time in North Idaho](https://chelseyfanning.com/blog/buying-selling-same-time-north-idaho)
 
 ## Compliance
-
-- Licensed REALTOR® in Idaho
+- Licensed REALTOR® in Idaho (SP47170)
 - eXp Realty affiliate
 - Equal Housing Opportunity provider
 - All listings subject to MLS rules and Idaho real estate disclosure requirements

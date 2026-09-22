@@ -1,3 +1,4 @@
+import HomepageSchema from "@/components/schema/HomepageSchema";
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import StatsBar from "@/components/sections/StatsBar";
@@ -6,16 +7,12 @@ import FeaturedTestimonials from "@/components/sections/FeaturedTestimonials";
 import AboutPreview from "@/components/sections/AboutPreview";
 import NorthIdahoSection from "@/components/sections/NorthIdahoSection";
 import ContactCTA from "@/components/sections/ContactCTA";
-import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
-import WebSiteSchema from "@/components/schema/WebSiteSchema";
-import WebPageSchema from "@/components/schema/WebPageSchema";
-import PersonSchema from "@/components/schema/PersonSchema";
 import { NAP } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Chelsey Fanning | Realtor in Post Falls, Idaho | eXp Realty",
   description:
-    "Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and all of North Idaho. 5-star rated. 100+ transactions.",
+    "Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, Hayden, Rathdrum, and all of North Idaho. Licensed since 2018. Buyer and seller representation.",
   alternates: {
     canonical: NAP.url,
   },
@@ -46,14 +43,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <LocalBusinessSchema />
-      <WebSiteSchema />
-      <PersonSchema />
-      <WebPageSchema
-        path=""
-        name="Chelsey Fanning | REALTOR® | Post Falls, Idaho"
-        description="Chelsey Fanning is a trusted REALTOR® with eXp Realty, serving buyers and sellers across Post Falls, Coeur d'Alene, and North Idaho."
-      />
+      <HomepageSchema />
       <Hero />
       <StatsBar />
       <WhoIWorkWith />

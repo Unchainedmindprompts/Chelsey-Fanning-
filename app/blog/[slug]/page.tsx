@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
@@ -29,6 +30,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.description,
     path: `/blog/${slug}`,
     ogImageUrl: post.imageUrl ?? "/chelsey-hero-periwinkle.jpeg",
+    ogImageAlt: post.imageAlt,
+    ogImageWidth: post.imageUrl ? 1440 : undefined,
+    ogImageHeight: post.imageUrl ? 810 : undefined,
     keywords: post.tags,
   });
 }
@@ -118,6 +122,7 @@ function ArticleWebPageSchema({ post }: { post: { slug: string; title: string; d
   );
 }
 
+// Breadcrumb schema helper
 function BreadcrumbSchema({ post }: { post: { slug: string; title: string } }) {
   const schema = {
     "@context": "https://schema.org",
@@ -159,6 +164,7 @@ export default async function BlogPostPage({ params }: Props) {
         imageUrl={post.imageUrl}
         about={post.about}
         mentions={post.mentions}
+        imageAlt={post.imageAlt}
       />
       <BreadcrumbSchema post={post} />
       <ArticleWebPageSchema post={post} />
@@ -197,17 +203,33 @@ export default async function BlogPostPage({ params }: Props) {
             </h1>
 
             <div
-              className="flex items-center gap-6 text-sm"
+              className="flex flex-wrap items-center gap-4 text-sm"
               style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
             >
-              <span>By {post.author}</span>
+              <span>By <Link href="/about" className="hover:underline">{post.author}</Link></span>
               <span>·</span>
               <time dateTime={post.date}>{formattedDate}</time>
               <span>·</span>
               <span>{post.readingTime} min read</span>
+              {post.dateModified && post.dateModified !== post.date && (
+                <span>Updated <time dateTime={post.dateModified}>{new Date(`${post.dateModified}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</time></span>
+              )}
             </div>
           </div>
         </header>
+
+        {post.imageUrl && (
+          <div className="max-w-5xl mx-auto px-6 lg:px-8 mb-12">
+            <Image
+              src={post.imageUrl}
+              alt={post.imageAlt ?? post.title}
+              width={1440}
+              height={810}
+              sizes="(max-width: 1024px) 100vw, 960px"
+              className="w-full h-auto rounded-2xl"
+            />
+          </div>
+        )}
 
         {/* Article body — split at FAQ heading to inject ReviewCallout */}
         {(() => {

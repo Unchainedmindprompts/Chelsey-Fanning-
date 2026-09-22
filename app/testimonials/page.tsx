@@ -6,18 +6,20 @@ import TestimonialCard from "@/components/ui/TestimonialCard";
 import ContactCTA from "@/components/sections/ContactCTA";
 import WebPageSchema from "@/components/schema/WebPageSchema";
 import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
+import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
+import { PROFILE_LINKS, PROFILE_CHECKED_LABEL, ZILLOW_REVIEW_SNAPSHOT } from "@/content/professional-profile";
 import { TESTIMONIALS, AGGREGATE_RATING } from "@/content/testimonials";
 import { NAP } from "@/lib/schema";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Client Testimonials & Reviews",
   description:
-    "Read what Chelsey Fanning's real estate clients say — verified Google reviews from buyers, sellers, and families across Post Falls, Coeur d'Alene, and North Idaho.",
+    "Read what Chelsey Fanning's real estate clients say — client and professional feedback from buyers and sellers across Post Falls, Coeur d'Alene, and North Idaho.",
   path: "/testimonials",
   keywords: ["Chelsey Fanning reviews", "North Idaho realtor reviews", "Post Falls real estate agent testimonials"],
 });
 
-const GOOGLE_REVIEWS_URL = "https://share.google/u2Lgk0szuKiVmZzp3";
+const GOOGLE_REVIEWS_URL = PROFILE_LINKS.google;
 
 const CATEGORIES = [
   {
@@ -60,7 +62,7 @@ export default function TestimonialsPage() {
       <WebPageSchema
         path="/testimonials"
         name="Client Reviews — Chelsey Fanning REALTOR® Post Falls, Idaho"
-        description="Verified Google reviews from buyers, sellers, and families across Post Falls, Coeur d'Alene, and North Idaho."
+        description="Google review excerpts from buyers, sellers, and families across Post Falls, Coeur d'Alene, and North Idaho."
         breadcrumbId={`${NAP.url}/testimonials#breadcrumb`}
       />
       <BreadcrumbSchema
@@ -70,6 +72,7 @@ export default function TestimonialsPage() {
           { name: "Reviews" },
         ]}
       />
+      <LocalBusinessSchema />
 
       {/* Page hero */}
       <section
@@ -94,7 +97,7 @@ export default function TestimonialsPage() {
                 className="text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0"
                 style={{ color: "var(--color-text)", fontFamily: "var(--font-roboto)" }}
               >
-                These are real clients who trusted me with one of the biggest decisions of their lives.
+                Hear from clients and fellow professionals who have worked with me.
                 Their words — not mine — are the best measure of what it&apos;s like to work with me.
               </p>
 
@@ -123,10 +126,10 @@ export default function TestimonialsPage() {
                 </div>
                 <div className="text-left">
                   <p className="text-sm font-semibold" style={{ color: "var(--color-charcoal)", fontFamily: "var(--font-roboto)" }}>
-                    Google Rating
+                    Google Review Snapshot
                   </p>
                   <p className="text-xs" style={{ color: "var(--color-muted)" }}>
-                    {AGGREGATE_RATING.reviewCount} Google reviews
+                    {AGGREGATE_RATING.reviewCount} ratings recorded April 2026
                   </p>
                 </div>
               </div>
@@ -148,6 +151,24 @@ export default function TestimonialsPage() {
           </div>
         </div>
       </section>
+
+      <SectionWrapper background="surface">
+        <h2 className="text-h2 mb-6">Read the feedback at its source</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <a href={PROFILE_LINKS.google} className="rounded-2xl border p-7 block" style={{ backgroundColor: "var(--color-white)" }}>
+            <h3 className="text-h3 mb-3">Google reviews</h3>
+            <p>Browse the latest feedback and rating on Chelsey&apos;s Google profile.</p>
+            <p className="text-sm mt-4 underline">Visit Google →</p>
+          </a>
+          <a href={PROFILE_LINKS.zillow} className="rounded-2xl border p-7 block" style={{ backgroundColor: "var(--color-white)" }}>
+            <h3 className="text-h3 mb-3">Zillow reviews</h3>
+            <p>{ZILLOW_REVIEW_SNAPSHOT.rating} out of 5 · {ZILLOW_REVIEW_SNAPSHOT.count} reviews</p>
+            <p className="text-sm mt-2">Checked {PROFILE_CHECKED_LABEL}. Ratings and counts can change.</p>
+            <p className="text-sm mt-4 underline">Read on Zillow →</p>
+          </a>
+        </div>
+        <p className="text-sm mt-5" style={{ color: "var(--color-muted)" }}>Each platform maintains its own reviews. Counts are shown separately.</p>
+      </SectionWrapper>
 
       {/* Reviews by category */}
       {CATEGORIES.map(({ key, heading, background }) => {
@@ -173,7 +194,7 @@ export default function TestimonialsPage() {
       {/* Google reviews link */}
       <section className="py-16 text-center" style={{ backgroundColor: "var(--color-surface)" }}>
         <p className="text-base mb-4" style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}>
-          All {AGGREGATE_RATING.reviewCount} reviews verified on Google
+          Google feedback shown here comes from the website&apos;s April 2026 collection. Visit Google for the latest reviews and rating.
         </p>
         <a
           href={GOOGLE_REVIEWS_URL}

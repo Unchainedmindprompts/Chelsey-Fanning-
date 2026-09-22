@@ -9,6 +9,7 @@ interface ArticleSchemaProps {
   imageUrl?: string;
   about?: Array<Record<string, unknown>>;
   mentions?: Array<Record<string, unknown>>;
+  imageAlt?: string;
 }
 
 export default function ArticleSchema(props: ArticleSchemaProps) {

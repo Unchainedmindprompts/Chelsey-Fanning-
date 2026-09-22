@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
+import { PROFILE_LINKS, ZILLOW_REVIEW_SNAPSHOT } from "@/content/professional-profile";
 import { motion } from "framer-motion";
 
 const STATS = [
-  { value: "5.0★", label: "Average Google Rating", detail: "27 Google reviews" },
-  { value: "7+",   label: "Years Serving North Idaho", detail: "Post Falls, CDA & beyond" },
-  { value: "100+", label: "Transactions Closed", detail: "First-timers to luxury" },
+  { value: `${ZILLOW_REVIEW_SNAPSHOT.rating}★`, label: "Zillow Rating", detail: "13 reviews · checked September 22, 2026", href: PROFILE_LINKS.zillow },
+  { value: "2018", label: "Licensed Since", detail: "Get to know Chelsey", href: "/about" },
+  { value: "Recent Work", label: "Buyers & Sellers", detail: "Explore local transactions and listings", href: "/experience" },
 ];
 
 export default function StatsBar() {
@@ -36,7 +37,7 @@ export default function StatsBar() {
                 {stat.label}
               </p>
               <p className="text-xs" style={{ color: "var(--color-muted)" }}>
-                {stat.detail}
+                <a href={stat.href} className="underline">{stat.detail}</a>
               </p>
             </motion.div>
           ))}
