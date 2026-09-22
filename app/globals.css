@@ -183,3 +183,7 @@ a:focus-visible,button:focus-visible { outline:3px solid #526697; outline-offset
 .review-spotlight a:focus-visible,.community-card:focus-visible { outline-color:#b59b54; }
 @media (max-width:767px) { .section-padding { padding-top:3.5rem; padding-bottom:3.5rem; } }
 @media (prefers-reduced-motion:reduce) { html {scroll-behavior:auto;} .intent-card,.community-card {transition:none;} }
+
+/* Intrinsic image dimensions keep property photos visible without aspect-ratio support. */
+.property-photo { width:100%; }
+@media (min-width:768px) { .property-photo { height:240px; display:flex; align-items:center; } .property-photo img { max-height:100%; object-fit:contain; } }
