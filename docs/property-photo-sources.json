@@ -1,0 +1,22 @@
+{
+  "permission": "User confirmed reuse permission in this conversation before retrieval.",
+  "retrieved": "2026-09-22",
+  "photos": [
+    {
+      "path": "public/images/properties/pinegrove.jpg",
+      "sourcePage": "https://www.realtor.com/realestateandhomes-detail/5999-N-Pinegrove-Dr_Coeur-D-Alene_ID_83815_M10887-56167",
+      "sourceImage": "https://ap.rdcpix.com/8f07f2b1a102eafa72c9f4c4cda4b5b2l-m3146365406od-w640_h480.jpg"
+    },
+    {
+      "path": "public/images/properties/gavin.jpg",
+      "sourcePage": "https://www.realtor.com/realestateandhomes-detail/6643-N-Gavin-Loop_Coeur-D-Alene_ID_83815_M10484-08982",
+      "sourceImage": "https://ap.rdcpix.com/dce2f49ac640f90d40491979debc4eefl-m2478469099od-w640_h480.jpg"
+    },
+    {
+      "path": "public/images/properties/kidd-island.webp",
+      "sourcePage": "https://www.realtor.com/realestateandhomes-detail/5774-W-Kidd-Island-Rd_Coeur-D-Alene_ID_83814_M25956-65357",
+      "sourceImage": "https://ap.rdcpix.com/94472c54a7fade1e87f7154849b7c0c0l-m2900832132rd-w480_h360.webp"
+    }
+  ],
+  "display": "Unedited photos, contained in a consistent frame so MLS watermarks remain visible."
+}

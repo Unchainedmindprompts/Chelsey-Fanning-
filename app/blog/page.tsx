@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
+import BlogGrid from "@/components/blog/BlogGrid";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getAllPosts } from "@/lib/blog";
 import SectionWrapper from "@/components/ui/SectionWrapper";
@@ -39,14 +38,6 @@ function BlogIndexSchema({ posts }: { posts: Array<{ slug: string }> }) {
     />
   );
 }
-
-const CATEGORY_COLORS: Record<string, string> = {
-  "Market Updates":      "var(--color-primary)",
-  "First-Time Buyers":   "#5B8C5A",
-  "North Idaho Living":  "#7B5EA7",
-  "Selling Tips":        "#C07B3D",
-  "Community":           "#B85C6E",
-};
 
 export default function BlogPage() {
   const posts = getAllPosts();
@@ -89,94 +80,7 @@ export default function BlogPage() {
 
       {/* Blog posts grid */}
       <SectionWrapper background="surface">
-        {posts.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-base" style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}>
-              Posts coming soon. Check back shortly.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => {
-              const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              });
-              const categoryColor = CATEGORY_COLORS[post.category] ?? "var(--color-primary)";
-
-              return (
-                <article
-                  key={post.slug}
-                  className="rounded-2xl overflow-hidden flex flex-col group"
-                  style={{
-                    backgroundColor: "var(--color-white)",
-                    border: "1px solid rgba(196,185,172,0.3)",
-                  }}
-                >
-                  {/* Article image */}
-                  <div
-                    className="aspect-video flex items-center justify-center"
-                    style={{ backgroundColor: "var(--color-surface)" }}
-                  >
-                    {post.imageUrl ? (
-                      <Image
-                        src={post.imageUrl}
-                        alt={post.imageAlt ?? post.title}
-                        width={1440}
-                        height={810}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <span className="text-xs" style={{ color: "var(--color-muted)" }}>
-                        [Post image — TODO]
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="p-6 flex flex-col flex-1">
-                    {/* Category tag */}
-                    <span
-                      className="inline-block text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full mb-4 self-start"
-                      style={{
-                        backgroundColor: `${categoryColor}18`,
-                        color: categoryColor,
-                        fontFamily: "var(--font-roboto)",
-                      }}
-                    >
-                      {post.category}
-                    </span>
-
-                    <Link href={`/blog/${post.slug}`} className="flex-1">
-                      <h2
-                        className="text-h4 mb-3 group-hover:underline transition-all"
-                        style={{ color: "var(--color-charcoal)" }}
-                      >
-                        {post.title}
-                      </h2>
-                    </Link>
-
-                    <p
-                      className="text-sm leading-relaxed mb-4 line-clamp-3"
-                      style={{ color: "var(--color-muted)", fontFamily: "var(--font-roboto)" }}
-                    >
-                      {post.description}
-                    </p>
-
-                    <div
-                      className="flex items-center justify-between mt-auto pt-4 border-t text-xs"
-                      style={{ borderColor: "rgba(196,185,172,0.3)", color: "var(--color-muted)" }}
-                    >
-                      <span>{formattedDate}</span>
-                      <span>{post.readingTime} min read</span>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        )}
+        <BlogGrid posts={posts.map(({slug,title,description,category,imageUrl,imageAlt,readingTime,date})=>({slug,title,description,category,imageUrl,imageAlt,readingTime,date}))} />
       </SectionWrapper>
     </>
   );
