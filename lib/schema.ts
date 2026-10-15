@@ -1,4 +1,5 @@
 import { PROFILE_LINKS, TEAM_NAME, LICENSED_SINCE } from "@/content/professional-profile";
+import { TESTIMONIALS, AGGREGATE_RATING } from "@/content/testimonials";
 
 // Homepage entity graph — keep these identities separate:
 //   #business      RealEstateAgent  Chelsey's customer-facing practice
@@ -203,11 +204,48 @@ export function buildHomeWebPageNode() {
   };
 }
 
+// ─── Review schema (verified Google reviews, April 2026 collection) ──────────
+// The markup mirrors what the site displays. The aggregate describes all 27
+// Google reviews collected in content/testimonials.ts (the count shown on
+// /testimonials). Itemized Review nodes cover only reviews with visible text:
+// the homepage carries the featured subset it displays, and /testimonials
+// carries the full text-bearing set next to the reviews themselves.
+export function buildAggregateRatingNode() {
+  return {
+    "@type": "AggregateRating",
+    ratingValue: AGGREGATE_RATING.ratingValue,
+    reviewCount: Number(AGGREGATE_RATING.reviewCount),
+    bestRating: Number(AGGREGATE_RATING.bestRating),
+    worstRating: Number(AGGREGATE_RATING.worstRating),
+  };
+}
+
+function toReviewNode(t: (typeof TESTIMONIALS)[number]) {
+  return {
+    "@type": "Review",
+    author: { "@type": "Person", name: t.name },
+    datePublished: t.date,
+    reviewBody: t.fullText,
+    reviewRating: { "@type": "Rating", ratingValue: t.rating, bestRating: 5 },
+  };
+}
+
+export function buildFeaturedReviewNodes() {
+  return TESTIMONIALS.filter((t) => t.featured && t.fullText.length > 0).map(toReviewNode);
+}
+
+export function buildAllReviewNodes() {
+  return TESTIMONIALS.filter((t) => t.fullText.length > 0).map(toReviewNode);
+}
+
 export function buildHomepageGraph() {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      buildPracticeNode(),
+      buildPracticeNode({
+        aggregateRating: buildAggregateRatingNode(),
+        review: buildFeaturedReviewNodes(),
+      }),
       buildPersonNode(),
       buildExpRealtyNode(),
       buildTeamNode(),

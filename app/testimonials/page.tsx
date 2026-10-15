@@ -9,7 +9,7 @@ import BreadcrumbSchema from "@/components/schema/BreadcrumbSchema";
 import LocalBusinessSchema from "@/components/schema/LocalBusinessSchema";
 import { PROFILE_LINKS, PROFILE_CHECKED_LABEL, ZILLOW_REVIEW_SNAPSHOT } from "@/content/professional-profile";
 import { TESTIMONIALS, AGGREGATE_RATING } from "@/content/testimonials";
-import { NAP } from "@/lib/schema";
+import { NAP, buildAggregateRatingNode, buildAllReviewNodes } from "@/lib/schema";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Client Testimonials & Reviews",
@@ -72,7 +72,10 @@ export default function TestimonialsPage() {
           { name: "Reviews" },
         ]}
       />
-      <LocalBusinessSchema />
+      <LocalBusinessSchema
+        aggregateRating={buildAggregateRatingNode()}
+        review={buildAllReviewNodes()}
+      />
 
       {/* Page hero */}
       <section
