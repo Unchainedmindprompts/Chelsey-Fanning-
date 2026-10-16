@@ -187,7 +187,7 @@ export default function Footer() {
         >
           <p>© 2026 Chelsey Fanning · {NAP.title} · {NAP.brokerage}</p>
           <p>
-            Site by{" "}
+            Website by{" "}
             <a
               href="https://kodecite.ai"
               target="_blank"
@@ -195,7 +195,7 @@ export default function Footer() {
               className="hover:underline"
               style={{ color: FOOTER_ACCENT }}
             >
-              Kodecite.ai
+              KodeCite
             </a>
           </p>
         </div>
